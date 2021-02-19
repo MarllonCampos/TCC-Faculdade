@@ -1,28 +1,32 @@
-import psycopg2
+import mysql.connector
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # definindo dados refentes ao banco de dados
-data = {
-    'host': '201.74.113.36',
-    'port':'10864',
-    'dbname': 'tcc',
-    'user': 'tcc',
-    'password':'tcc',
+config = {
+    'host' : os.getenv("HOST"),
+    'port' : os.getenv("PORT"),
+    'database' : os.getenv("DATABASE"),
+    'user': os.getenv("USER"),
+    'password': os.getenv("PASSWORD")
 }
 
-# construindo string de conexao
-conn_string = f"host={data['host']} user={data['user']} dbname={data['dbname']} password={data['password']} port={data['port']}"
-
 try:
-    conn = psycopg2.connect(conn_string)
-    print("Conexão estabelecida")    
+    conn = mysql.connector.connect(**config)
+    print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
 
-except psycopg2.connection.ConnectionError as err:
+except mysql.connector.Error as err:
     print(err)
 
 else:
     cursor = conn.cursor()
     
     try:
+        # CREATE TABLE 
+        # cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+        # print("Tabela criada com sucesso!")
 
         # INSERT
         # cursor.execute(f"INSERT INTO teste (hello) VALUES ('{st}');")
@@ -30,10 +34,10 @@ else:
         
         
         # SELECT
-        cursor.execute("SELECT * FROM teste;")
-        rows = cursor.fetchall()
+        # cursor.execute("SELECT * FROM teste;")
+        # rows = cursor.fetchall()
 
-        print(rows)
+        print('a')
     
     except Exception as e:
         print(f"Houve um erro: {e}")
