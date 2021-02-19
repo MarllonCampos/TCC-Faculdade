@@ -10,7 +10,7 @@ data = {
 }
 
 # construindo string de conexao
-conn_string = f"host={data['host']} user={ data['user']} dbname={data['dbname']} password={data['password']} port={data['port']}"
+conn_string = f"host={data['host']} user={data['user']} dbname={data['dbname']} password={data['password']} port={data['port']}"
 
 try:
     conn = psycopg2.connect(conn_string)
