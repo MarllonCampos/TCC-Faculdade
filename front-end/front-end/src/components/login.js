@@ -1,55 +1,36 @@
 import React, { useState } from 'react'
+import Title from "../components/Title"
+import Button from '../components/Button'
+import Input from "../components/input"
+
 
 
 const Login = (props) => {
-    const [nome, setNome] = useState('Rafael ')
+    const [nome, setNome] = useState('Entre com a sua conta')
     const [senha, setSenha] = useState([])
-    const [login, setLogin] = useState(true)
-    const [recuperar, setRecuperar] = useState(false)
-    const [label, setLabel] = useState("")
-    const ReacuparSenha =() =>{
-        
+    const [login, setLogin] = useState(1)
 
-    }
-
-    return (
-
-        login === true ?
+    if (login === 1)
+        return (
 
             <div className="conteinerLogin">
-                <p className="textoG">Olá, </p>
 
-                <p className="textoM">
-                Entre com sua conta</p>
-                <div className="input">
-                    <div class="ui left icon input">
-                        <input type="text" placeholder="usuario" />
-                        <i class="users icon"></i>
-                    </div>
+
+                <Title title="Faça seu login" />
+                <Input tipo="texto" nome="usuario" icon="user icon" />
+                <Input tipo="password" nome="senha" icon="lock icon" />
+                <div>
+                    <Button button="Acessar" />
                 </div>
-                <div className="input">
-                    <div className="input">
-                        <div class="ui left icon input">
-                            <input type="text" placeholder="Senha" />
-                            <i class="lock icon"></i>
-                        </div>
-                    </div>
-                </div>
-                <button class="ui green button" >
-                    <font className="font">
-                        <font className="font">
-                            Acessar
-                    </font>
-                    </font>
-                </button>
+
                 <div className="font">
                     <a className="textoM"
-                        onClick={() => setLogin(false)}>
+                        onClick={() => setLogin(2)}>
                         Me cadastra :)
                 </a>
                 </div>
                 <div className="font">
-                    <a onClick={() => setLogin(false)}
+                    <a onClick={() => setLogin(3)}
                         className="textoM"
                     >
                         Recuperar
@@ -57,50 +38,45 @@ const Login = (props) => {
                 </div>
             </div>
 
+        )
+    if (login === 2) {
+        return (
+            <div className="conteinerLogin">
 
-            : <div className="conteinerLogin">
-                <p className="textoG">Olá, </p>
-                <p className="textoM"> Faça o seu cadastro</p>
-                <div className="input">
-                    <div class="ui left icon input">
-                        <input type="text" placeholder="usuario" />
-                        <i class="users icon"></i>
-                    </div>
-                </div>
-                <div className="input">
-                    <div className="input">
-                        <div class="ui left icon input">
-                            <input type="text" placeholder="Senha" />
-                            <i class="lock icon"></i>
-                        </div>
-                    </div>
-                </div>
-                <div className="input">
-                    <div class="ui left icon input">
-                        <input type="text" placeholder="usuario" />
-                        <i class="lock icon"></i>
-                    </div>
-                </div>
-                <div className="input">
-                    <div class="ui left icon input">
-                        <input type="text" placeholder="Email" />
-                        <i class="mail icon"></i>
-                    </div>
-                </div>
-                <button class="ui green button" onClick={() => setLogin(true)} >
+                <Title title="Faça o seu cadastro" />
+                <Input tipo="texto" nome="usuario" icon="user icon" />
+                <Input tipo="password" nome="senha" icon="lock icon" />
+                <Input tipo="password" nome="Confirma senha" icon="lock icon" />
+                <Input tipo="texto" nome="Email" icon="facebook icon" />
+                
+               
+                <button class="ui green button" onClick={() => setLogin(1)} >
                     <font className="font">
-                        <font className="font">
-                            Cadastra
-                    </font>
-                    </font>
+                        Cadastra
+                        </font>
                 </button>
             </div>
 
-    )
+        );
+    }
 
+    if (login === 3) {
+        return (
+            <div className="conteinerLogin">
+                <Title title="Resgatar sua senha" />
+
+                <Input tipo="password" nome="senha" icon="lock icon" />
+                <Input tipo="password" nome="Confirma senha" icon="lock icon" />
+
+                <button class="ui green button" onClick={() => setLogin(1)} >
+                    <font className="font">
+                        Recuperar
+                            </font>
+                </button>
+            </div>
+
+        )
+    }
+    
 }
-
-
 export default Login
-
-

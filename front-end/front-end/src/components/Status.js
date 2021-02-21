@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import logo from "./logo.png"
+import { library, icon } from '@fortawesome/fontawesome-svg-core'
 
 const Status = (props) => {
 
@@ -18,6 +19,8 @@ const Status = (props) => {
                     </div>
 
                     <div class="content">
+                    
+                    
                     </div>
                     <div >
                         <button class="ui green button">Ativo</button>
