@@ -1,43 +1,7 @@
 
-.ui.card {
-  padding: 1em;
- 
-  position: relative;
-  -webkit-box-orient: horizontal;
-  flex-direction: row;
-  width: 30em;
-  height: 20em;
-  margin-bottom: 3em;
-  
-}
 
-.ui.card:first-child{
-  margin-top: 20px;
-}
-.textData{
-  color: rgb(13, 139, 41);
-  margin-top: 25px;
-  font-size: 14px;
-  font-weight: bolder;
 
-}
-/*cor lampada*/
-.svg-inline--fa.fa-w-11{ 
-  color:rgb(17, 240, 36);
-}
-/*cor catavento*/
-.svg-inline--fa.fa-w-16{
-  color:yellow;
-}
-/*cor agua*/
-.svg-inline--fa.fa-w-18{
-  color:blue;
-}
-/*estilização dos icones*/
-.svg-inline--fa{
-  margin-top: 8px;
-  margin-bottom: 29px;
-}
+
 
 body {
   margin: 0;
@@ -62,16 +26,7 @@ code {
   background: rgb(17, 240, 36);
   z-index: 2;
 }
-.conteiner {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgb(241, 248, 239);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center
-}
+
 .conteinerLogin {
   position: relative;
   height: 100vh;
@@ -85,27 +40,13 @@ code {
 
 
 
-.input {
 
-  padding: 2px;
-  display: flex;
-  justify-content: space-around;
-  border-radius: 20em;
-}
 
 .textoM {
   font-weight: bolder;
   color: rgb(245, 252, 245);
   font-size: x-large;
   margin-bottom: 1.5em;
- 
-}.textoStatus {
-  font-weight: bolder;
-  color: rgb(0, 5, 0);
-  font-size: x-large;
- text-align: center;
- padding: 10px;
- 
  
 }.cards2{
   display: flex;
@@ -185,25 +126,9 @@ align-items: center
 
 }
 
-.ui.button {
-  border-radius: 8em;
-  width: 11em;
-  height: 3em;
-  margin-bottom: 0.5em;
-  margin-top: 0.8em;
-}
-.ui.input>input{
-  border-radius: 20em;
-
-}
-.font{
-  margin-bottom: 1em;
-}
 
 
-.image{
- 
-  width: 150px;
-  height: 150px;
- 
-}
+
+
+
+

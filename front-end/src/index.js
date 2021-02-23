@@ -3,7 +3,8 @@ import ReactDom from 'react-dom'
 import './index.css'
 import Login from './components/login'
 import Status from './components/Status'
-import CardEstufa  from './components/CardEstufa'
+import DetalheEstufa  from './components/DetalheEstufa'
+
 class App extends React.Component {
 
 
@@ -13,7 +14,9 @@ class App extends React.Component {
 <div>
 <Login/>
 <Status/>
-<CardEstufa/>
+<DetalheEstufa/>
+
+
 
 
 </div>

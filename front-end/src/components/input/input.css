@@ -1,0 +1,11 @@
+.ui.input>input{
+    border-radius: 20em;
+  
+  }
+  .input {
+
+    padding: 2px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 20em;
+  }
