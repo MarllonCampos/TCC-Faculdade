@@ -2,3 +2,4 @@ env
 .vscode
 .env
 front-end/node_modules
+front-end/yarn.lock
