@@ -1,3 +1,44 @@
+
+.ui.card {
+  padding: 1em;
+ 
+  position: relative;
+  -webkit-box-orient: horizontal;
+  flex-direction: row;
+  width: 30em;
+  height: 20em;
+  margin-bottom: 3em;
+  
+}
+
+.ui.card:first-child{
+  margin-top: 20px;
+}
+.textData{
+  color: rgb(13, 139, 41);
+  margin-top: 25px;
+  font-size: 14px;
+  font-weight: bolder;
+
+}
+/*cor lampada*/
+.svg-inline--fa.fa-w-11{ 
+  color:rgb(17, 240, 36);
+}
+/*cor catavento*/
+.svg-inline--fa.fa-w-16{
+  color:yellow;
+}
+/*cor agua*/
+.svg-inline--fa.fa-w-18{
+  color:blue;
+}
+/*estilização dos icones*/
+.svg-inline--fa{
+  margin-top: 8px;
+  margin-bottom: 29px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -66,6 +107,82 @@ code {
  padding: 10px;
  
  
+}.cards2{
+  display: flex;
+  flex-direction: column; 
+  padding: 10px;
+}
+  .conteinerEstufa{
+      display: flex;
+      flex-direction: row; 
+      justify-content: center;
+      margin-top: 150px;
+      position: relative;
+   
+
+height: 100vh;
+width: 100vw;
+background-color: rgb(68, 187, 35); 
+align-items: center
+  }
+  .ui.card4 {
+
+      position: absolute;
+      -webkit-box-orient: vertical;
+      flex-direction: row;
+      width: 23em;
+      height: 45em;
+      margin-bottom: 3em;
+      
+    }
+    .image2{
+
+      width: 350px;
+      height: 250px;
+      border-radius: 20px;
+     
+    }
+.ui.card2 {
+  display: flex;
+  flex-direction: row; 
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+  border-color:rgb(26, 24, 25) ;
+  background-color: rgb(106, 57, 151);
+  margin-left: 20px;
+}
+#icone{
+    margin-left: 18px;
+    margin-top: 15px;
+    color: white;
+}
+#icone1{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-left: 70px;
+  background-color: rgb(141, 111, 209);
+
+}
+.ativos{
+    margin-left: -100px;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+.instalado{
+    margin-top: 85px;
+    margin-left: -40px;
+}
+.textoTopo{
+    color: white;
+   
+    
+
+
 }
 
 .ui.button {
@@ -83,25 +200,10 @@ code {
   margin-bottom: 1em;
 }
 
-.ui.card {
-  padding: 1em;
-  position: relative;
-  -webkit-box-orient: horizontal;
-  flex-direction: row;
-  width: 30em;
-  height: 20em;
-  
-}
+
 .image{
  
   width: 150px;
   height: 150px;
  
-}
-.textData{
-  color: rgb(13, 139, 41);
-  margin-top: 25px;
-  font-size: 17px;
-  font-weight: bolder;
-
 }
