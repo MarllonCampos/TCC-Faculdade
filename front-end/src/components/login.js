@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Title from "../components/Title"
 import Button from '../components/Button'
 import Input from "../components/input"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLightbulb, faFan, faWater,faSeedling } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -15,7 +17,7 @@ const Login = (props) => {
 
             <div className="conteinerLogin">
 
-
+< FontAwesomeIcon id="icone" className="icone fa-5x" fa-2x icon={faSeedling}/>
                 <Title title="Faça seu login" />
                 <Input tipo="texto" nome="usuario" icon="user icon" />
                 <Input tipo="password" nome="senha" icon="lock icon" />
