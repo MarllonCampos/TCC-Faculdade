@@ -18,14 +18,12 @@ function App() {
   return (
     <Router>
       <Switch>
-        {/* <Route path='/' exact render={() => <Teste name="marlon" />} /> */}
         <Route path="/" exact component={Page} />
         <Route path="/joao" component={Teste} />
         <Route path="/list-estufas" component={ListEstufas} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
       </Switch>
     </Router>
-
   );
 }
 
