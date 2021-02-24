@@ -1,6 +1,6 @@
 
 import React from 'react'
-import logo from "./logo.png"
+
 import "./CardDetalhe.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
