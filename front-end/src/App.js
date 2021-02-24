@@ -13,6 +13,7 @@ import Login from './components/login'
 import Status from './components/Status'
 import ListEstufas from './pages/ListEstufas'
 import CadastroEstufas from './pages/ListEstufas'
+import EstufaAtiva from './pages/EstufaAtiva';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" exact component={Page} />
         <Route path="/joao" component={Teste} />
         <Route path="/list-estufas" component={ListEstufas} />
+        <Route path="/estufa-ativa" component={EstufaAtiva} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
       </Switch>
     </Router>
