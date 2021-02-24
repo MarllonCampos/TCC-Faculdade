@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 
-
+import Header from '../../components/Header'
+import {TituloCima, TituloBaixo} from './styles'
 
 function Page({ title, color, border, ...props }) {
     const [numero, setNumero] = useState(0)
@@ -16,11 +16,9 @@ function Page({ title, color, border, ...props }) {
 
     return (
         <>
-            <h1>Hello {title} {color} {border} {props.retangulo} {numero} </h1>
+            <TituloCima>João</TituloCima>
+            <TituloBaixo>Teste</TituloBaixo>
 
-            <button onClick={aumentar} >Aumentar</button>
-
-            <button onClick={diminuir}>Diminuir </button>        
         </>
     )
 }
