@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CadastroEstufas ({title, color, border,...props}){
+function CadastroEstufa ({title, color, border,...props}){
     const [numero, setNumero]=useState(0)
     
 }

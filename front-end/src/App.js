@@ -22,7 +22,7 @@ function App() {
         <Route path="/" exact component={Page} />
         <Route path="/joao" component={Teste} />
         <Route path="/list-estufas" component={ListEstufas} />
-        <Route path="/cadastro-estufas" component={index} />
+        <Route path="/cadastro-estufas" component={CadastroEstufas} />
       </Switch>
     </Router>
 
