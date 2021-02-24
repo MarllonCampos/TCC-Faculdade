@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 
 import Header from './components/Header'
-import Teste from './pages/JP'
 import Page from './pages/Page'
 import Login from './components/login'
 import Status from './components/Status'
@@ -20,7 +19,6 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Page} />
-        <Route path="/joao" component={Teste} />
         <Route path="/list-estufas" component={ListEstufas} />
         <Route path="/estufa-ativa" component={EstufaAtiva} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
