@@ -18,7 +18,7 @@ function Page({ title, color, border, ...props }) {
 
     return (
         <>
-            <Header />
+            <Header  />
             <TituloCima>João</TituloCima>
             <TituloBaixo>Teste</TituloBaixo>
 

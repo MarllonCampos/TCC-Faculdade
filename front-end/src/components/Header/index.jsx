@@ -10,7 +10,7 @@ import {
   Sidemenu,
 } from "./styles";
 
-function Header() {
+function Header({icon, ...props}) {
   const [showInput, setShowInput] = useState(false);
 
   function heandleToggleInput() {
@@ -26,7 +26,7 @@ function Header() {
             <CloseIcon onClick={heandleToggleInput} />
           </InputContainer>
         ) : (
-          <IconBusca onClick={heandleToggleInput} />
+          <IconBusca icon={icon} onClick={heandleToggleInput} />
         )}
 
         <Sidemenu />

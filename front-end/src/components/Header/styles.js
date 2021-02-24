@@ -11,9 +11,9 @@ export const ContentWrapper = styled.div`
     height:100%;
     max-width:800px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
     background:greenyellow;
+    position:relative;
 
 
 `;
@@ -24,6 +24,7 @@ export const IconBusca = styled.div`
     height:45px;
     margin-left:12px;
     background:purple;
+    display:${({icon, ...props}) => icon ? 'none':'inline'};
 
 `;
 
@@ -68,6 +69,9 @@ export const Sidemenu = styled.div`
     width:45px;
     height:45px;
     background-color:green;
+    position:absolute;
+    right:5px;
+
 
 `;
 
