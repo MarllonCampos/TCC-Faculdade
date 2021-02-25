@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import {
   Container,
-  ContentWrapper,
   IconBusca,
   InputContainer,
   Input,
@@ -19,7 +18,7 @@ function Header({icon, ...props}) {
 
   return (
     <Container>
-      <ContentWrapper>
+      
         {showInput ? (
           <InputContainer>
             <Input />
@@ -30,7 +29,7 @@ function Header({icon, ...props}) {
         )}
 
         <Sidemenu />
-      </ContentWrapper>
+      
     </Container>
   );
 }
