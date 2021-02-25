@@ -14,7 +14,7 @@ const CardStatus = props => (
         <p className="textoTopo">{props.tipo}</p>
         <div class="ui card2" id="icone1"  style={{backgroundColor: props.corIcon}}>
             <div>
-                < FontAwesomeIcon id="icone" className="icone" icon={props.iconess} />
+                <FontAwesomeIcon id="icone" className="icone" icon={props.iconess} />
             </div>
             <h1 className="ativos">{props.ativos} Ativos
 

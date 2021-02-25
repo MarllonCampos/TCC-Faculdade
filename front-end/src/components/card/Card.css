@@ -1,19 +1,17 @@
 .ui.card {
-    padding: 1em;
    
     position: relative;
     -webkit-box-orient: horizontal;
     flex-direction: row;
-    width: 30em;
-    height: 20em;
-    margin-bottom: 2em;
+    width: 350px;
+    height: 200px;
     
   }
   
 .image{
  
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
    
   }
   .textData{
