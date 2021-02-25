@@ -1,10 +1,13 @@
 .ui.button {
     border-radius: 8em;
-    width: 8em;
-    height: 2em;
+    width: 15em;
+    height: 3em;
     margin-bottom: 0.5em;
     margin-top: 0.8em;
+    
+   
   }
   .font{
     margin-bottom: 1em;
+    
   }
