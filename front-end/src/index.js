@@ -1,28 +1,12 @@
-import React, { Component } from 'react'
-import ReactDom from 'react-dom'
-import './index.css'
-import Login from './components/Login'
-import Status from './components/Status'
-class App extends React.Component {
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
 
+import './global.css'
 
-  render() {
-    return (
-      <Status/>,
-
-<div>
-<Login/>
-<Status/>
-
-</div>
-
-
-
-    )
-
-  }
-}
-
-
-
-ReactDom.render(<App />, document.querySelector('#root'))
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);

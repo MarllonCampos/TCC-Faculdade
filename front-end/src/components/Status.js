@@ -1,36 +1,22 @@
-import React, { useState } from 'react'
-import logo from "./logo.png"
+import React from 'react'
+
+import Card from './card'
 
 const Status = (props) => {
 
     return (
+        
+
         <div className="conteiner">
             <div className="herder">
-                <title>  </title>
+
             </div>
-            <div>
-                <div class="ui card">
-                    <div class="content">
-                        <img class="image" src={logo}
-                        />
-                        <p className="textoStatus">Estufa 1</p>
-
-                    </div>
-
-                    <div class="content">
-                    </div>
-                    <div >
-                        <button class="ui green button">Ativo</button>
-                        <button class="ui yellow button">Verificar</button>
-                        <button class="ui blue button">Em andamento</button>
-                        <p className="textData">Criado em 20/01/2020</p>
-                    </div>
-                </div>
-            </div>
-
+            <Card nome="estufa 1" data="20/03/2021" />
+            <Card nome="estufa 2" data="20/04/2021" />
         </div>
-    )}
-    
+    )
+}
+
 
 export default Status
 
