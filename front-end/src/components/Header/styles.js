@@ -31,7 +31,7 @@ export const IconBusca = styled.div`
 
 export const InputContainer = styled.div`
     height:80%;
-    width:285px;
+    width:245px;
     border-radius:15px;
     display:flex;
     align-items:center;
@@ -43,7 +43,7 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
     height:100%;
-    width:87%;
+    width:85%;
     border-radius:15px;
     padding-left:15px;
 

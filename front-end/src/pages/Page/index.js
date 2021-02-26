@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Header from '../../components/Header'
+import { Conteiner } from '../EstufaAtiva/styles'
 
 
 import { TituloCima, TituloBaixo } from './styles'
@@ -18,9 +19,14 @@ function Page({ title, color, border, ...props }) {
 
     return (
         <>
-            <Header  />
-            <TituloCima>João</TituloCima>
-            <TituloBaixo>Teste</TituloBaixo>
+            <Header />
+            <Conteiner>
+
+                <TituloCima>João</TituloCima>
+                <TituloBaixo>Teste</TituloBaixo>
+
+
+            </Conteiner>
 
         </>
     )
