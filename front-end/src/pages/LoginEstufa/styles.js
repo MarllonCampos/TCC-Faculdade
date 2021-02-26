@@ -20,8 +20,11 @@ export const Icon = styled.img`
 export const Label = styled.label`
   
   color: white;
-  margin-right: 150px ;
- position:relative;
+  margin-right:150px;
+  
+
+ 
+
  
 `;
 

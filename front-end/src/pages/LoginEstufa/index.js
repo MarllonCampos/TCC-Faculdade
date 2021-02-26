@@ -7,8 +7,18 @@ import Button from '../../components/button/Button'
 
 
 function LoginEstufa() {
-    const [login, setLogin] = useState(1)
-    if (login === 1)
+    const [login, setLogin] = useState("login")
+
+   function Cadastro(){
+       setLogin("cadastro")
+       console.log(login)
+        }
+   function Recuperar(){
+       setLogin("recuperar")
+        }
+        
+      
+    if (login === "login")
         return (
             <>
                 <Conteiner>
@@ -18,13 +28,14 @@ function LoginEstufa() {
                     <Input />
                     <Label>Senha:</Label>
                     <Input />
-                    <Button button="Acessar" />
+                    <Button button="Acessar" 
+                      />
                     <A
-                        onClick={() => setLogin(2)}>
+                        onClick={() => setLogin(Cadastro)}>
                         Me cadastra :)
                 </A>
 
-                    <A onClick={() => setLogin(3)}
+                    <A onClick={() => setLogin(Recuperar)}
 
                     >
                         Recuperar
@@ -32,7 +43,7 @@ function LoginEstufa() {
                 </Conteiner>
             </>
         )
-    if (login === 2) {
+    if (login === "cadastro") {
         return (
             <>
                <Conteiner>
@@ -46,32 +57,30 @@ function LoginEstufa() {
                 <Input />
                 <Label>Email:</Label>
                 <Input />
-                <Button button="Acessar"  onClick={() => setLogin(1)}/>
+                <Button button="Acessar" />
                
             </Conteiner>
             </>
         )
     }
-    if (login === 3) {
+    if (login === "recuperar") {
         return (
             <>
                 <Conteiner>
                 <Icon src={LoginIcon} />
-                <Title title="Faça seu Cadastro" />
-                <Label>Usuario:</Label>
-                <Input />
+                <Title title="Recuperar Senha" />
                 <Label>Senha:</Label>
                 <Input />
-                <Label>Confirme senha:</Label>
+                <Label>Confirme a Senha:</Label>
                 <Input />
-                <Label>Email:</Label>
-                <Input />
-                <Button button="Acessar"  onClick={() => setLogin(1)}/>
+         
+                <Button button="Recuperar"/>
                
             </Conteiner>
             </>
         )
     }
+  
 
 }
 export default LoginEstufa;

@@ -14,6 +14,9 @@ import ListEstufas from './pages/ListEstufas'
 import CadastroEstufas from './pages/ListEstufas'
 import EstufaAtiva from './pages/EstufaAtiva';
 import LoginEstufa from './pages/LoginEstufa'
+import Uploader from './pages/LoginEstufa/Uploader'
+
+
 
 function App() {
   return (
@@ -24,6 +27,8 @@ function App() {
         <Route path="/estufa-ativa" component={EstufaAtiva} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/login-estufas" component={LoginEstufa} />
+        <Route path="/uploader-login" component={Uploader} />
+        
       </Switch>
     </Router>
   );
