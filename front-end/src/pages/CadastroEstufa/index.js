@@ -1,7 +1,7 @@
 import React from 'react';
-import { Conteiner, ImageLogo, Title, Label, MeuBotao} from "./styles"
+import { Conteiner, ImageLogo, Title,Title1, Label,Input, MeuBotao} from "./styles"
 import Header from '../../components/Header'
-import FotoLogo from '../../components/logo.png.png'
+import FotoLogo from '../../components/logo.png'
 
 function CadastroEstufa() {
     
@@ -11,12 +11,13 @@ function CadastroEstufa() {
         <Conteiner>
            
             <ImageLogo src={FotoLogo}/>
-            <Title>Cadastro de Estufas</Title>
-            <Label>Nome da Estufa</Label>
+            <Title>Ola,</Title>
+            <Title1>Cadastro de Estufas </Title1>
+            <Label>  Nome da Estufa:  </Label>
+            <Input type="text"/>
             <MeuBotao>Cadastrar</MeuBotao>
         </Conteiner>
         
-        </>
     )
     
 }
