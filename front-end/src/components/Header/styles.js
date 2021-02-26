@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width:100%;
     height:55px;
-    background-color:blue;
+    background-color:green;
 `;
 
 export const ContentWrapper = styled.div`
@@ -66,11 +66,11 @@ export const CloseIcon = styled.div`
 
 
 export const Sidemenu = styled.div`
-    width:45px;
-    height:45px;
-    background-color:green;
+    width:5%;
+    height:15px;
+    background-color:white;
     position:absolute;
-    right:5px;
+    right:15px;
 
 
 `;
