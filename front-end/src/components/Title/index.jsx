@@ -7,6 +7,7 @@ const Title = props => (
     <div className="Title">
         <p className="textoG">Olá, </p>
         <h3>{props.title}</h3>
+        <label>{props.textInput}</label>
     </div>
 )
 

@@ -1,22 +1,25 @@
 import React from 'react';
+import { Conteiner, ImageLogo, Title,Title1, Label,Input, MeuBotao} from "./styles"
+import Header from '../../components/Header'
+import FotoLogo from '../../components/logo.png'
 
-function CadastroEstufa ({title, color, border,...props}){
-    const [numero, setNumero]=useState(0)
+function CadastroEstufa() {
+    
+    return (
+        <>
+        <Header/>
+        <Conteiner>
+           
+            <ImageLogo src={FotoLogo}/>
+            <Title>Ola,</Title>
+            <Title1>Cadastro de Estufas </Title1>
+            <Label>  Nome da Estufa:  </Label>
+            <Input type="text"/>
+            <MeuBotao>Cadastrar</MeuBotao>
+        </Conteiner>
+        
+    )
     
 }
-function aument(){
-    setNumero (numero +1)
-}
-function dimi (){
-    setNumero(numero-1)
-}
-return {
-    <>
-    <h1> oii galeraa {title} {color{border} {props.retangulo} {numero} </h1>
-<button onClick ={aument}>aumentar</button>
-<button onClick ={dimi}>diminuir </button>
-</>
-)
-}
-export default page;
+export default CadastroEstufa;
     

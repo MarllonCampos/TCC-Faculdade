@@ -1,5 +1,6 @@
 .ui.input>input{
-    border-radius: 20em;
+    border-radius: 15em;
+    color: rgb(13, 71, 52);
   
   }
   .input {
@@ -7,5 +8,6 @@
     padding: 2px;
     display: flex;
     justify-content: space-around;
-    border-radius: 20em;
+    border-radius: 15em;
+   
   }
