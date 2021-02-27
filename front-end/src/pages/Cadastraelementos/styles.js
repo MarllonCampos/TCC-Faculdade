@@ -19,27 +19,23 @@ export const Title = styled.h1`
    font-size: 60px;
   text-align: center;
   color:white;
-    
-    
-    
+       
 `
 export const Title1 = styled.p`
-   font-size: 60px;
-  text-align: center;
-  color:white;
     
-    
-    
+    color:white;
+    font-size:20px;
+    line-height:o;
+    letter-spacing:1px;
+       
 `
 export const Title2 = styled.p`
     
     color:white;
-    font-size:20px;
-    line-height:2;
+    font-size:15px;
+    line-height:1;
     letter-spacing:1px;
-    
-    
-    
+        
 `
 export const Label = styled.label`
     font-weight:bolder;
@@ -47,9 +43,7 @@ export const Label = styled.label`
     font-size:1.2em;
     margin-bottom:1%;
     
-   
     `
-    
     export const Input = styled.input`
     padding:5px;
     display:flex;
@@ -63,7 +57,21 @@ export const Label = styled.label`
     border-radius:20em;
     color: white;
     font-size: 1.2rem;
-    margin: 2rem;
+    margin: 1rem;
     padding: 1rem 3rem;
     
     `
+    export const Select = styled.select`
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color:white;
+    border-radius: 2px ;
+    font-size: 20px;
+    padding-right: 15px;
+    margin: 1rem;
+    
+    
+    
+    
+`
