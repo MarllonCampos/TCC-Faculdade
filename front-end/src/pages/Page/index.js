@@ -19,7 +19,7 @@ function Page({ title, color, border, ...props }) {
 
     return (
         <>
-            <Header />
+            <Header icon />
             <Conteiner>
 
                 <TituloCima>João</TituloCima>
