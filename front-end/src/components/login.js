@@ -5,7 +5,7 @@ import Button from './button/Button'
 import Input from "./input/input"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater,faSeedling } from '@fortawesome/free-solid-svg-icons'
-import plantar from "./plantar.png"
+
 
 
 const Login = (props) => {
@@ -18,8 +18,7 @@ const Login = (props) => {
 
             <div className="conteinerLogin">
                 
-                <img class="image3" src={plantar}
-                    />
+                
 
                 
                 <Input tipo="texto" nome="usuario" icon="user icon" />
