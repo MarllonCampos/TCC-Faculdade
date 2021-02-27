@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardConteiner, Conteiner, ImageHorta } from "./styles"
 import Header from '../../components/Header'
-import Title from '../../components/title'
+import Title from '../../components/Title'
 import CardStatus from '../../components/cardDetalhe'
 import FotoHorta from '../../components/horta.jpg'
 

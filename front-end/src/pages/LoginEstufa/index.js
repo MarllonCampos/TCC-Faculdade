@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Conteiner, Icon, Label, A, Bnt } from "./styles"
-import Title from '../../components/title/index'
+import Title from '../../components/Title'
 import LoginIcon from '../../components/loginIcon.png'
 import Input from '../../components/input/input'
 import Button from '../../components/button/Button'

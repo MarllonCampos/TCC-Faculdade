@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import Title from "./title/index"
+import Title from "./Title"
 import Button from './button/Button'
 import Input from "./input/input"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
