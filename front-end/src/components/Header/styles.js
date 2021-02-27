@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width:100%;
     height:55px;
-    background-color:green;
+    background-color:blue;
 `;
 
 export const ContentWrapper = styled.div`
@@ -24,14 +24,13 @@ export const IconBusca = styled.div`
     height:45px;
     margin-left:12px;
     background:purple;
-    display:${({icon, ...props}) => icon ? 'none':'inline'};
 
 `;
 
 
 export const InputContainer = styled.div`
     height:80%;
-    width:245px;
+    width:285px;
     border-radius:15px;
     display:flex;
     align-items:center;
@@ -43,7 +42,7 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
     height:100%;
-    width:85%;
+    width:87%;
     border-radius:15px;
     padding-left:15px;
 
@@ -66,13 +65,11 @@ export const CloseIcon = styled.div`
 
 
 export const Sidemenu = styled.div`
-    width:5%;
-    height:15px;
-    background-color:white;
+    width:45px;
+    height:45px;
+    background-color:green;
     position:absolute;
-    right:15px;
-
-
+    right:5px;
 `;
 
 

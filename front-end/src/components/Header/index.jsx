@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import {
   Container,
+  ContentWrapper,
   IconBusca,
   InputContainer,
   Input,
@@ -9,27 +10,28 @@ import {
   Sidemenu,
 } from "./styles";
 
-function Header({icon, ...props}) {
+function Header({ icon, ...props }) {
   const [showInput, setShowInput] = useState(false);
 
-  function heandleToggleInput() {
+  function handleToggleInput() {
     setShowInput(!showInput);
   }
 
   return (
     <Container>
-      
-        {showInput ? (
-          <InputContainer>
-            <Input />
-            <CloseIcon onClick={heandleToggleInput} />
-          </InputContainer>
-        ) : (
-          <IconBusca icon={icon} onClick={heandleToggleInput} />
-        )}
+      <ContentWrapper>
+        {icon &&
+          (showInput ? (
+            <InputContainer>
+              <Input />
+              <CloseIcon onClick={handleToggleInput} />
+            </InputContainer>
+          ) : (
+            <IconBusca onClick={handleToggleInput} />
+          ))}
 
         <Sidemenu />
-      
+      </ContentWrapper>
     </Container>
   );
 }
