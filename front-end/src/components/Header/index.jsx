@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Container,
@@ -11,24 +11,36 @@ import {
 } from "./styles";
 
 function Header({ icon, ...props }) {
-  const [showInput, setShowInput] = useState(false);
+  const [isInputShowing, setIsInputShowing] = useState(false);
+  const [hasToWait, setHasToWait] = useState(false);
 
-  function handleToggleInput() {
-    setShowInput(!showInput);
+  function openInput() {
+    setIsInputShowing(true);
+    setHasToWait();
   }
+
+  function closeInput(){
+    setHasToWait(true);
+    setTimeout(() => {
+      setIsInputShowing(false);
+
+    },280);
+    
+  }
+
 
   return (
     <Container>
       <ContentWrapper>
         {icon &&
-          (showInput ? (
-            <InputContainer>
+          (isInputShowing ? (
+            <InputContainer closeAnimation={hasToWait}>
               <Input />
-              <CloseIcon onClick={handleToggleInput} />
+              <CloseIcon onClick={closeInput} />
             </InputContainer>
-          ) : (
-            <IconBusca onClick={handleToggleInput} />
-          ))}
+          ) :
+            <IconBusca onClick={openInput} />
+          )}
 
         <Sidemenu />
       </ContentWrapper>

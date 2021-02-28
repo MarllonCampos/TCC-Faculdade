@@ -9,3 +9,7 @@ body,html,#root {
     height:100%;
     width:100%;
 }
+
+body {
+    min-width:initial;
+}
