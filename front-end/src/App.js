@@ -8,7 +8,7 @@ import {
 
 import Header from './components/Header'
 import Page from './pages/Page'
-import Login from './components/login'
+
 import Status from './components/Status'
 import ListEstufas from './pages/ListEstufas'
 import CadastroEstufas from './pages/ListEstufas'

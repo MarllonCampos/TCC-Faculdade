@@ -7,28 +7,34 @@ export const Conteiner = styled.div`
     flex-direction:column;
     align-items:center;
     justify-content: center;
-    min-height:calc(100vh - 55px);
+    margin-bottom: 50px;
+   
+    
     
 
 `;
 export const Icon = styled.img`
+
   
-  border-radius: 10%;
+
   width: 100px;
   border: 2px solid #ccc;
-  padding: 8px;
+  padding: 1px;
+  margin-bottom:20px;
 `;
 export const Label = styled.label`
   
   color: white;
-  margin-right:150px; 
+   
+ 
   
 `;
 
 export const A = styled.a`
+
   padding: 10px;
  color: white;
- font-size: 20px;
+ font-size: 30px;
 `;
 export const Bnt = styled.button`
 margin-top:  10px;
