@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { Conteiner, Icon, Label, A } from "./styles"
 import Button from '../../components/button/Button'
-import Title from '../../components/title'
+import Title from '../../components/Title'
 import Camera from './assets/Camera.png'
 import user from './assets/user.png'
 import Input from '../../components/input/input'
