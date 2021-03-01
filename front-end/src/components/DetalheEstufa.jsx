@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './cardDetalhe/CardDetalhe.css'
-import horta from "./horta.jpg"
+import horta from "../assets/horta.jpg"
 import CardDetalhe from "./cardDetalhe"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
