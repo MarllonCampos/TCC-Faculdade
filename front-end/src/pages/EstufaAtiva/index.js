@@ -9,7 +9,7 @@ import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
 function EstufaAtiva() {
     return (
         <>
-        <Header/>
+        <Header icon />
         <Conteiner>
             <Title title="Estufa Jão" />
             <ImageHorta src={FotoHorta}/>
