@@ -5,7 +5,7 @@ import { Conteiner } from "./styles"
 function ListEstufas() {
     return (
         <>
-        <Header/>
+        <Header icon />
         <Conteiner>
             <Card nome="Estufa Jão" data="23/03/2021"/> 
         </Conteiner>
