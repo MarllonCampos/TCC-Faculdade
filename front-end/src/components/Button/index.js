@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
+    display:block;
     width:80%;
     height:45px;
     
+    margin:0 auto;
+    margin-top:12px;
     background-color:var(--secondary);
     
     border:0;
