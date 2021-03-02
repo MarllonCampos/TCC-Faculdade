@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Conteiner, Icon, Label, A, Bnt } from "./styles"
-import Title from '../../components/title'
+import Title from '../../components/Title'
 import LoginIcon from '../../assets/loginIcon.png'
 import Input from '../../components/input/input'
-import Button from '../../components/Button copy'
+import Button from '../../components/Button'
 import schema from './validation'
 import Form from '../../components/Form';
 import Field from '../../components/Field';

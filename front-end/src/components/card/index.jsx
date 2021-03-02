@@ -9,23 +9,14 @@ const Card = props => (
 
     <div class="ui card">
         <div class="content">
-            <img class="image" src={logo}
-            />
+            <img class="image" src={logo}/>
             <p className="textoStatus">{props.nome}</p>
-
         </div>
-
 
         <div class="content">
             <FontAwesomeIcon icon={faLightbulb} />
-
             <FontAwesomeIcon icon={faFan} />
             <FontAwesomeIcon icon={faWater} />
-
-
-
-
-
         </div>
         <div >
             <button class="ui green button">Ativo</button>
