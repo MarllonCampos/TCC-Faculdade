@@ -13,3 +13,14 @@ body,html,#root {
 body {
     min-width:initial;
 }
+
+
+:root {
+    --primary:#064712;
+    --secondary:#0B8722;
+    --tertiary:#0EAD2B;
+    --quartiary:#10C732;
+    --quintiary:#11D435;
+    --text:#FFFFFF;
+    --text-green:#0B8722;
+}
