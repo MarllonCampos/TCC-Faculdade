@@ -33,6 +33,7 @@ const InputText = ({
             ref={register}
             onChange={onChange}
             type={isPasswordType && !noIcon ? "password" : "text"}
+            {...props}
           />
         )}
 
@@ -44,6 +45,7 @@ const InputText = ({
             ref={register}
             onChange={onChange}
             type={type}
+            {...props}
           />
         )}
 
