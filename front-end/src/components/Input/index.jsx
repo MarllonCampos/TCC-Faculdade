@@ -32,7 +32,7 @@ const InputText = ({
             placeholder={placeholder}
             ref={register}
             onChange={onChange}
-            type={isPasswordType && !noIcon ? "password" : "text"}
+            type={isPasswordType ? "password" : "text"}
             {...props}
           />
         )}
