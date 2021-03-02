@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios';
 import { Conteiner, Icon, Label, A , BoxUpload,ImagePreview} from "./styles"
 import Button from '../../components/Button'
-import Title from '../../components/title'
+import Title from '../../components/Title'
 import Camera from '../../assets/Camera.png'
 import user from '../../assets/user.png'
 
