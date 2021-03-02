@@ -4,11 +4,13 @@ import {
   Container,
   ContentWrapper,
   IconBusca,
-  InputContainer,
   Input,
   CloseIcon,
+  InputContainer,
   Sidemenu,
 } from "./styles";
+
+
 
 function Header({ icon, ...props }) {
   const [isInputShowing, setIsInputShowing] = useState(false);
@@ -16,7 +18,7 @@ function Header({ icon, ...props }) {
 
   function openInput() {
     setIsInputShowing(true);
-    setHasToWait();
+    setHasToWait(false);
   }
 
   function closeInput(){

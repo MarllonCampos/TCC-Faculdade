@@ -6,7 +6,6 @@ import sidemenuIcon from '../../assets/sidemenu-icon.svg'
 export const Container = styled.div`
     width:100%;
     height:55px;
-    background-color:blue;
 `;
 
 export const ContentWrapper = styled.div`
@@ -15,7 +14,7 @@ export const ContentWrapper = styled.div`
     max-width:800px;
     display:flex;
     align-items:center;
-    background:greenyellow;
+    background:var(--quartiary);
     position:relative;
 
 
