@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Header from '../../components/Header'
+import InputText from '../../components/Input';
 import { Conteiner } from '../EstufaAtiva/styles'
 
 
@@ -21,12 +22,13 @@ function Page({ title, color, border, ...props }) {
         <>
             <Header icon />
             <Conteiner>
-
-                <TituloCima>João</TituloCima>
-                <TituloBaixo>Teste</TituloBaixo>
+            <InputText noIcon idFor="user" labelText="Usuário:"/>
+            <InputText idFor="password" labelText="Senha:"/>
 
 
             </Conteiner>
+
+    
 
         </>
     )
