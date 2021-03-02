@@ -132,7 +132,6 @@ export const CloseIcon = styled.div`
 export const Sidemenu = styled.div`
     width:45px;
     height:100%;
-    background-color:green;
     position:absolute;
 
     right:5px;
