@@ -1,16 +1,37 @@
-import React from 'react'
+import React,{useState} from 'react'
 import axios from 'axios';
-import { Conteiner, Icon, Label, A } from "./styles"
-import Button from '../../components/button/Button'
-import Title from '../../components/Title'
+import { Conteiner, Icon, Label, A , BoxUpload,ImagePreview} from "./styles"
+import Button from '../../components/Button'
+import Title from '../../components/title'
 import Camera from '../../assets/Camera.png'
 import user from '../../assets/user.png'
-import Input from '../../components/input/input'
+
+import Main from '../../components/Main';
+
+import CloseIcon from "../../assets/CloseIcon.svg";
 
 
 
+function Uploader() {
+    const [image, setImage] = useState("");
+    const [isUploaded, setIsUploaded] = useState(false);
+    const [typeFile, setTypeFile] = useState("");
+  
+    function handleImageChange(e) {
+      if (e.target.files && e.target.files[0]) {
+        setTypeFile(e.target.files[0].type);
+        let reader = new FileReader();
+  
+        reader.onload = function (e) {
+          setImage(e.target.result);
+          setIsUploaded(true);
+        };
+  
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    }
 
-class Uploader extends React.Component {
+{/*class Uploader extends React.Component {
 
     constructor() {
         super();
@@ -41,26 +62,83 @@ class Uploader extends React.Component {
 
     }
 
-    render() {
+render() {*/}
+
         return (
-            <div>
-                <Conteiner>
+            <Main>
+<Conteiner>
                     <Icon src={user} />
                     <Title title="Faça o reconhecimento facial" />
-                    <img src={Camera} />
+                   
+                    <BoxUpload>
+          <div className="image-upload">
+            {!isUploaded ? (
+              <>
+                <label htmlFor="upload-input">
+                  <img
+                    src={Camera}
+                    draggable={"false"}
+                    alt="placeholder"
+                    style={{ width: 300, height: 300 }}
+                  />
+                  <p style={{ color: "#444" }}>Click para Cadastra uma Imagem</p>
+                </label>
 
-                    <Input tipo="file" className="form-control" name="upload_file" onChange={this.handleInputChange} />
+                <input
+                  id="upload-input"
+                  type="file"
+                  accept=".jpg,.jpeg,.gif,.png,.mov,.mp4"
+                  onChange={handleImageChange}
+                />
+              </>
+            ) : (
+              <ImagePreview>
+                <img
+                  className="close-icon"
+                  src={CloseIcon}
+                  alt="CloseIcon"
+                  onClick={() => {
+                    setIsUploaded(false);
+                    setImage(null);
+                  }}
+                />
+                {typeFile.includes("video") ? (
+                  <video
+                    id="uploaded-image"
+                    src={image}
+                    draggable={false}
+                    controls
+                    autoPlay
+                    alt="uploaded-img"
+                  />
+                ) : (
+                  <img
+                    id="uploaded-image"
+                    src={image}
+                    draggable={false}
+                    alt="uploaded-img"
+                  />
+                )}
+              </ImagePreview>
+            )}
+          </div>
+        </BoxUpload>
+        {isUploaded ? <h2>Type is {typeFile}</h2> : null}
+
+                   
                     <div className="col-md-6 offset-md-3">
-                        <div >
-                        <A href="/login-estufas"> <Button button="Salvar" type="submit" className="btn btn-dark" onClick={() => this.submit()}></Button></A>
+                        <div > 
+                            <Button><A href="/login-estufas">Cadastrar</A></Button>
+                        
                         </div>
                     </div>
 
 
                 </Conteiner>
-            </div>
+            </Main>
+           
         )
     }
-}
+
 
 export default Uploader;
