@@ -65,7 +65,7 @@ function LoginEstufa() {
                     {errors.name?.message}
                     <Field.Text label="Email" name="email" type="email" register={register} />
                     {errors.email?.message}
-                    <A href="/uploader-login"><Button>Enviar</Button></A>
+             <Button><A href="/uploader-login">Cadastrar</A></Button>
                    
                 </Form>
             </Main>
@@ -84,7 +84,7 @@ function LoginEstufa() {
                     {errors.name?.message}
                     <Field.Text label="Recuperar senha" name="email" type="email" register={register} />
                     {errors.email?.message}
-                    <Button>Enviar</Button>
+                    <Button><A href="/login-estufas">Cadastrar</A></Button>
                     <Conteiner>
                      
                     </Conteiner>
