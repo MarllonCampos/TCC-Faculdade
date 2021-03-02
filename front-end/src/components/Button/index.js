@@ -1,23 +1,14 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-    display:block;
-    width:80%;
-    height:45px;
-    
-    margin:0 auto;
-    margin-top:12px;
-    background-color:var(--secondary);
-    
-    border:0;
-    border-radius:600px;
-    
-    text-align:center;
-    color:var(--text);
-    font-family:Poppins, sans-serif;
-    font-weight: 600;
-    font-size:1.2rem;
+background-color: #0e101c;
+border: 1px solid #516391;
+border-radius: 4px;
+width: 100%;
+font-size: 20px;
+padding: 10px 20px;
+color: white;
+cursor: pointer;
 
-    cursor:pointer;
 `
 export default Button;
