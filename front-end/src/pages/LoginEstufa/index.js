@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Conteiner, Icon, Label, A, Bnt } from "./styles"
 import Title from '../../components/Title'
 import LoginIcon from '../../assets/loginIcon.png'
-import Button from '../../components/Button'
+import Button from '../../components/button'
 import schema from './validation'
 import Form from '../../components/Form';
 import Field from '../../components/Field';

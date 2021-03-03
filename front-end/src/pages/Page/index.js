@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Header from '../../components/Header'
-import InputText from '../../components/Input';
+import InputText from '../../components/input';
 import { Conteiner } from '../EstufaAtiva/styles'
 
 
