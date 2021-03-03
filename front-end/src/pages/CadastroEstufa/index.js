@@ -1,5 +1,14 @@
 import React from 'react';
-import { Conteiner, ImageLogo, Title,Title1, Label,Input, MeuBotao} from "./styles"
+import { 
+    Conteiner,
+    ImageLogo,
+    Title,
+    Title1,
+    Label,
+    Input,
+    MeuBotao
+} from "./styles"
+
 import Header from '../../components/Header'
 import FotoLogo from '../../assets/logo.png'
 
