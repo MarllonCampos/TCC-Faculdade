@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import Header from '../../components/Header'
-import InputText from '../../components/input';
+import InputText from '../../components/Input';
+import OlaLogo from '../../components/Ola';
 import { Conteiner } from '../EstufaAtiva/styles'
 
 
@@ -22,6 +23,7 @@ function Page({ title, color, border, ...props }) {
         <>
             <Header icon />
             <Conteiner>
+            <OlaLogo />
             <InputText noIcon idFor="user" labelText="Usuário:"/>
             <InputText idFor="password" labelText="Senha:"/>
 
