@@ -2,6 +2,7 @@
 .ui.card {
     display: flex;
     flex-direction: row;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
     width: 300px;
     height: 200px;
     
@@ -18,22 +19,29 @@
 
   .luz{
     display: flex;
+    height: 30px;
     flex-direction: row;
     justify-content:space-evenly;
   }
   .vento{
     display: flex;
+    height: 30px;
     flex-direction: row;
     justify-content:space-evenly;
   }
 
   .agua{
     display: flex;
+    height: 30px;
     flex-direction: row;
     justify-content:space-evenly;
   }
   
   .onoff{
+    background-color: chartreuse;
+    height: 20px;
+    width: 100px;
+    border-radius: 8px;
     color:black;
     
   }
@@ -41,10 +49,10 @@
 
   .textData{
     color: rgb(13, 139, 41);
-    margin-top: 25px;
     font-size: 14px;
     font-weight: bolder;
-  
+    margin-left: 10px;
+    margin-top: 10px;
   }
   .textoStatus {
     font-weight: bolder;
