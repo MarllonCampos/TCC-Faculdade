@@ -24,6 +24,9 @@ const Card = props => (
                 <FontAwesomeIcon icon={faWater} /> 
                 <p class="onoff">Ativo</p> 
             </div>
+            
+            <p className="textData">Criado em: {props.data}</p>
+           
         </div>
         
         
