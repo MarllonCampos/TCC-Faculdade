@@ -25,7 +25,6 @@ export const Label = styled.label`
 export const InputContainer = styled.label`
     background:var(--text);
     border-radius:500px;
-    padding: 0 17px;
     display:flex;
     align-items:center;
     
@@ -40,10 +39,12 @@ export const InputContainer = styled.label`
 
 export const Input = styled.select`
     background:transparent;
+    border-radius:500px;
     appearance:none;
+    padding: 0 17px;
     border:0;
     outline:0;
-    width:calc(100% - 15px);
+    width:100%;
     height:100%;
     font-weight:500;
 
@@ -53,6 +54,10 @@ export const Input = styled.select`
         
         color:var(--text-green);
 
+    }
+
+    option:hover {
+        background:red;
     }
 
 
@@ -68,8 +73,6 @@ export const ArrowIcon = styled.i`
     height:100%;
 
     background:url(${ArrowDown}) no-repeat center;
-
-    transform:${({active}) => console.log(active)};
 
 
 `
