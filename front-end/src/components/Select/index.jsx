@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Container, Label, Input,InputContainer, ArrowIcon} from './styles';
 
-const Select = ({elements,label,labelText, ...props}) => {
-  const [isDropDownActive,setIsDropDownActive] = useState(false)
+const Select = ({elements,label,labelText,onChange,ref, ...props}) => {
+ 
 
   return (
     <Container >
-      <Label onClick={() => {setIsDropDownActive(!isDropDownActive)}}>{labelText}</Label>
+      <Label >{labelText}</Label>
       <InputContainer htmlFor={label}>
-        <Input name={label} id={label} defaultValue="Selecione uma opção" onClick={() => {setIsDropDownActive(!isDropDownActive)}}>
-          <option selected disabled >selecione uma opção</option>
-          {elements && elements.map((options) => <option value={String(options).split(" ")[0]}>{options}</option>)}      
+        <Input 
+          name={label}
+          id={label}
+          defaultValue="Selecione uma opção" 
+          onChange={onChange}
+          ref={ref}
+        >
+          <option selected disabled >Selecione uma Opção</option>
+
+          {elements && elements.map(
+            (options) => <option value={String(options).split(" ")[0]}>{options}</option>
+            )
+          }      
         </Input>
-        <ArrowIcon  active={isDropDownActive}/>
+        <ArrowIcon  />
       </InputContainer>
     </Container>
   );
