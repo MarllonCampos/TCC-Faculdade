@@ -1,34 +1,41 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
-import './Card.css'
 import FotoHorta from '../../assets/horta.jpg'
 
-import {Conteiner} from "./styles"
+import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatus } from "./styles"
 
-function Card(){
-    return(
-        <>
-        <div class="ui card">
-            <img class="image" src={FotoHorta}/>
-        <div class ="coluna">
-            <p className="textoStatus">Estufa Jão</p>
-            <div class="luz">
-                <FontAwesomeIcon icon={faLightbulb} /> 
-                <p class="onoff">Ativo</p> 
-            </div>
-            <div class="vento">
-                <FontAwesomeIcon icon={faFan} /> 
-                <p class="onoff">Ativo</p> 
-            </div>
-            <div class="agua">
-                <FontAwesomeIcon icon={faWater} /> 
-                <p class="onoff">Ativo</p> 
-            </div>
-            <p className="textData">Criado em: 23/03/2021</p>
-        </div>
-    </div>
-    </>
+function Card({ title, status, date, ...rest }) {
+    return (
+        <Conteiner>
+            <Image src={FotoHorta} />
+            <Coluna>
+                <TextoStatus>
+                    {title}
+                </TextoStatus>
+                <Luz>
+                    <FontAwesomeIcon style={{ color: "#11f024" }} icon={faLightbulb} />
+                    <OnOff status={status}>
+                        {status == true ? "Ativo" : "Desativado"}
+                    </OnOff>
+                </Luz>
+                <Vento>
+                    <FontAwesomeIcon style={{ color: "#ffff00" }} icon={faFan} />
+                    <OnOff status={status}>
+                        {status ? "Ativo" : "Desativado"}
+                    </OnOff>
+                </Vento>
+                <Agua>
+                    <FontAwesomeIcon style={{ color: "#0000ff" }} icon={faWater} />
+                    <OnOff status={status}>
+                        {status ? "Ativo" : "Desativado"}
+                    </OnOff>
+                </Agua>
+                <TextData>
+                    Criado em: {date}
+                </TextData>
+            </Coluna>
+        </Conteiner>
     )
 }
 

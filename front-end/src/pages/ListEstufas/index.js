@@ -7,8 +7,8 @@ function ListEstufas() {
         <>
         <Header icon />
         <Conteiner>
-            <Card nome="Estufa Jão" data="23/03/2021"/> 
-            <Card nome="Estufa Jão" data="23/03/2021"/> 
+            <Card title="Estufa Jão" status={true} date="03/03/2021"/>
+            <Card title="Estufa Marllon" status={false} date="03/03/2021"/>  
         </Conteiner>
         </>
     )
