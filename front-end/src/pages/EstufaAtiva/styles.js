@@ -17,5 +17,5 @@ export const CardConteiner = styled.div`
 
 export const ImageHorta = styled.img`
     height: 200px;
-    width: 50%;
+    width: 300px;
 `
