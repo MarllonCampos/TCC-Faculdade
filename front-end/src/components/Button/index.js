@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Button = styled.button`
     display:block;
-    width:25%;
+    width:45%;
     height:45px;
     
     margin:0 auto;
