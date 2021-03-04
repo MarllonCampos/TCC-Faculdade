@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
 
 export const Conteiner = styled.div`
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
     width: 300px;
     height: 200px;
@@ -12,6 +11,7 @@ export const Conteiner = styled.div`
 `
 
 export const Image = styled.img`
+    border-radius: 10px;
     width: 150px;
     height:200px;
 `
