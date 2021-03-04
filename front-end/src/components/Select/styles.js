@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ArrowDown from '../../assets/arrow-down.svg'
 export const Container = styled.div`
-    width:80%;
+    width:30%;
   
     display:flex;
     justify-content:center;

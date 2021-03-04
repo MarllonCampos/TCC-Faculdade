@@ -1,31 +1,30 @@
 import React from 'react';
-import { Conteiner, ImageLogo, Title,Title1,Title2, Label,Input,Select, MeuBotao} from "./styles"
+import { Conteiner,Title1,Title2, } from "./styles"
 import Header from '../../components/Header'
-import FotoLogo from '../../components/logo.png'
+import Select from '../../components/Select'
+import Ola from '../../components/Ola'
+import InputText from '../../components/Input';
+import Button from '../../components/Button';
 
-function CadastroElemento() {
+
+function    CadastroElemento() {
     
     return (
         <>
-        <Header/>
+        <Header icon/>
         <Conteiner>
            
-            <ImageLogo src={FotoLogo}/>
-            <Title>Ola,</Title>
+        
+            <Ola/>
             <Title1>Cadastro de Estufas </Title1>
             <Title2>Elementos da Estufa</Title2>
-            <Label>  Nome do Elemento:  </Label>
-            <Input type="text"/>
-            <Select name="select">
-            <option value="">Lampada</option>
-            <option value="" selected>Seleciona um Elemento</option>
-            <option value=""></option>
-            </Select>
-            <MeuBotao>Cadastrar</MeuBotao>
+           
+            <InputText noIcon idFor="user" labelText="Nome do Elemento:" />
+            <Select  selected disabled="Seleciona uma opcao" labelText="Tipo de elemento:" elements={[,"Lampada", 3, 4, 5, 6, 7, 8, 9]} />
+
+            
+            <Button>Cadastrar</Button>
         </Conteiner>
         
         </>
     )
-    
-}
-export default CadastroElemento;

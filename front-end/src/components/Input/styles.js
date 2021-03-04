@@ -4,7 +4,7 @@ import passwordIcon from '../../assets/eye-icon.svg'
 
 
 export const Container = styled.div`
-    width:80%;
+    width:30%;
     margin:0 auto;
     margin-bottom:12px;
 
