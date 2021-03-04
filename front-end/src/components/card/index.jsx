@@ -1,17 +1,18 @@
 import React from 'react'
-import logo from "../../assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
 import './Card.css'
 import FotoHorta from '../../assets/horta.jpg'
 
+import {Conteiner} from "./styles"
 
-const Card = props => (
-
-    <div class="ui card">
+function Card(){
+    return(
+        <>
+        <div class="ui card">
             <img class="image" src={FotoHorta}/>
         <div class ="coluna">
-            <p className="textoStatus">{props.nome}</p>
+            <p className="textoStatus">Estufa Jão</p>
             <div class="luz">
                 <FontAwesomeIcon icon={faLightbulb} /> 
                 <p class="onoff">Ativo</p> 
@@ -24,27 +25,12 @@ const Card = props => (
                 <FontAwesomeIcon icon={faWater} /> 
                 <p class="onoff">Ativo</p> 
             </div>
-            
-            <p className="textData">Criado em: {props.data}</p>
-           
+            <p className="textData">Criado em: 23/03/2021</p>
         </div>
-        
-        
-
-        {/* <div class="content">
-            
-            
-            
-        </div>
-        <div >
-            
-            
-            <button class="ui yellow button">Verificar</button>
-            <button class="ui blue button">Em andamento</button>
-
-            <p className="textData">Criado em {props.data}</p>
-        </div> */}
     </div>
+    </>
+    )
+}
 
-)
+
 export default Card
