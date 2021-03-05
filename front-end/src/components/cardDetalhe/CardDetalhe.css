@@ -17,30 +17,25 @@
 }
 
 .ui.card4 {
-
   position: absolute;
   -webkit-box-orient: vertical;
   flex-direction: row;
   width: 23em;
   height: 45em;
   margin-bottom: 3em;
-
 }
 
 .image2 {
-
   width: 350px;
   height: 250px;
   border-radius: 20px;
-
 }
-.image3 {
 
+.image3 {
   width: 150px;
   height: 150px;
   border-radius: 20px;
- background-color: aliceblue;
-
+  background-color: aliceblue;
 }
 
 .ui.card2 {
@@ -68,7 +63,6 @@
   border-radius: 25px;
   margin-left: 70px;
   background-color: rgb(141, 111, 209);
-
 }
 
 .ativos {
@@ -85,8 +79,4 @@
 
 .textoTopo {
   color: white;
-
-
-
-
 }
