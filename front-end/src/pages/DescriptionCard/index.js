@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/Header'
 import { Container,WrapperIcon, Icon, Element, Status } from './styles';
 
-function DescriptionCard({icon="light",elements,...props}) {
+function DescriptionCard({icon="fan",elements,...props}) {
     const phrases = {
         "light":{phrase:"Luzes da Estufa",el: "Luz"},
         "fan":{phrase:"Ventiladores da Estufa",el:"Ventilador"},
@@ -16,7 +16,7 @@ function DescriptionCard({icon="light",elements,...props}) {
       <Container> 
         <Header />  
         <WrapperIcon>
-            <Icon icon="light" />
+            <Icon icon={icon} />
             {icon && <p>{phrases[icon].phrase}</p>}
         </WrapperIcon>
 

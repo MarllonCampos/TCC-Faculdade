@@ -5,8 +5,8 @@ import SprinkeIcon from '../../assets/sprinkle.svg'
 
 const icons = {
     "light":LightIcon,
-    "sprinkle":FanIcon,
-    "fan":SprinkeIcon
+    "fan":FanIcon,
+    "sprinkle":SprinkeIcon
 
 }
 
