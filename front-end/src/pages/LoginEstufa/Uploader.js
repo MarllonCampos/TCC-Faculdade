@@ -7,6 +7,7 @@ import Camera from '../../assets/Camera.png'
 import user from '../../assets/user.png'
 
 import Main from '../../components/Main';
+import Ola from '../../components/Ola'
 
 import CloseIcon from "../../assets/CloseIcon.svg";
 
@@ -31,43 +32,12 @@ function Uploader() {
       }
     }
 
-{/*class Uploader extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            selectedFile: '',
-        }
-
-        this.handleChange = this.handleInputChange.bind(this);
-    }
-
-    handleInputChange(event) {
-        this.setState({
-            selectedFile: event.target.files[0],
-        })
-    }
-
-    submit() {
-        const data = new FormData()
-        data.append('file', this.state.selectedFile)
-        console.warn(this.state.selectedFile);
-        let url = "http://localhost:8000/upload.php";
-
-        axios.post(url, data, { // receive two parameter endpoint url ,form data 
-        })
-            .then(res => { // then print response status
-                console.warn(res);
-            })
-
-    }
-
-render() {*/}
 
         return (
             <Main>
 <Conteiner>
-                    <Icon src={user} />
+                    <Ola/>
                     <Title title="Faça o reconhecimento facial" />
                    
                     <BoxUpload>
