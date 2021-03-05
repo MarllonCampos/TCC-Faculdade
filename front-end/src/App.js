@@ -15,7 +15,7 @@ import CadastroEstufas from './pages/CadastroEstufa'
 import EstufaAtiva from './pages/EstufaAtiva';
 import LoginEstufa from './pages/LoginEstufa'
 import Uploader from './pages/LoginEstufa/Uploader'
-
+import DescriptionCard from './pages/DescriptionCard'
 
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/login-estufas" component={LoginEstufa} />
         <Route path="/uploader-login" component={Uploader} />
+        <Route path="/description-card" render={(props) => <DescriptionCard elements={[{name:"Norte",status:true},{name:"Sul",status:false},{name:"Leste",status:true},{name:"Oeste",status:false}]} />}/>
         
       </Switch>
     </Router>
