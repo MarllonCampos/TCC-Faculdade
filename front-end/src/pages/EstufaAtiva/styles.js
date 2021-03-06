@@ -6,7 +6,25 @@ export const Conteiner = styled.div`
     flex-direction:column;
     align-items:center;
     min-height:calc(100vh - 55px);
-    
+
+    a {
+        color:white;
+        text-decoration:none;
+        margin-top:12px;
+        width:150px;
+
+        &:hover {
+            color:navy;
+            text-decoration:underline;
+            
+        }
+
+    }
+
+    .last {
+        margin-bottom:50px;
+    }    
+  
 `
 export const CardConteiner = styled.div`
     display:flex;
