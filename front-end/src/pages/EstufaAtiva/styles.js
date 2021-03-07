@@ -5,7 +5,7 @@ export const Conteiner = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
-    min-height:calc(100vh - 55px);
+    height:100%;
     
 `
 export const CardConteiner = styled.div`
@@ -13,6 +13,7 @@ export const CardConteiner = styled.div`
     flex-direction:row;
     max-width:100%;
     justify-content: space-between;
+    margin-top:15px;
 `
 
 export const ImageHorta = styled.img`
