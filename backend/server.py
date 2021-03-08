@@ -1,17 +1,18 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask('Greenery')
-app.config['DEBUG'] = True
+
+@app.route('/login', methods=['POST'])
+def post():
+    user = request.get_json()
+
+    return user
 
 @app.route('/', methods=['GET'])
 def get():
 
     return ('GET')
 
-@app.route('/', methods=['POST'])
-def post():
-
-    return ('POST')
 
 @app.route('/', methods=['PUT'])
 def put():
@@ -28,4 +29,7 @@ def delete():
 
     return ('DELETE')
 
-app.run()
+app.run(port='4000')
+
+
+
