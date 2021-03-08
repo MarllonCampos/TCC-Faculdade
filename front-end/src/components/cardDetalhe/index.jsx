@@ -1,6 +1,5 @@
 
 import React from 'react'
-import "./CardDetalhe.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,7 +14,7 @@ return (
         <RowTop>
             <Element>{props.tipo}</Element><FontAwesomeIcon icon={props.iconess}/>
         </RowTop>
-        <ActiveElements>{props.ativos} ativos</ActiveElements>
+        <ActiveElements>{props.ativos} {props.planta_ou_ativa}</ActiveElements>
         <Unit>
             <p>Instalado </p>
 
