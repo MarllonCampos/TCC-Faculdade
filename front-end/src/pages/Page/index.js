@@ -25,8 +25,8 @@ function Page({ title, color, border, ...props }) {
 
     return (
         <>
-            <Header icon />
             <Conteiner>
+            <Header icon />
                 <OlaLogo />
                 <InputText noIcon idFor="user" labelText="Usuário:" />
                 <Select labelText="Usuário: " onChange={setSelectState} label="select" elements={["Marllon Campos", 2, 3, 4, 5, 6, 7, 8, 9]} />
