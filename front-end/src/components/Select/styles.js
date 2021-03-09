@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import ArrowDown from '../../assets/arrow-down.svg'
 export const Container = styled.div`
     width:80%;
-  
+    max-width:300px;
+    margin:0 auto;
     display:flex;
     justify-content:center;
     flex-direction:column;
