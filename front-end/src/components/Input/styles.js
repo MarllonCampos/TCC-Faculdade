@@ -5,6 +5,8 @@ import passwordIcon from '../../assets/eye-icon.svg'
 
 export const Container = styled.div`
     width:80%;
+    max-width:300px;
+
     margin:0 auto;
     margin-bottom:12px;
 

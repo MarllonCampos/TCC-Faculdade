@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const Button = styled.button`
     display:block;
     width:80%;
+    max-width:300px;
     height:45px;
     
     margin:0 auto;
