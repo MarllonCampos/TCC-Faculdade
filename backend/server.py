@@ -1,12 +1,13 @@
 from flask import Flask, request
+from bd_functions import login
 
 app = Flask('Greenery')
 
 @app.route('/login', methods=['POST'])
 def post():
     user = request.get_json()
-
-    return user
+    response =  login(user)
+    return response
 
 @app.route('/', methods=['GET'])
 def get():
