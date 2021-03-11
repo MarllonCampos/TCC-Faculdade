@@ -30,5 +30,6 @@ def validateLogin(user):
 
     except Exception as error:
         
-        response = {"status":"erro","message":str(error)}
-        return(response)
+        return({'message':{'title':'Erro',
+                'content': str(error)},
+                'status':'erro'})
