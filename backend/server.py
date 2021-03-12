@@ -4,7 +4,13 @@ from bd_functions import login
 app = Flask('Greenery')
 
 @app.route('/login', methods=['POST'])
-def post():
+def login():
+    user = request.get_json()
+    response =  login(user)
+    return response
+
+@app.route('/register', methods=['POST'])
+def registe():
     user = request.get_json()
     response =  login(user)
     return response
