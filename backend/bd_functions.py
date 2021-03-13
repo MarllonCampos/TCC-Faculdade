@@ -1,6 +1,7 @@
-from utils import validateLogin
+from utils import validateLogin, idGenerator, passwordEncode, emailVerify
 from connection import openConnection
-import hashlib
+from datetime import date
+
 
 # Função que valida usuário
 def login(user):
@@ -37,9 +38,9 @@ def login(user):
                     nomeUser = row[0][1]
                     passwordBD = row[0][3]
                     # criptografando senha usando o formato md5
-                    passwordEncode = hashlib.md5(password.encode())
+                    passEncode = passwordEncode(password)
 
-                    if passwordEncode.hexdigest() == passwordBD:
+                    if passEncode == passwordBD:
                         response = getUser(idUser, nomeUser)
                         return response
 
@@ -60,7 +61,7 @@ def getUser(idUser,nomeUser):
     conn = openConnection()
 
     if type(conn) == dict:
-            return conn
+        return conn
     else:
         try:
             cursor = conn.cursor()
@@ -105,4 +106,39 @@ def getUser(idUser,nomeUser):
                 conn.commit()
                 conn.close()
 
+def register(user):
+    conn = openConnection()
 
+    idUser = idGenerator()
+    nome = user['nome']
+    senha = passwordEncode(user['senha'])
+    data = date.today()
+    foto = user['foto']
+    
+    email = user['email']
+
+
+    if type(conn) == dict:
+        return conn
+    
+    else:
+        try:
+            
+            if not emailVerify(email):
+                raise Exception ("Por favor, use um email válido!")
+            else:
+                cursor = conn.cursor()
+
+                result_args = cursor.callproc('userRegister',[idUser,nome,email,senha,data,foto])
+
+                cursor.close()
+
+                return(result_args[0])
+
+        except Exception as err:
+                return({'message':{'title':'Erro',
+                'content': str(err)},
+                'status':'erro'})
+        finally:
+                conn.commit()
+                conn.close()
