@@ -1,5 +1,5 @@
 from flask import Flask, request
-from bd_functions import login
+from bd_functions import login, register 
 
 app = Flask('Greenery')
 
@@ -10,9 +10,9 @@ def login():
     return response
 
 @app.route('/register', methods=['POST'])
-def registe():
+def registrar():
     user = request.get_json()
-    response =  login(user)
+    response =  register(user)
     return response
 
 @app.route('/', methods=['GET'])
