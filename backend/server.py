@@ -1,10 +1,10 @@
 from flask import Flask, request
 from bd_functions import login, register 
-
+import cv2
 app = Flask('Greenery')
 
 @app.route('/login', methods=['POST'])
-def login():
+def log_in():
     user = request.get_json()
     response =  login(user)
     return response
