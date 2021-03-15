@@ -1,12 +1,14 @@
 import cv2
 import imutils
 import face_recognition
+import os
 
 def faceDetect(img):
     try:
-        loadAlgoritmo = cv2.CascadeClassifier('Haar/haarcascade_frontalface_default.xml')
+        loadAlgoritmo = cv2.CascadeClassifier(os.path.abspath('C:/Users/Ruty Ribeiro/Documents/MeusProjetos/TCC-Faculdade/backend/Haar/haarcascade_frontalface_default.xml'))
 
         imagem = imutils.url_to_image(img)
+        # print(imagem)
         # imagem=cv2.imread(img)
         imagemcinza=cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 
@@ -30,7 +32,6 @@ def faceRecognition(imgUser, imgBD):
         if type(hasFace) == dict:
             return hasFace
         elif hasFace != 1:
-            print('a')
             raise Exception('Foto invalida! Tente novamente ou selecione outra foto.')
         else:
             # imageUser= face_recognition.load_image_file(imgUser)
@@ -54,5 +55,6 @@ def faceRecognition(imgUser, imgBD):
                 'content': str(error)},
                 'status':'erro'}) 
                 
-# print(faceDetect('https://segredosdomundo.r7.com/wp-content/uploads/2020/03/13-atitudes-que-difere-as-pessoas-felizes-das-outras.jpg'))
-print(faceRecognition('https://secure.i.telegraph.co.uk/multimedia/archive/01434/jacksondone_1434760c.jpg','https://www.legacy.com/wp-content/uploads/2020/08/hero-michael-jackson-getty-1200x900.jpg'))
+# print(faceDetect('https://firebasestorage.googleapis.com/v0/b/tcc-faculdade-bfbb8.appspot.com/o/retrievePhotos%2Fmarllon.jpg?alt=media&token=97645bc7-fead-4ef8-be4b-949948e88c16'))
+# print(faceRecognition('https://firebasestorage.googleapis.com/v0/b/tcc-faculdade-bfbb8.appspot.com/o/retrievePhotos%2Fmarllon.jpg?alt=media&token=97645bc7-fead-4ef8-be4b-949948e88c16',
+# 'https://firebasestorage.googleapis.com/v0/b/tcc-faculdade-bfbb8.appspot.com/o/userPhotos%2FUser.1.0.jpg?alt=media&token=d7b66e5e-9c5e-4d6e-9afe-a823d3f1f0ba'))

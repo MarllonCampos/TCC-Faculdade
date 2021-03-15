@@ -1,7 +1,8 @@
 from validate_email import validate_email
 import uuid
 import hashlib
-
+from facialRecognizer import faceDetect
+import cv2
 
 def validateLogin(user):
     try:
@@ -36,6 +37,46 @@ def validateLogin(user):
         return({'message':{'title':'Erro',
                 'content': str(error)},
                 'status':'erro'})
+
+def validateRegister(user):
+    try:
+        if 'email' in user and 'password' in user and 'name' in user and 'photo' in user:
+            
+            email = user['email']
+            password = user['password']
+            name = user['name']
+            photo = user['photo']
+            detect=faceDetect(photo)
+
+            if (email is None or email == ''):
+                raise Exception('Email não informado!')
+            
+            elif not(emailVerify(email)):
+                raise Exception('E-mail não valido!')
+            
+            elif (name is None or name == ''):
+                raise Exception('nome não informado!')
+            
+            elif (photo is None or photo == ''):
+                raise Exception('foto não informada!')
+            
+            elif (detect != 1):
+                raise Exception('Não encontramos um rosto, tente novamente!')
+            
+            elif (password is None or password == '') :
+                raise Exception('Senha não informado!')
+            
+            else:
+                return('ok')
+        else:
+            raise Exception('E-mail ou senha inexistente!')
+
+    except Exception as error:
+        
+        return({'message':{'title':'Erro',
+                'content': str(error)},
+                'status':'erro'})
+
 
 # codifica senha no padrão MD5
 def passwordEncode(password):

@@ -1,6 +1,7 @@
-from utils import validateLogin, idGenerator, passwordEncode, emailVerify
+from utils import validateLogin, idGenerator, passwordEncode, emailVerify, validateRegister
 from connection import openConnection
-from datetime import date
+from datetime import datetime,timezone,timedelta
+from mysql.connector import errorcode
 
 
 # Função que valida usuário
@@ -56,7 +57,7 @@ def login(user):
                 conn.commit()
                 conn.close()
 
-#Função que traz informações relacionadas ao usuário depois de validado o login 
+# Função que traz informações relacionadas ao usuário depois de validado o login 
 def getUser(idUser,nomeUser):
     conn = openConnection()
 
@@ -106,36 +107,44 @@ def getUser(idUser,nomeUser):
                 conn.commit()
                 conn.close()
 
+# função para registrar usuários banco de dados
 def register(user):
     conn = openConnection()
-
-    idUser = idGenerator()
-    nome = user['nome']
-    senha = passwordEncode(user['senha'])
-    data = date.today()
-    foto = user['foto']
-    
-    email = user['email']
-
 
     if type(conn) == dict:
         return conn
     
     else:
         try:
-            
-            if not emailVerify(email):
-                raise Exception ("Por favor, use um email válido!")
+            verifiedUser = validateRegister(user)
+
+            if 'status' in verifiedUser:
+                return verifiedUser
             else:
+                idUser = idGenerator()
+                nome = user['name']
+                senha = passwordEncode(user['password'])
+                data = (datetime.now().astimezone(timezone(timedelta(hours=-3)))).strftime('%Y/%m/%d')
+                foto = user['photo']
+                email = user['email']
+                
                 cursor = conn.cursor()
 
                 result_args = cursor.callproc('userRegister',[idUser,nome,email,senha,data,foto])
 
                 cursor.close()
 
-                return(result_args[0])
+                return({'message':{'title':'Sucesso',
+                'content':'Usuário cadastrado com sucesso!'},
+                'status':'ok'})
 
         except Exception as err:
+            if 'errno' in dir(err):
+                if err.errno == 1062:
+                    return ({'message':{'title':'Erro',
+                    'content': 'Email já cadastrado!'},
+                    'status':'erro'})
+            else:
                 return({'message':{'title':'Erro',
                 'content': str(err)},
                 'status':'erro'})
