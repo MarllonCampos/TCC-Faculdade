@@ -8,9 +8,9 @@ import { faLightbulb, faFan, faWater, faSeedling } from '@fortawesome/free-solid
 
 function EstufaAtiva() {
     return (
-
+        <>
+        <Header icon />
         <Conteiner>
-            <Header icon />
             <Title title="Estufa Jão" />
             <ImageHorta src={FotoHorta} />
             <CardConteiner>
@@ -24,7 +24,7 @@ function EstufaAtiva() {
                 <CardStatus cor="darkgreen" tipo="Plantas" corIcon="red" iconess={faSeedling} ativos="7" planta_ou_ativa = "plantas" quant="10" />
             </CardConteiner>
         </Conteiner>
-
+        </>
     )
 
 }

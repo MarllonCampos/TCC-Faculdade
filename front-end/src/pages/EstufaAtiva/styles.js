@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const Conteiner = styled.div`
     background-color: green;
-    display:flex;
-    flex-direction:column;
+    display:grid;
     align-items:center;
+    justify-items: center;
     height:100%;
-    
 `
 export const CardConteiner = styled.div`
     display:flex;
