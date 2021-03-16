@@ -6,21 +6,22 @@ export const Conteiner = styled.div`
     flex-direction:column;
     align-items:center;
     height:100%;
-    
+    margin-top: 60px;
 `
 export const ConteinerGrid =styled.div`
     display: grid;
-    margin-top: 20px;
+    margin-top: 40px;
 `
 export const CardConteiner = styled.div`
     display:flex;
     flex-direction:row;
     max-width:100%;
     justify-content: space-between;
-    margin-top:15px;
+    margin-top:40px;
 `
 
 export const ImageHorta = styled.img`
     height: 200px;
     width: 300px;
+    margin-top: 40px;
 `
