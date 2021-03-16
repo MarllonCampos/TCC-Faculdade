@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const ContentWrapper = styled.div`
     margin:0 auto;
     height:100%;
-    max-width:800px;
+    max-width:100%;
     display:flex;
     align-items:center;
     background:var(--quartiary);

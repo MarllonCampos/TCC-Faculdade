@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardConteiner, Conteiner, ImageHorta, ConteinerGrid } from "./styles"
+import { CardConteiner, Conteiner, ImageHorta, ConteinerGrid, GlobalConteiner } from "./styles"
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import CardStatus from '../../components/cardDetalhe'
@@ -8,7 +8,7 @@ import { faLightbulb, faFan, faWater, faSeedling } from '@fortawesome/free-solid
 
 function EstufaAtiva() {
     return (
-        <>
+        <GlobalConteiner>
         <Header icon />
         <Conteiner>
             <Title title="Estufa Jão" />
@@ -26,7 +26,7 @@ function EstufaAtiva() {
             </CardConteiner>
             </ConteinerGrid>
         </Conteiner>
-        </>
+        </GlobalConteiner>
     )
 
 }
