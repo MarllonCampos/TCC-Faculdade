@@ -19,6 +19,7 @@ export const Image = styled.img`
 export const Coluna = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content:space-between;
 `
 
 export const Luz = styled.div`

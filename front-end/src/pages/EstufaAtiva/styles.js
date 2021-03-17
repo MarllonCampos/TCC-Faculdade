@@ -1,20 +1,25 @@
 import styled from 'styled-components';
 
-export const GlobalConteiner = styled.div`
-    background-color: var(--quartiary);
-    height: 100%;
-`
+
 export const Conteiner = styled.div`
     background-color: var(--quartiary);
     display:flex;
     flex-direction:column;
     align-items:center;
     height:100%;
-    margin-top: 30px;
 `
 export const ConteinerGrid =styled.div`
     display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 2%;
+    width: 80%;
+    max-width: 600px;
     margin-top: 40px;
+
+    @media (max-width:320px){
+        width: 90%;
+    }
 `
 export const CardConteiner = styled.div`
     display:flex;
