@@ -12,6 +12,7 @@ import Page from './pages/Page'
 import Status from './components/Status'
 import ListEstufas from './pages/ListEstufas'
 import CadastroEstufas from './pages/CadastroEstufa'
+import CadastraElementos from './pages/Cadastraelementos'
 import EstufaAtiva from './pages/EstufaAtiva';
 import LoginEstufa from './pages/LoginEstufa'
 import Cadastro from './pages/LoginEstufa/Cadastro'
