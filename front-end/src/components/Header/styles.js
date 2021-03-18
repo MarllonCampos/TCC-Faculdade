@@ -6,12 +6,13 @@ import sidemenuIcon from '../../assets/sidemenu-icon.svg'
 export const Container = styled.div`
     width:100%;
     height:55px;
+    background:var(--quartiary);
 `;
 
 export const ContentWrapper = styled.div`
     margin:0 auto;
     height:100%;
-    max-width:800px;
+    max-width:600px;
     display:flex;
     align-items:center;
     background:var(--quartiary);

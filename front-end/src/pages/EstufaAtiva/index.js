@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardConteiner, Conteiner, ImageHorta } from "./styles"
+import { CardConteiner, Conteiner, ImageHorta, ConteinerGrid } from "./styles"
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import CardStatus from '../../components/cardDetalhe'
@@ -8,23 +8,24 @@ import { faLightbulb, faFan, faWater, faSeedling } from '@fortawesome/free-solid
 
 function EstufaAtiva() {
     return (
-
-        <Conteiner>
+        <>
             <Header icon />
-            <Title title="Estufa Jão" />
-            <ImageHorta src={FotoHorta} />
-            <CardConteiner>
-                <CardStatus cor="purple" tipo="Luz" corIcon="red" iconess={faLightbulb} ativos="4" planta_ou_ativa = "ativos" quant="10" />
+            <Conteiner>
+                <Title style={{ marginTop: "50px" }} title="Estufa Jão" />
+                <ImageHorta src={FotoHorta} />
+                <ConteinerGrid>
 
-                <CardStatus cor="#ff7518 " tipo="Ventilador" corIcon="red" iconess={faFan} ativos="10" planta_ou_ativa = "ativos" quant="10" />
+                    <CardStatus cor="purple" tipo="Luz" corIcon="red" iconess={faLightbulb} ativos="4" planta_ou_ativa="ativos" quant="10" />
 
-                <CardStatus cor="blue" tipo="Irrigação" corIcon="red" iconess={faWater} ativos="7" planta_ou_ativa = "ativos" quant="10" />
-            </CardConteiner>
-            <CardConteiner>
-                <CardStatus cor="darkgreen" tipo="Plantas" corIcon="red" iconess={faSeedling} ativos="7" planta_ou_ativa = "plantas" quant="10" />
-            </CardConteiner>
-        </Conteiner>
+                    <CardStatus cor="#ff7518 " tipo="Ventilador" corIcon="red" iconess={faFan} ativos="10" planta_ou_ativa="ativos" quant="10" />
 
+                    <CardStatus cor="blue" tipo="Irrigação" corIcon="red" iconess={faWater} ativos="7" planta_ou_ativa="ativos" quant="10" />
+
+                    <CardStatus lastItem={true} cor="darkgreen" tipo="Plantas" corIcon="red" iconess={faSeedling} ativos="7" planta_ou_ativa="plantas" quant="10" />
+
+                </ConteinerGrid>
+            </Conteiner>
+        </>
     )
 
 }

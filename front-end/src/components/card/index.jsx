@@ -5,7 +5,7 @@ import FotoHorta from '../../assets/horta.jpg'
 
 import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatus } from "./styles"
 
-function Card({ title, status, date, ...rest }) {
+function Card({ title, luz, ventilador, irrigacao, date, ...rest }) {
     return (
         <Conteiner>
             <Image src={FotoHorta} />
@@ -13,24 +13,26 @@ function Card({ title, status, date, ...rest }) {
                 <TextoStatus>
                     {title}
                 </TextoStatus>
+                <div>
                 <Luz>
                     <FontAwesomeIcon style={{ color: "#11f024" }} icon={faLightbulb} />
-                    <OnOff status={status}>
-                        {status == true ? "Ativo" : "Desativado"}
+                    <OnOff status={luz}>
+                        {luz == true ? "Ativo" : "Desativado"}
                     </OnOff>
                 </Luz>
                 <Vento>
                     <FontAwesomeIcon style={{ color: "#ffff00" }} icon={faFan} />
-                    <OnOff status={status}>
-                        {status ? "Ativo" : "Desativado"}
+                    <OnOff status={ventilador}>
+                        {ventilador ? "Ativo" : "Desativado"}
                     </OnOff>
                 </Vento>
                 <Agua>
                     <FontAwesomeIcon style={{ color: "#0000ff" }} icon={faWater} />
-                    <OnOff status={status}>
-                        {status ? "Ativo" : "Desativado"}
+                    <OnOff status={irrigacao}>
+                        {irrigacao ? "Ativo" : "Desativado"}
                     </OnOff>
                 </Agua>
+                </div>
                 <TextData>
                     Criado em: {date}
                 </TextData>

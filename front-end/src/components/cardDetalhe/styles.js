@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     position:relative;
-    flex:1;
+    flex-grow:1;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -12,13 +12,9 @@ export const Container = styled.div`
     height:100%;
     background:${({cor}) => cor && cor};
     padding:15px 0px 0;
-    width:29vw;
     align-items:center;
 
-
-    &:not(:first-child) {
-         margin-left:15px;
-    }
+    ${(props)=>props.lastItem && "grid-column-end:3"}
 `;
 
 

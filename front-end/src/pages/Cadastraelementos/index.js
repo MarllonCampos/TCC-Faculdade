@@ -28,3 +28,5 @@ function    CadastroElemento() {
         
         </>
     )
+     }
+ export default CadastroElemento;
