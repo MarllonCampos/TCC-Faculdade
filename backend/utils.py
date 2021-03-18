@@ -69,7 +69,7 @@ def validateRegister(user):
             else:
                 return('ok')
         else:
-            raise Exception('E-mail ou senha inexistente!')
+            raise Exception('Alguma informação não foi passada!')
 
     except Exception as error:
         
@@ -77,6 +77,26 @@ def validateRegister(user):
                 'content': str(error)},
                 'status':'erro'})
 
+def validateRetrieve(user):
+    try:
+        if 'email' in user and 'photouser' in user:
+            
+            email = user['email']
+            photoUser = user['photouser']
+
+            if (email is None or email == ''):
+                raise Exception('Email não informado!')
+            
+            elif (photoUser is None or photoUser == ''):
+                raise Exception('Foto não informada!') 
+            else:
+                return 'ok'
+        else:
+            raise Exception('Email ou Foto não informados!')
+    except Exception as error:
+        return({'message':{'title':'Erro',
+                'content': str(error)},
+                'status':'erro'})
 
 # codifica senha no padrão MD5
 def passwordEncode(password):

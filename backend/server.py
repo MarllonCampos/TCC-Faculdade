@@ -1,24 +1,25 @@
 from flask import Flask, request
-from bd_functions import login, register 
+from functions import login, register, retrieve 
 import cv2
 app = Flask('Greenery')
 
 @app.route('/login', methods=['POST'])
-def log_in():
+def tologin():
     user = request.get_json()
     response =  login(user)
     return response
 
 @app.route('/register', methods=['POST'])
-def registrar():
+def toregister():
     user = request.get_json()
     response =  register(user)
     return response
 
-@app.route('/', methods=['GET'])
-def get():
-
-    return ('GET')
+@app.route('/retrieve', methods=['POST'])
+def toretrieve():
+    user = request.get_json()
+    response = retrieve(user)
+    return response
 
 
 @app.route('/', methods=['PUT'])

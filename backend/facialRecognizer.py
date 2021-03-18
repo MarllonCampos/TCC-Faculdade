@@ -55,6 +55,6 @@ def faceRecognition(imgUser, imgBD):
                 'content': str(error)},
                 'status':'erro'}) 
                 
-# print(faceDetect('https://firebasestorage.googleapis.com/v0/b/tcc-faculdade-bfbb8.appspot.com/o/retrievePhotos%2Fmarllon.jpg?alt=media&token=97645bc7-fead-4ef8-be4b-949948e88c16'))
+# print(faceDetect('https://firebasestorage.googleapis.com/v0/b/tcc-faculdade-bfbb8.appspot.com/o/userPhotos%2Fmai.jpg?alt=media&token=eb632775-2175-4072-b2c5-d4747a873ea2'))
 # print(faceRecognition('https://firebasestorage.googleapis.com/v0/b/tcc-faculdade-bfbb8.appspot.com/o/retrievePhotos%2Fmarllon.jpg?alt=media&token=97645bc7-fead-4ef8-be4b-949948e88c16',
 # 'https://firebasestorage.googleapis.com/v0/b/tcc-faculdade-bfbb8.appspot.com/o/userPhotos%2FUser.1.0.jpg?alt=media&token=d7b66e5e-9c5e-4d6e-9afe-a823d3f1f0ba'))
