@@ -31,19 +31,6 @@ function Page({ title, color, border, ...props }) {
                 <OlaLogo />
                 <h5 style={{textAlign:'center'}}> Resgate sua conta! </h5>
                 <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
-                <InputText noIcon idFor="user" labelText="Usuário:" />
                 <Select labelText="Usuário: " onChange={setSelectState} label="select" elements={["Marllon Campos", 2, 3, 4, 5, 6, 7, 8, 9]} />
                 <InputText idFor="password" labelText="Senha:" />
 
