@@ -1,7 +1,8 @@
-from utils import validateLogin, idGenerator, passwordEncode, emailVerify, validateRegister
+from utils import validateLogin, idGenerator, passwordEncode, emailVerify, validateRegister, validateRetrieve
 from connection import openConnection
 from datetime import datetime,timezone,timedelta
 from mysql.connector import errorcode
+from facialRecognizer import faceRecognition
 
 
 # Função que valida usuário
@@ -151,3 +152,47 @@ def register(user):
         finally:
                 conn.commit()
                 conn.close()
+
+def retrieve(user):
+    try:
+        conn = openConnection()
+        if type(conn) == dict:
+            return conn
+        
+        verifiedUser = validateRetrieve(user)
+        if type(verifiedUser) == dict:
+            return verifiedUser
+        
+        photoUser = user['photouser']
+        email = user['email']
+
+        cursor = conn.cursor()
+
+        cursor.callproc('getphoto',[email])
+
+        for result in cursor.stored_results():
+            row = result.fetchall()
+
+        photoBD = row[0][0]
+
+        recognition = faceRecognition(photoUser, photoBD)
+
+        if type(recognition) == dict:
+            return recognition
+
+        return ('Usuário reconhecido')
+        
+        cursor.close()
+        return ('ok')
+
+    except Exception as error:
+        print (error)
+        return({'message':{'title':'Erro',
+                'content': str(error)},
+                'status':'erro'})      
+    finally:
+                conn.commit()
+                conn.close()
+
+
+            
