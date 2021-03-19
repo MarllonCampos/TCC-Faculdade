@@ -1,5 +1,5 @@
 from flask import Flask, request
-from functions import login, register, retrieve 
+from backend.functions import login, register, retrieve 
 import cv2
 app = Flask('Greenery')
 

@@ -1,8 +1,8 @@
-from utils import validateLogin, idGenerator, passwordEncode, emailVerify, validateRegister, validateRetrieve
-from connection import openConnection
+from backend.utils import validateLogin, idGenerator, passwordEncode, emailVerify, validateRegister, validateRetrieve
+from backend.connection import openConnection
 from datetime import datetime,timezone,timedelta
 from mysql.connector import errorcode
-from facialRecognizer import faceRecognition
+from backend.facialRecognizer import faceRecognition
 
 
 # Função que valida usuário
