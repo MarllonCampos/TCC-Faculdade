@@ -38,7 +38,7 @@ def delete():
 
     return ('DELETE')
 
-app.run(port=port)
+app.run(port=port, host='0.0.0.0')
 
 
 
