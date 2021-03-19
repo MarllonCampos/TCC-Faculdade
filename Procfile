@@ -1,1 +1,1 @@
-web: gunicorn backend.server --pythonpath backend
+web: gunicorn backend.server --pythonpath backend --bind 0.0.0.0:${PORT}
