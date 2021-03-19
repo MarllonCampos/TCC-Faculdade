@@ -1,1 +1,1 @@
-web: gunicorn backend.server --pythonpath backend --bind 0.0.0.0:${PORT}
+web: gunicorn backend.server --pythonpath backend --preload -b 0.0.0.0:${PORT}
