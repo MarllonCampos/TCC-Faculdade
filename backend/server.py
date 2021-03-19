@@ -2,6 +2,7 @@ from flask import Flask, request
 from backend.functions import login, register, retrieve 
 import cv2
 app = Flask('Greenery')
+port = int(os.environ.get('PORT', 33507))
 
 @app.route('/login', methods=['POST'])
 def tologin():
@@ -36,7 +37,7 @@ def delete():
 
     return ('DELETE')
 
-app.run(port='33507')
+app.run(port=port)
 
 
 
