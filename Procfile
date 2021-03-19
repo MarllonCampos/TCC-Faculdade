@@ -1,1 +1,1 @@
-web: python execute.py
+python execute.py
