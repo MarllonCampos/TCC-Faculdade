@@ -1,6 +1,7 @@
 from flask import Flask, request
 from backend.functions import login, register, retrieve 
 import cv2
+import os
 app = Flask('Greenery')
 port = int(os.environ.get('PORT', 33507))
 
