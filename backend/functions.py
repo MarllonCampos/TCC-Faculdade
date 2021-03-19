@@ -108,7 +108,7 @@ def getUser(idUser,nomeUser):
                 conn.commit()
                 conn.close()
 
-# função para registrar usuários banco de dados
+# Função para registrar usuários banco de dados
 def register(user):
     conn = openConnection()
 
@@ -153,6 +153,7 @@ def register(user):
                 conn.commit()
                 conn.close()
 
+# Função que verifica o reconhecimento facial para a recuperação de senha do usuário
 def retrieve(user):
     try:
         conn = openConnection()
@@ -193,6 +194,3 @@ def retrieve(user):
     finally:
                 conn.commit()
                 conn.close()
-
-
-            
