@@ -1,1 +1,1 @@
-web: gunicorn execute:Greenery
+web: gunicorn server:app
