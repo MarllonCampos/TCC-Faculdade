@@ -21,10 +21,10 @@ def toretrieve():
     response = retrieve(user)
     return response
 
-@app.route('/', methods=['PUT'])
+@app.route('/', methods=['GET'])
 def put():
 
-    return ('PUT')
+    return ('hello World!')
 
 @app.route('/', methods=['PATCH'])
 def patch():
