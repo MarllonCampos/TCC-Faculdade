@@ -1,7 +1,7 @@
 from validate_email import validate_email
 import uuid
 import hashlib
-from facialRecognizer import faceDetect
+from backend.facialRecognizer import faceDetect
 import cv2
 
 def validateLogin(user):
