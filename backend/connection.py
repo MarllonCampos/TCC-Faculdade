@@ -10,7 +10,7 @@ config = {
     'port' : os.environ.get("PORT"),
     'database' : os.environ.get("DATABASE"),
     'user': os.environ.get("DBUSER"),
-    'password': os.environ.get("PASSWORD")
+    'password': os.environ.get("PASSWORD"),
     'ssl_disabled': True
 }
 
