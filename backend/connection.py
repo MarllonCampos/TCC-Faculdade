@@ -6,12 +6,13 @@ load_dotenv()
 
 # definindo dados refentes ao banco de dados
 config = {
-    'host' : os.getenv("HOST"),
-    'port' : os.getenv("PORT"),
-    'database' : os.getenv("DATABASE"),
-    'user': os.getenv("DBUSER"),
-    'password': os.getenv("PASSWORD")
+    'host' : os.environ.get("HOST"),
+    'port' : os.environ.get("PORT"),
+    'database' : os.environ.get("DATABASE"),
+    'user': os.environ.get("DBUSER"),
+    'password': os.environ.get("PASSWORD")
 }
+print(config)
 
 def openConnection():
 
