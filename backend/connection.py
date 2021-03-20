@@ -11,6 +11,7 @@ config = {
     'database' : os.environ.get("DATABASE"),
     'user': os.environ.get("DBUSER"),
     'password': os.environ.get("PASSWORD")
+    'ssl_disabled': True
 }
 
 def openConnection():
@@ -18,8 +19,7 @@ def openConnection():
     try:
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
-    print('conn-21')
-
+    print('conn-21')]
     except mysql.connector.Error as err:
         return({'status':'erro', 'message': str(err)})
 
