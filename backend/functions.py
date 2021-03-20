@@ -7,12 +7,16 @@ from backend.facialRecognizer import faceRecognition
 
 # Função que valida usuário
 def login(user):
+    print('login-10')
     data = validateLogin(user)
     
     if data['status'] == 'erro':
+        print('login-14')
         return data
     
     else:
+        print('login-18')
+
         email = data['user']['email']
         password = data['user']['password']
 
