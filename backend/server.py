@@ -10,7 +10,9 @@ cors = CORS(app, resources={r"/": {"origins": "*"}})
 @app.route('/login', methods=['POST'])
 @cross_origin(origin='*',headers=['Content- Type'])
 def tologin():
+    print('server.py-13')
     user = request.get_json()
+    print('server.py-15')
     response =  login(user)
     return response
 
@@ -28,11 +30,11 @@ def toretrieve():
     response = retrieve(user)
     return response
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST'])
 @cross_origin(origin='*',headers=['Content- Type'])
 def put():
-
-    return ('hello World!')
+    user = request.get_json()
+    return (user)
 
 @app.route('/', methods=['PATCH'])
 def patch():
