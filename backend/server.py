@@ -4,7 +4,6 @@ from flask_cors import CORS, cross_origin
 import cv2
 import os
 app = Flask('Greenery')
-port = int(os.environ.get('PORT', 33507))
 cors = CORS(app, resources={r"/": {"origins": "*"}})
 
 @app.route('/login', methods=['POST'])
@@ -44,7 +43,7 @@ def delete():
 
     return ('DELETE')
 
-app.run(port=port, host='0.0.0.0')
+app.run(host='0.0.0.0')
 
 
 
