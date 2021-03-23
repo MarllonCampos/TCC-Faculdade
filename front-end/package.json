@@ -2,7 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://marlloncampos.github.io/TCC-Faculdade/front-end/build/",
+  "homepage": "./",
 
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
