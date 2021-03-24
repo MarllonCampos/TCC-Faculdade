@@ -1,35 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Container,
+  ContentWrapper,
   IconBusca,
-  InputContainer,
   Input,
   CloseIcon,
+  InputContainer,
   Sidemenu,
 } from "./styles";
 
-function Header({icon, ...props}) {
-  const [showInput, setShowInput] = useState(false);
 
-  function heandleToggleInput() {
-    setShowInput(!showInput);
+
+function Header({ icon, ...props }) {
+  const [isInputShowing, setIsInputShowing] = useState(false);
+  const [hasToWait, setHasToWait] = useState(false);
+
+  function openInput() {
+    setIsInputShowing(true);
+    setHasToWait(false);
   }
+
+  function closeInput(){
+    setHasToWait(true);
+    setTimeout(() => {
+      setIsInputShowing(false);
+
+    },280);
+    
+  }
+
 
   return (
     <Container>
-      
-        {showInput ? (
-          <InputContainer>
-            <Input />
-            <CloseIcon onClick={heandleToggleInput} />
-          </InputContainer>
-        ) : (
-          <IconBusca icon={icon} onClick={heandleToggleInput} />
-        )}
+      <ContentWrapper>
+        {icon &&
+          (isInputShowing ? (
+            <InputContainer closeAnimation={hasToWait}>
+              <Input />
+              <CloseIcon onClick={closeInput} />
+            </InputContainer>
+          ) :
+            <IconBusca onClick={openInput} />
+          )}
 
         <Sidemenu />
-      
+      </ContentWrapper>
     </Container>
   );
 }

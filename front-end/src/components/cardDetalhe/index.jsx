@@ -1,33 +1,26 @@
 
 import React from 'react'
-
-import "./CardDetalhe.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
-const element =<FontAwesomeIcon icon={faFan}/>
-const foto = "faLightbulb"
 
-const CardStatus = props => (
-       
-    
- <div class="ui card2" style={{backgroundColor: props.cor}}>
-        <p className="textoTopo">{props.tipo}</p>
-        <div class="ui card2" id="icone1"  style={{backgroundColor: props.corIcon}}>
-            <div>
-                <FontAwesomeIcon id="icone" className="icone" icon={props.iconess} />
-            </div>
-            <h1 className="ativos">{props.ativos} Ativos
+import {Container, RowTop, Element, ActiveElements, Unit} from './styles'
+
+const element = <FontAwesomeIcon icon={faFan} />
 
 
-                    </h1>
-            <div className="instalado">
-                <p className="textoTopo">
-                    Instalado
-                    </p>
-                <p className="textoTopo">  {props.quant} uni</p>
-            </div>
+const CardStatus = props => { 
+return (
+    <Container lastItem={props.lastItem} cor={props.cor}>
+        <RowTop>
+            <Element>{props.tipo}</Element><FontAwesomeIcon icon={props.iconess}/>
+        </RowTop>
+        <ActiveElements>{props.ativos} {props.planta_ou_ativa}</ActiveElements>
+        <Unit>
+            <p>Instalado </p>
 
-        </div>
-    </div>
-)
+            {props.quant} uni
+        </Unit>
+    </Container>
+)}
+
 export default CardStatus

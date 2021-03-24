@@ -1,86 +1,54 @@
 import React, { useState } from 'react';
-import { Conteiner, Icon, Label, A } from "./styles"
-import Title from '../../components/title/index'
-import LoginIcon from '../../components/loginIcon.png'
-import Input from '../../components/input/input'
-import Button from '../../components/button/Button'
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Conteiner, A,  } from "./styles"
+import Title from '../../components/Title'
+import Button from '../../components/Button'
+import schema from './validation'
+import Form from '../../components/Form';
+import Main from '../../components/Main';
+import InputText from '../../components/Input/';
+import Ola from '../../components/Ola'
 
 
 function LoginEstufa() {
-    const [login, setLogin] = useState("login")
-
-   function Cadastro(){
-       setLogin("cadastro")
-       console.log(login)
+ 
+    const { register, handleSubmit, errors } = useForm({
+        resolver: yupResolver(schema)
+    });
+    const newUser = (user) => {
+        console.log(user)
+    };
+   
+        return (
+            <Main>
+                <Form onSubmit={handleSubmit(newUser)}>
+                 
+                       <Ola></Ola>
+                        <Title title="Entre com sua conta" />
+                   
+                       
+                    <InputText labelText="Nome" name="name" type="text" register={register}></InputText>
+                    {errors.name?.message}
+                  
+                    <InputText labelText="Email" name="email" type="email" register={register} />
+                    {errors.email?.message}
+                   
+                    <Button>Enviar</Button>
+                    <Conteiner>
+                        <A href="/cadastro"> Me cadastrar :) </A>
+                        <A href="/recuperar" >Recuperar</A>
+                    </Conteiner>
+                </Form>
+            </Main>
+        )
         }
-   function Recuperar(){
-       setLogin("recuperar")
-        }
-        
-      
-    if (login === "login")
-        return (
-            <>
-                <Conteiner>
-                    <Icon src={LoginIcon} />
-                    <Title title="Entre com sua conta" />
-                    <Label>Usuario:</Label>
-                    <Input />
-                    <Label>Senha:</Label>
-                    <Input />
-                    <Button button="Acessar" 
-                      />
-                    <A
-                        onClick={() => setLogin(Cadastro)}>
-                        Me cadastra :)
-                </A>
 
-                    <A onClick={() => setLogin(Recuperar)}
+    
+       
 
-                    >
-                        Recuperar
-                </A>
-                </Conteiner>
-            </>
-        )
-    if (login === "cadastro") {
-        return (
-            <>
-               <Conteiner>
-                <Icon src={LoginIcon} />
-                <Title title="Faça seu Cadastro" />
-                <Label>Usuario:</Label>
-                <Input />
-                <Label>Senha:</Label>
-                <Input />
-                <Label>Confirme senha:</Label>
-                <Input />
-                <Label>Email:</Label>
-                <Input />
-                <Button button="Acessar" />
-               
-            </Conteiner>
-            </>
-        )
-    }
-    if (login === "recuperar") {
-        return (
-            <>
-                <Conteiner>
-                <Icon src={LoginIcon} />
-                <Title title="Recuperar Senha" />
-                <Label>Senha:</Label>
-                <Input />
-                <Label>Confirme a Senha:</Label>
-                <Input />
-         
-                <Button button="Recuperar"/>
-               
-            </Conteiner>
-            </>
-        )
-    }
-  
 
-}
+
+
+ 
 export default LoginEstufa;
