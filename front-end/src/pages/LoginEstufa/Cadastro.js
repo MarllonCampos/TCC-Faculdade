@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Conteiner, A, } from "./styles"
+import {  A,  } from "./styles"
 import Title from '../../components/Title'
-
 import Button from '../../components/Button'
 import schema from './validation'
 import Form from '../../components/Form';
@@ -12,7 +11,7 @@ import Main from '../../components/Main';
 import Ola from '../../components/Ola'
 import InputText from '../../components/Input'
 function Cadastro() {
-    
+    const [login, setLogin] = useState("login")
 
    
     const { register, handleSubmit, errors } = useForm({
@@ -25,10 +24,10 @@ function Cadastro() {
 return (
     <Main>
         <Form onSubmit={handleSubmit(newUser)}>
-            <Conteiner>
+            
             <Ola></Ola>
                 <Title title="Entre com sua conta" />
-            </Conteiner>
+           
             <InputText labelText="Nome" noIcon= "true" name="name" type="text" register={register} />
             {errors.name?.message}
             <InputText labelText="Senha"  name="Senha" type="text" register={register} />
