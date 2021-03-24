@@ -38,13 +38,6 @@ function Page({ title, color, border, ...props }) {
 
     }
 
-    useEffect(() => {
-        console.log(userName)
-        console.log(greenerys)
-
-
-    }, [userName,greenerys])
-
     return (
         <Conteiner>
             
