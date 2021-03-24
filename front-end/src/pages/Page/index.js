@@ -15,13 +15,14 @@ import { Conteiner } from '../EstufaAtiva/styles'
 import { TituloCima, TituloBaixo, Wrapper, GridContainer, GridItem } from './styles'
 
 function Page({ title, color, border, ...props }) {
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const {userName,setUserName, greenerys, setGreenerys} = useContext(UserInfoContext)
 
 
     const handleClickLogin = async () => {
+        if(email == null || password == null ) return console.log('Precisa de password')
         console.log('Tentando Realizar o Login')
         const response = await api.post('/login', {
             email,
@@ -64,6 +65,7 @@ function Page({ title, color, border, ...props }) {
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     labelText="E-mail:"
+                    required
                 />
 
                 <InputText
@@ -73,7 +75,7 @@ function Page({ title, color, border, ...props }) {
                 />
 
 
-                <Button disabled={email == null || password == null} onClick={handleClickLogin}>Cadastrar</Button>
+                <Button disabled={email.length===0||password.length===0} onClick={handleClickLogin}>Cadastrar</Button>
 
 
             </Wrapper>
