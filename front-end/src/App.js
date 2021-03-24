@@ -10,7 +10,7 @@ import {
 import Page from './pages/Page'
 
 
-import ListEstufas from './pages/ListEstufas'
+
 import CadastroEstufas from './pages/CadastroEstufa'
 import CadastraElementos from './pages/Cadastraelementos'
 import EstufaAtiva from './pages/EstufaAtiva';
@@ -19,6 +19,8 @@ import Cadastro from './pages/LoginEstufa/Cadastro'
 import Recuperar from './pages/LoginEstufa/Recuperar'
 import Uploader from './pages/LoginEstufa/Uploader'
 import DescriptionCard from './pages/DescriptionCard'
+import ListEstufas from './pages/ListEstufas/index1'
+import Modal from './components/Modaal'
 
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Page} />
         <Route path="/list-estufas" component={ListEstufas} />
+        <Route path="/modal" component={Modal} />
         <Route path="/estufa-ativa" component={EstufaAtiva} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastra-elementos" component={CadastraElementos} />
