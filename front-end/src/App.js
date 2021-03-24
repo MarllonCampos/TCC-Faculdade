@@ -3,13 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  
 } from "react-router-dom";
 
-import Header from './components/Header'
+
 import Page from './pages/Page'
 
-import Status from './components/Status'
+
 import ListEstufas from './pages/ListEstufas'
 import CadastroEstufas from './pages/CadastroEstufa'
 import CadastraElementos from './pages/Cadastraelementos'

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Conteiner, Icon, Label, A, Bnt } from "./styles"
+import { Conteiner, A, } from "./styles"
 import Title from '../../components/Title'
-import LoginIcon from '../../assets/loginIcon.png'
+
 import Button from '../../components/Button'
 import schema from './validation'
 import Form from '../../components/Form';
-import Field from '../../components/Field';
+
 import Main from '../../components/Main';
 import Ola from '../../components/Ola'
 import InputText from '../../components/Input'
 function Cadastro() {
-    const [login, setLogin] = useState("login")
+    
 
    
     const { register, handleSubmit, errors } = useForm({
