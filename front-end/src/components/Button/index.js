@@ -20,5 +20,13 @@ const Button = styled.button`
     font-size:1.2rem;
 
     cursor:pointer;
+
+
+    &:disabled {
+        filter: brightness(0.55);
+        &:hover {
+            cursor:not-allowed;
+        }
+    }
 `
 export default Button;
