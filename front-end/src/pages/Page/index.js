@@ -22,6 +22,7 @@ function Page({ title, color, border, ...props }) {
 
 
     const handleClickLogin = async () => {
+        console.log('Tentando Realizar o Login')
         const response = await api.post('/login', {
             email,
             password
@@ -31,6 +32,8 @@ function Page({ title, color, border, ...props }) {
         if (data.message) {
             return console.log(data.message.content)
         }
+
+        console.log(`Ola ${data.user} logado com sucesso`)
 
         setUserName(data.user)
         setGreenerys(data.greenerys)
