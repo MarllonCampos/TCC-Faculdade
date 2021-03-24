@@ -1,18 +1,15 @@
 import React,{useState} from 'react'
-import axios from 'axios';
-import { Conteiner, Icon, Label, A , BoxUpload,ImagePreview} from "./styles"
+
+import { Conteiner, A , BoxUpload,ImagePreview} from "./styles"
 import Button from '../../components/Button'
 import Title from '../../components/Title'
 import Camera from '../../assets/Camera.png'
-import user from '../../assets/user.png'
+
 
 import Main from '../../components/Main';
 import Ola from '../../components/Ola'
 
 import CloseIcon from "../../assets/CloseIcon.svg";
-
-
-
 function Uploader() {
     const [image, setImage] = useState("");
     const [isUploaded, setIsUploaded] = useState(false);
@@ -28,8 +25,7 @@ function Uploader() {
           setIsUploaded(true);
         };
   
-        reader.readAsDataURL(e.target.files[0]);
-      }
+        reader.readAsDataURL(e.target.files[0]);}
     }
 
 
