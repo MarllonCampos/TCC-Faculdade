@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 
 export const Back = styled(Link)`
     background-color: var(--quartiary);
-    width:100%;
     display:flex;
     justify-content:center;
     color: white;
