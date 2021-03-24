@@ -1,25 +1,24 @@
 import React from 'react';
-import { Conteiner, ImageLogo, Title,Title1, Label,Input, MeuBotao} from "./styles"
+import { Conteiner,Title1 } from "./styles"
 import Header from '../../components/Header'
-import FotoLogo from '../../components/logo.png'
 
+import Ola from '../../components/Ola'
+import InputText from '../../components/Input';
+import Button from '../../components/Button';
 function CadastroEstufa() {
     
     return (
         <>
-        <Header/>
+        <Header icon />
         <Conteiner>
-           
-            <ImageLogo src={FotoLogo}/>
-            <Title>Ola,</Title>
-            <Title1>Cadastro de Estufas </Title1>
-            <Label>  Nome da Estufa:  </Label>
-            <Input type="text"/>
-            <MeuBotao>Cadastrar</MeuBotao>
+          <Ola/> 
+        <Title1>Cadastro de Estufas </Title1>
+        <InputText noIcon idFor="user" labelText="Nome da Estufa:" /> 
+        <Button>Cadastrar</Button> 
         </Conteiner>
+        </>
         
     )
     
 }
 export default CadastroEstufa;
-    

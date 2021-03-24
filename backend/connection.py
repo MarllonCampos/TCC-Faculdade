@@ -6,43 +6,28 @@ load_dotenv()
 
 # definindo dados refentes ao banco de dados
 config = {
-    'host' : os.getenv("HOST"),
-    'port' : os.getenv("PORT"),
-    'database' : os.getenv("DATABASE"),
-    'user': os.getenv("USER"),
-    'password': os.getenv("PASSWORD")
+    'host' : os.environ.get("HOST"),
+    'port' : os.environ.get("DBPORT"),
+    'database' : os.environ.get("DATABASE"),
+    'user': os.environ.get("DBUSER"),
+    'password': os.environ.get("PASSWORD"),
+    'ssl_disabled': True
 }
 
-try:
-    conn = mysql.connector.connect(**config)
-    print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
-
-except mysql.connector.Error as err:
-    print(err)
-
-else:
-    cursor = conn.cursor()
-    
+def openConnection():
+    print('conn-17')
     try:
-        # CREATE TABLE 
-        # cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
-        # print("Tabela criada com sucesso!")
+        conn = mysql.connector.connect(**config)
+        print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
+    except mysql.connector.Error as err:
+        print('conn-21')
+        return({'status':'erro', 'message': str(err)})
 
-        # INSERT
-        # cursor.execute(f"INSERT INTO teste (hello) VALUES ('{st}');")
-        # print("dados inseridos com sucesso!")
-        
-        
-        # SELECT
-        # cursor.execute("SELECT * FROM teste;")
-        # rows = cursor.fetchall()
-
-        print('a')
+    else:
+        print('conn-21')
+        return conn
+        # cursor = conn.cursor()
     
-    except Exception as e:
-        print(f"Houve um erro: {e}")
     
-    finally:
-        conn.commit()
-        cursor.close()
-        conn.close()
+    
+        

@@ -1,18 +1,21 @@
 import styled from 'styled-components';
+import searchIcon from '../../assets/search-icon.svg'
+import closeIcon from '../../assets/close-icon.svg'
+import sidemenuIcon from '../../assets/sidemenu-icon.svg'
 
 export const Container = styled.div`
     width:100%;
     height:55px;
-    background-color:green;
+    background:var(--quartiary);
 `;
 
 export const ContentWrapper = styled.div`
     margin:0 auto;
     height:100%;
-    max-width:800px;
+    max-width:600px;
     display:flex;
     align-items:center;
-    background:greenyellow;
+    background:var(--quartiary);
     position:relative;
 
 
@@ -20,30 +23,87 @@ export const ContentWrapper = styled.div`
 
 
 export const IconBusca = styled.div`
-    width:45px;
-    height:45px;
-    margin-left:12px;
-    background:purple;
-    display:${({icon, ...props}) => icon ? 'none':'inline'};
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
+    width:45px;
+
+    height:100%;
+
+    margin-left:12px;
+    background:url(${searchIcon}) no-repeat 10px 50%;
+    background-size:25px;
+
+
+
+
+  
+    }
+
+    
 `;
 
 
 export const InputContainer = styled.div`
     height:80%;
-    width:245px;
+    width:min(500px, 100% - 80px);
     border-radius:15px;
+
     display:flex;
     align-items:center;
+
     margin-left:12px;
     position:relative;
     background:white;
+    animation-delay: 0.1s;
+    animation: ${({ closeAnimation }) =>
+        closeAnimation ? 'disappear-input-transition' : 'appear-input-transition'
+    } 280ms 1 linear;
+
+
+    @keyframes appear-input-transition {
+
+        0% {
+            width:10px;
+            opacity:0.2;
+
+        }
+
+        
+        100% {
+            width:min(500px, 100% - 80px);
+            opacity:1;
+
+        }
+    }
+
+    @keyframes disappear-input-transition {
+        0% {
+            width:min(500px, 100% - 80px);
+            
+            opacity:1;
+
+        }
+
+
+        100% {
+            width:10px;
+            opacity:0; 
+
+        }
+
+       
+
+
+}
+
 
 `;
 
 export const Input = styled.input`
-    height:100%;
-    width:85%;
+    height:25px;
+    width:87%;
     border-radius:15px;
     padding-left:15px;
 
@@ -53,11 +113,16 @@ export const Input = styled.input`
 `;
 
 export const CloseIcon = styled.div`
-    width:20px;
-    height:20px;
-    background-color:yellow;
+    width:24px;
+    height:100%;
+
+    background:url(${closeIcon}) no-repeat center;
+    background-size:100%;
+
     position:absolute;
     right:12px;
+
+
 
 
 `;
@@ -66,11 +131,14 @@ export const CloseIcon = styled.div`
 
 
 export const Sidemenu = styled.div`
-    width:5%;
-    height:15px;
-    background-color:white;
+    width:45px;
+    height:100%;
     position:absolute;
-    right:15px;
+
+    right:5px;
+
+    background:url(${sidemenuIcon}) no-repeat center;
+    background-size:25px;
 
 
 `;

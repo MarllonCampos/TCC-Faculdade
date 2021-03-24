@@ -1,43 +1,45 @@
 import React from 'react'
-import logo from "../logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
-import './Card.css'
+import FotoHorta from '../../assets/horta.jpg'
+
+import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatus } from "./styles"
+
+function Card({ title, luz, ventilador, irrigacao, date, ...rest }) {
+    return (
+        <Conteiner>
+            <Image src={FotoHorta} />
+            <Coluna>
+                <TextoStatus>
+                    {title}
+                </TextoStatus>
+                <div>
+                <Luz>
+                    <FontAwesomeIcon style={{ color: "#11f024" }} icon={faLightbulb} />
+                    <OnOff status={luz}>
+                        {luz == true ? "Ativo" : "Desativado"}
+                    </OnOff>
+                </Luz>
+                <Vento>
+                    <FontAwesomeIcon style={{ color: "#ffff00" }} icon={faFan} />
+                    <OnOff status={ventilador}>
+                        {ventilador ? "Ativo" : "Desativado"}
+                    </OnOff>
+                </Vento>
+                <Agua>
+                    <FontAwesomeIcon style={{ color: "#0000ff" }} icon={faWater} />
+                    <OnOff status={irrigacao}>
+                        {irrigacao ? "Ativo" : "Desativado"}
+                    </OnOff>
+                </Agua>
+                </div>
+                <TextData>
+                    Criado em: {date}
+                </TextData>
+            </Coluna>
+        </Conteiner>
+    )
+}
 
 
-const Card = props => (
-
-    <div class="ui card">
-        <div class="content">
-            <img class="image" src={logo}
-            />
-            <p className="textoStatus">{props.nome}</p>
-
-        </div>
-
-
-        <div class="content">
-            <FontAwesomeIcon icon={faLightbulb} />
-
-            <FontAwesomeIcon icon={faFan} />
-            <FontAwesomeIcon icon={faWater} />
-
-
-
-
-
-        </div>
-        <div >
-            <button class="ui green button">Ativo</button>
-            <button class="ui yellow button">Verificar</button>
-            <button class="ui blue button">Em andamento</button>
-
-            <p className="textData">Criado em {props.data}</p>
-        </div>
-
-      
-
-    </div>
-
-)
 export default Card
