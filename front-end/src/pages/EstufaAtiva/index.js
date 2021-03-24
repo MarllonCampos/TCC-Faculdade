@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardConteiner, Conteiner, ImageHorta, ConteinerGrid } from "./styles"
+import {Conteiner, ImageHorta, ConteinerGrid, Back } from "./styles"
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import CardStatus from '../../components/cardDetalhe'
@@ -10,6 +10,7 @@ function EstufaAtiva() {
     return (
         <>
             <Header icon />
+            <Back to="list-estufas">Voltar</Back>
             <Conteiner>
                 <Title style={{ marginTop: "50px" }} title="Estufa Jão" />
                 <ImageHorta src={FotoHorta} />

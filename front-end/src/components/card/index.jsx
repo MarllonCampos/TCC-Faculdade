@@ -7,7 +7,7 @@ import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatu
 
 function Card({ title, luz, ventilador, irrigacao, date, ...rest }) {
     return (
-        <Conteiner>
+        <Conteiner to="estufa-ativa">
             <Image src={FotoHorta} />
             <Coluna>
                 <TextoStatus>
