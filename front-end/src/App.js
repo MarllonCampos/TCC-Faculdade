@@ -19,7 +19,7 @@ import Cadastro from './pages/LoginEstufa/Cadastro'
 import Recuperar from './pages/LoginEstufa/Recuperar'
 import Uploader from './pages/LoginEstufa/Uploader'
 import DescriptionCard from './pages/DescriptionCard'
-import ListEstufas from './pages/ListEstufas/index1'
+import ListEstufas from './pages/ListEstufas'
 import Modal from './components/Modaal'
 
 
