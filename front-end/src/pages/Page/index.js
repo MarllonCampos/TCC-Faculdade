@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 import Header from '../../components/Header'
@@ -18,12 +18,20 @@ import { Conteiner } from '../EstufaAtiva/styles'
 import { TituloCima, TituloBaixo, Wrapper, GridContainer, GridItem } from './styles'
 
 function Page({ title, color, border, ...props }) {
-<<<<<<< HEAD
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [numero, setNumero] = useState(null)
     const [selectState, setSelectState] = useState(false)
     const { userName, setUserName, greenerys, setGreenerys } = useContext(UserInfoContext)
+
+
+
+    
+    useEffect(() => {
+        setNumero([{ name: "Norte", status: true }, { name: "Sul", status: false }, { name: "Leste", status: true }, { name: "Oeste", status: false }])
+
+    }, [])
+
 
 
     const handleClickLogin = async () => {
@@ -35,10 +43,7 @@ function Page({ title, color, border, ...props }) {
         })
         const data = await response.data;
 
-        useEffect(() => {
-            setNumero([{ name: "Norte", status: true }, { name: "Sul", status: false }, { name: "Leste", status: true }, { name: "Oeste", status: false }])
 
-        }, [])
 
 
         if (data.message) {
@@ -72,7 +77,7 @@ function Page({ title, color, border, ...props }) {
                     <GridItem to="recuperar">Login Estufa</GridItem>
                     {numero && <Link
                         className="last"
-                        to={{ne
+                        to={{
                             pathname: "/description-card",
                             elements: numero,
                             icon: "fan"
