@@ -10,7 +10,7 @@ export const Back = styled(Link)`
 `
 
 export const Conteiner = styled.div`
-    background-color: var(--secondary);
+    background-color: var(--quartiary);
     display:flex;
     flex-direction:column;
     align-items:center;
