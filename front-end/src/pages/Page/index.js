@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import {Link} from 'react-router-dom'
+
 
 import Header from '../../components/Header'
 import InputText from '../../components/Input';
@@ -6,7 +8,8 @@ import OlaLogo from '../../components/Ola';
 import Select from '../../components/Select'
 import Button from '../../components/Button'
 import api from '../../utils/api'
-import {UserInfoContext} from '../../contexts/UserInfoContext'
+import { UserInfoContext } from '../../contexts/UserInfoContext'
+
 
 
 import { Conteiner } from '../EstufaAtiva/styles'
@@ -15,20 +18,28 @@ import { Conteiner } from '../EstufaAtiva/styles'
 import { TituloCima, TituloBaixo, Wrapper, GridContainer, GridItem } from './styles'
 
 function Page({ title, color, border, ...props }) {
+<<<<<<< HEAD
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const {userName,setUserName, greenerys, setGreenerys} = useContext(UserInfoContext)
+    const [numero, setNumero] = useState(null)
+    const [selectState, setSelectState] = useState(false)
+    const { userName, setUserName, greenerys, setGreenerys } = useContext(UserInfoContext)
 
 
     const handleClickLogin = async () => {
-        if(email == null || password == null ) return console.log('Precisa de password')
+        if (email == null || password == null) return console.log('Precisa de password')
         console.log('Tentando Realizar o Login')
         const response = await api.post('/login', {
             email,
             password
         })
         const data = await response.data;
+
+        useEffect(() => {
+            setNumero([{ name: "Norte", status: true }, { name: "Sul", status: false }, { name: "Leste", status: true }, { name: "Oeste", status: false }])
+
+        }, [])
+
 
         if (data.message) {
             return console.log(data.message.content)
@@ -38,13 +49,13 @@ function Page({ title, color, border, ...props }) {
 
         setUserName(data.user)
         setGreenerys(data.greenerys)
-        
+
 
     }
 
     return (
         <Conteiner>
-            
+
             <Header icon />
             <Wrapper>
 
@@ -59,6 +70,14 @@ function Page({ title, color, border, ...props }) {
                     <GridItem to="cadastro">Cadastro</GridItem>
                     <GridItem to="uploader-login">Login Estufa</GridItem>
                     <GridItem to="recuperar">Login Estufa</GridItem>
+                    {numero && <Link
+                        className="last"
+                        to={{ne
+                            pathname: "/description-card",
+                            elements: numero,
+                            icon: "fan"
+                        }}
+                    >Description Card </Link>}
                 </GridContainer>
                 <InputText
                     noIcon
@@ -75,7 +94,7 @@ function Page({ title, color, border, ...props }) {
                 />
 
 
-                <Button disabled={email.length===0||password.length===0} onClick={handleClickLogin}>Cadastrar</Button>
+                <Button disabled={email.length === 0 || password.length === 0} onClick={handleClickLogin}>Cadastrar</Button>
 
 
             </Wrapper>

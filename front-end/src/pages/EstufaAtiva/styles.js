@@ -28,6 +28,26 @@ export const ConteinerGrid =styled.div`
     @media (max-width:320px){
         width: 90%;
     }
+    min-height:calc(100vh - 55px);
+
+    a {
+        color:white;
+        text-decoration:none;
+        margin-top:12px;
+        width:150px;
+
+        &:hover {
+            color:navy;
+            text-decoration:underline;
+            
+        }
+
+    }
+
+    .last {
+        margin-bottom:50px;
+    }    
+  
 `
 export const CardConteiner = styled.div`
     display:flex;

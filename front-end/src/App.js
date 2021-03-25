@@ -37,7 +37,7 @@ function App() {
         <Route path="/cadastro" component={Cadastro} />
         <Route path="/recuperar" component={Recuperar} />
         <Route path="/uploader-login" component={Uploader} />
-        <Route path="/description-card" render={(props) => <DescriptionCard elements={[{name:"Norte",status:true},{name:"Sul",status:false},{name:"Leste",status:true},{name:"Oeste",status:false}]} />}/>
+        <Route path="/description-card" render={(props) => <DescriptionCard />}/>
         
       </Switch>
     </Router>
