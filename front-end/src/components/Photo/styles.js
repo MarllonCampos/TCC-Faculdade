@@ -27,6 +27,7 @@ export const BoxUpload = styled.div`
     border: 1px dashed #799CD9;
     /* padding: 36px 48px; */
     position: relative;
+    cursor: pointer;
     
 
     background: #FBFBFF;
