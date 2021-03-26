@@ -1,15 +1,21 @@
 import React from 'react';
-import { CardConteiner, Conteiner, ImageHorta, ConteinerGrid } from "./styles"
+import {Conteiner, ImageHorta, ConteinerGrid, Back } from "./styles"
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import CardStatus from '../../components/cardDetalhe'
 import FotoHorta from '../../assets/horta.jpg'
 import { faLightbulb, faFan, faWater, faSeedling } from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from 'react-router';
 
 function EstufaAtiva() {
+    const history = useHistory();
+    const goBack = () => {
+        history.goBack();
+    }
     return (
         <>
             <Header icon />
+            <Back onClick={goBack}>Voltar</Back>
             <Conteiner>
                 <Title style={{ marginTop: "50px" }} title="Estufa Jão" />
                 <ImageHorta src={FotoHorta} />
