@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Card from '../../components/card'
 import Header from '../../components/Header'
 import { Conteiner } from "./styles"
+import {UserInfoContext} from '../../contexts/UserInfoContext'
+
+
 function ListEstufas() {
+
+    const {userName,greenerys} = useContext(UserInfoContext)
+
+    useEffect(() => {
+        console.log(userName,greenerys)
+    },[])
+
     return (
         <>
         <Header icon />
