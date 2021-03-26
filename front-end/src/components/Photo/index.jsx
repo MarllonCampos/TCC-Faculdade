@@ -11,6 +11,10 @@ const Photo = ({ props, Imagem }) => {
   const [typeFile, setTypeFile] = useState("");
 
   function handleImageChange(e) {
+
+    if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+      // ok, o navegador tem suporte
+    }
     if (e.target.files && e.target.files[0]) {
       setTypeFile(e.target.files[0].type);
       let reader = new FileReader();
@@ -22,6 +26,7 @@ const Photo = ({ props, Imagem }) => {
 
       reader.readAsDataURL(e.target.files[0]);
     }
+
   }
 
   return (
