@@ -35,7 +35,10 @@ export const Conteiner = styled.div`
   }
   
 `;
-export const Close = styled.button`
+
+
+
+export const  A = styled.a`
   background-color: #eb2828;
   width:30rem ;
   height: 3rem;  
