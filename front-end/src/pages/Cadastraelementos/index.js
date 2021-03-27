@@ -7,8 +7,16 @@ import InputText from '../../components/Input';
 import Button from '../../components/Button';
 
 
+
+
 function    CadastroElemento() {
-    
+
+    function handlechange (event) {
+  console.log(event.target.value);
+}
+  function clickHandler(){
+    console.log('Button')
+  }      
     return (
         <>
         <Header icon/>
@@ -19,14 +27,14 @@ function    CadastroElemento() {
             <Title1>Cadastro de Estufas </Title1>
             <Title2>Elementos da Estufa</Title2>
            
-            <InputText noIcon idFor="user" labelText="Nome do Elemento:" />
-            <Select  selected disabled="Seleciona uma opcao" labelText="Tipo de elemento:" elements={[,"Lampada", 3, 4, 5, 6, 7, 8, 9]} />
-
-            
-            <Button>Cadastrar</Button>
+            <InputText noIcon idFor="user" placeholder="Digite o nome do Elemento" labelText="Nome do Elemento:" onchange={handlechange} />
+            <Select   labelText="Tipo de elemento:" elements={["Lampada", "Ventilador", "Agua", ]}  />
+             
+            <Button onclick={clickHandler} >Cadastrar</Button>
         </Conteiner>
         
         </>
     )
-     }
- export default CadastroElemento;
+    
+}
+export default CadastroElemento;
