@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Modal, Close } from "./styles";
 
+
 import Cameraa from "./Cameraa";
 
 const Photo = ({ id = "modal", onClose = () => {}, children }) => {
