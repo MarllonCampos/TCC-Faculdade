@@ -9,10 +9,12 @@ import Form from '../../components/Form';
 import Main from '../../components/Main';
 import InputText from '../../components/Input/';
 import Ola from '../../components/Ola'
+import Modal from '../../components/Modal'
 
 
 function LoginEstufa() {
  
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(schema)
     });
@@ -22,6 +24,7 @@ function LoginEstufa() {
    
         return (
             <Main>
+               
                 <Form onSubmit={handleSubmit(newUser)}>
                  
                        <Ola></Ola>
@@ -29,7 +32,12 @@ function LoginEstufa() {
                    
                        
                     <InputText labelText="Nome" name="name" type="text" register={register}></InputText>
-                    {errors.name?.message}
+                    {errors.name?.message && <Modal onClose={() => setIsModalVisible(false)}
+                    titulo="Erro"
+                    conteudo={errors.name?.message} 
+                    pagina="/cadastro"                 
+                    /> }
+                     
                   
                     <InputText labelText="Email" name="email" type="email" register={register} />
                     {errors.email?.message}

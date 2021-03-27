@@ -1,19 +1,8 @@
 import styled from 'styled-components';
 
 
-export const Background = styled.div`
-  width: 100%;
-  height: 100%;
-  background: #0a7f20;
-  position: fixed;
-  display: flex;
-  flex-direction:column;
-  justify-content: center;
-  align-items: center;
-  position:absolute;
-`;
 
-export const Modal = styled.div`
+export const Background = styled.div`
  width: 100%;
  height: 100vh;
  position: absolute;
