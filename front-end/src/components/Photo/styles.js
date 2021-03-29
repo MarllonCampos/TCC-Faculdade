@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 
-export const Modal = styled.div`
+export const Conteiner = styled.div`
  width: 100%;
  height: 100vh;
  position: absolute;
@@ -165,3 +165,5 @@ export const ImagePreview = styled.div`
         }   
     }
 `
+
+
