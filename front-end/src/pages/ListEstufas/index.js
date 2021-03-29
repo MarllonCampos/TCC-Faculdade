@@ -12,12 +12,14 @@ function ListEstufas() {
     useEffect(() => {
         console.log(userName,greenerys)
     },[])
+    
+    var MostrarMap = Greenery.map(function(item){item.vetor.map(function(item){item.X}}
 
     return (
         <>
         <Header icon />
         <Conteiner>
-            <Card title="Estufa Jão" luz={true} ventilador={false} irrigacao={true} date="03/03/2021"/>
+            <Card MostrarMap/>
             <Card title="Estufa Marllon" luz={true} ventilador={false} irrigacao={false} date="03/03/2021"/>
             <Card title="Estufa Ruty" luz={false} ventilador={false} irrigacao={true} date="03/03/2021"/>
             <Card title="Estufa Rafa" luz={true} ventilador={false} irrigacao={true} date="03/03/2021"/>
