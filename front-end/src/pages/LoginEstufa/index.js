@@ -28,7 +28,7 @@ function LoginEstufa() {
                        <Ola></Ola>
                         <Title title="Entre com sua conta" />                   
                        
-                    <InputText labelText="Nome" name="name" type="text" register={register}></InputText>
+                    <InputText labelText="Nome" name="name"  noIcon= "true" type="text" register={register}></InputText>
                     {errors.name?.message  && <Modal 
                     titulo="Erro"
                     conteudo={errors.name?.message} 
@@ -37,7 +37,7 @@ function LoginEstufa() {
                     page="/login-estufas"                 
                     ></Modal> }                     
                   
-                    <InputText labelText="Email" name="email" type="email" register={register} />
+                    <InputText labelText="Senha" name="Senha" type="email" register={register} />
                     {errors.email?.message  && <Modal 
                     titulo="Erro"
                     conteudo={errors.name?.message} 
