@@ -12,12 +12,17 @@ function EstufaAtiva() {
     const goBack = () => {
         history.goBack();
     }
+
+    const TitulosEstufas = [
+        {title:"Estufa João"}
+    ]
+
     return (
         <>
             <Header icon />
             <Back onClick={goBack}>Voltar</Back>
             <Conteiner>
-                <Title style={{ marginTop: "50px" }} title="Estufa Jão" />
+                {TitulosEstufas.map(TituloEstufa =><Title style={{ marginTop: "50px" }} title={TituloEstufa.title} />)}
                 <ImageHorta src={FotoHorta} />
                 <ConteinerGrid>
 

@@ -20,15 +20,16 @@ export const ConteinerGrid =styled.div`
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 1fr 1fr;
-    grid-gap: 2%;
+    grid-gap: 3%;
     width: 80%;
+    height: 20%;
     max-width: 600px;
     margin-top: 40px;
 
     @media (max-width:320px){
         width: 90%;
     }
-    min-height:calc(100vh - 55px);
+    
 
     a {
         color:white;
