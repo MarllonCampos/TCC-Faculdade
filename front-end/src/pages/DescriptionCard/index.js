@@ -1,23 +1,27 @@
 import React from 'react';
-import { useLocation, useParams } from 'react-router';
+import { useLocation, useHistory } from 'react-router';
 import Header from '../../components/Header'
-import { Container,WrapperIcon, Icon, Element, Status } from './styles';
+import { Container,WrapperIcon, Icon, Element, Status } from './styles'; 
 
 function DescriptionCard({...props}) {
     const {elements,icon} = useLocation();
     const phrases = {
-        "light":{phrase:"Luzes da Estufa",el: "Luz"},
-        "fan":{phrase:"Ventiladores da Estufa",el:"Ventilador"},
-        "sprinkle":{phrase:"Irrigadores da Estufa",el:"Irrigador"}
+        "Luz":{phrase:"Luzes da Estufa",el: "Luz"},
+        "Ventilador":{phrase:"Ventiladores da Estufa",el:"Ventilador"},
+        "Irrigação":{phrase:"Irrigadores da Estufa",el:"Irrigador"},
+        "Plantas":{phrase:"Plantas da Estufa",el:"Plantas"}
     }
-
+    const history = useHistory();
+    const goBack = () => {
+      history.push("/list-estufas");
+  }
     
 
 
   return (
       <Container> 
         <Header />  
-        <WrapperIcon>
+        <WrapperIcon onClick={goBack}>
           
           {icon && (
             <>
@@ -26,9 +30,9 @@ function DescriptionCard({...props}) {
             </>
           )} 
         </WrapperIcon>
-        {elements && elements.map(({name,status}) => 
-          <Element>{phrases[icon].el}: {name} <Status status={status}>
-            <p>{status ? "Ativado" : "Desativado"}</p> <span /> 
+        {elements && elements.map(({nomeelem,ativo}) => 
+          <Element>{phrases[icon].el}: {nomeelem} <Status status={ativo}>
+            <p>{ativo ? "Ativado" : "Desativado"}</p> <span /> 
             </Status >
           </Element> )}
       </Container>

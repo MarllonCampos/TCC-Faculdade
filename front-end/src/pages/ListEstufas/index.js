@@ -12,25 +12,21 @@ function ListEstufas() {
     useEffect(() => {
         console.log(userName, greenerys)
     }, [])
-
-    const estufas = [
-        { title: 'Estufa João', luz: true, ventilador: false, irrigacao: true, date: '30/03/2021' },
-        { title: 'Estufa Marllon', luz: true, ventilador: false, irrigacao: true, date: '30/03/2021' },
-        { title: 'Estufa Ruty', luz: true, ventilador: false, irrigacao: true, date: '30/03/2021' },
-        { title: 'Estufa Rafa', luz: true, ventilador: false, irrigacao: true, date: '30/03/2021' },
-        { title: 'Estufa Weza', luz: true, ventilador: false, irrigacao: true, date: '30/03/2021' }
-    ]
     
     return (
         <>
             <Header icon />
             <Conteiner>
-                {estufas.map(estufa =><Card  title={estufa.title}
-                    luz={estufa.luz}
-                    ventilador={estufa.ventilador}
-                    irrigacao={estufa.irrigacao}
-                    date={estufa.date}>
-                </Card>)}
+                {greenerys.map(estufa =><Card  title={estufa.nomeestufa}
+                    luz={estufa.elementos.filter(elemento => elemento.tipoelem =="Luz" && elemento.ativo != 0).length >0}
+                    ventilador={estufa.elementos.filter(elemento => elemento.tipoelem =="Vento" && elemento.ativo != 0).length >0}
+                    irrigacao={estufa.elementos.filter(elemento => elemento.tipoelem =="Água" && elemento.ativo != 0).length >0}
+                    date={estufa.dataestufa || "00/00/00"}
+                    imagem={estufa.fotoestufa}
+                    titulo={estufa.nomeestufa}
+                    elementos = {estufa.elementos}
+                />
+                )}
             </Conteiner>
         </>
     )
