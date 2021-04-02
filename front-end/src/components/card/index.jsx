@@ -5,9 +5,14 @@ import FotoHorta from '../../assets/horta.jpg'
 
 import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatus } from "./styles"
 
-function Card({ title, luz, ventilador, irrigacao, date, ...rest }) {
+function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem ,...rest }) {
     return (
-        <Conteiner to="estufa-ativa">
+        <Conteiner to={{
+            pathname: "estufa-ativa",
+            elemento: elementos,
+            image: imagem,
+            titulo: title,
+            }}>
             <Image src={FotoHorta} />
             <Coluna>
                 <TextoStatus>
