@@ -7,15 +7,12 @@ from backend.facialRecognizer import faceRecognition
 
 # Função que valida usuário
 def login(user):
-    print('login-10')
     data = validateLogin(user)
     
     if data['status'] == 'erro':
-        print('login-14')
         return data
     
     else:
-        print('login-18')
 
         email = data['user']['email']
         password = data['user']['password']
@@ -90,8 +87,9 @@ def getUser(idUser,nomeUser):
                     for element in cursor.stored_results():
                         row = element.fetchall()
                         for e in row:
-                            elem={"nomeelem": e[0],
-                            "ativo":e[1]
+                            elem={"tipoelem": e[0],
+                            "nomeelem": e[1],
+                            "ativo":e[2]
                             }
                             elements.append(elem)
                     greenery['elementos'] = elements
@@ -191,10 +189,13 @@ def retrieve(user):
         return ('ok')
 
     except Exception as error:
-        print (error)
         return({'message':{'title':'Erro',
                 'content': str(error)},
                 'status':'erro'})      
     finally:
                 conn.commit()
                 conn.close()
+
+# def registergreen(green):
+#     try:
+        
