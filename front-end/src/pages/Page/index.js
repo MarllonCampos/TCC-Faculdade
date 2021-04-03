@@ -66,7 +66,7 @@ function Page({ title, color, border, ...props }) {
 
                 <OlaLogo />
                 <h5 style={{ textAlign: 'center' }}> Resgate sua conta! </h5>
-                <GridContainer>
+                {userName &&  (<GridContainer>
                     <GridItem to="cadastra-elementos">Cadastra Elementos</GridItem>
                     <GridItem to="cadastro-estufas">Cadastro Estufa</GridItem>
                     <GridItem to="estufa-ativa">Estufa Ativa</GridItem>
@@ -83,7 +83,8 @@ function Page({ title, color, border, ...props }) {
                             icon: "fan"
                         }}
                     >Description Card </Link>}
-                </GridContainer>
+                </GridContainer>) }
+              
                 <InputText
                     noIcon
                     onChange={(e) => setEmail(e.target.value)}
