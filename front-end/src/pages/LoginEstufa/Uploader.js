@@ -11,6 +11,7 @@ import Galeria from '../../components/Photo/Galeria'
 
 
 
+
 function Uploader(props) {
   
   return (
@@ -19,7 +20,9 @@ function Uploader(props) {
         <Ola />
         <Title title="Faça o reconhecimento facial" />
         
+       
         <Galeria/>
+        
 
 
       </Form>
