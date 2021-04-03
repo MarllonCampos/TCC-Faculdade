@@ -13,7 +13,7 @@ function ListEstufas() {
         console.log(userName,greenerys)
     },[])
     
-    var MostrarMap = Greenery.map(function(item){item.vetor.map(function(item){item.X}}
+    //var MostrarMap = Greenery.map(function(item){item.vetor.map(function(item){item.X}}
 
     return (
         <>

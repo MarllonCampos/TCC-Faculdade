@@ -22,14 +22,14 @@ function Page({ title, color, border, ...props }) {
     const [password, setPassword] = useState('');
     const [numero, setNumero] = useState(null)
     const [selectState, setSelectState] = useState(false)
-    const { userName, setUserName, greenerys, setGreenerys } = useContext(UserInfoContext)
+    const { userName, setUserName, greenerys, setGreenerys,imagem, setImagem } = useContext(UserInfoContext)
 
 
 
     
     useEffect(() => {
         setNumero([{ name: "Norte", status: true }, { name: "Sul", status: false }, { name: "Leste", status: true }, { name: "Oeste", status: false }])
-
+        console.log(imagem)
     }, [])
 
 

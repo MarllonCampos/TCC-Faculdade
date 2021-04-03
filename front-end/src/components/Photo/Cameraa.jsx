@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import * as Styled from "./styles";
-import Camera, { FACING_MODES, IMAGE_TYPES } from "react-html5-camera-photo";
+import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
 
-
-function Cameraa(props) {
+import { UserInfoContext } from "../../contexts/UserInfoContext";
+function Cameraa() {
+  const { imagem, setImagem } = useContext(UserInfoContext);
   const [dataUri, setDataUri] = useState("");
- 
 
   function handleTakePhotoAnimationDone(dataUri) {
     setDataUri(dataUri);
-    console.log("takePhoto");
   }
-  
+
   const isFullscreen = false;
   return (
-
     <div>
-      <Styled.BoxUpload>
+      <Styled.BoxUpload style={{ background: " #0a7f20" }}>
         {dataUri ? (
+          // eslint-disable-next-line jsx-a11y/alt-text
           <img src={dataUri} isFullscreen={isFullscreen} />
         ) : (
           <Camera
@@ -28,7 +27,17 @@ function Cameraa(props) {
         )}
       </Styled.BoxUpload>
 
-    
+      <Styled.Close>
+        <Styled.A
+          href="/uploader-login"
+          onClick={(e) => {
+            e.preventDefault();
+            setImagem(dataUri);
+          }}
+        >
+          salvar 
+        </Styled.A>
+      </Styled.Close>
     </div>
   );
 }

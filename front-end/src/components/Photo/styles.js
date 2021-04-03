@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 
 
-
-export const Conteiner = styled.div`
+export const Background = styled.div`
  width: 100%;
  height: 100vh;
  position: absolute;
@@ -17,6 +16,42 @@ export const Conteiner = styled.div`
  align-items: center;
  
 `;
+export const Conteiner = styled.div`
+ width: 100%;
+ height: 100vh;
+ position: absolute;
+ top: 0;
+ left: 0;
+ z-index: 10;
+ background-color: #0a7f20;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ 
+`;
+
+export const OptionConteiner = styled.div`
+  background-color: #eeeeee;
+  width: 30rem;
+  height: 15rem;
+  color: #000; 
+  border-radius: 10px; 
+
+
+
+  align-items: center;
+  
+  @media(max-width: 900px) {
+    width: 25rem;
+    height: 30rem;
+  }
+  @media(max-width: 400px) {
+    width: 18rem;
+    height: 25rem;
+  }
+  
+`;
 
 export const Label = styled.label`
   display:flex;
@@ -28,35 +63,27 @@ export const Label = styled.label`
  
   
 `;
-export const LabelInput = styled.label`
-   display:block;
-    width:80%;
-    max-width:300px;
-    height:45px;
-    padding: 9px;
-    margin:0 auto;
-    margin-top:12px;
-    background-color:var(--secondary);
+export const LabelInput = styled.label`  
+   
+    margin:0 auto;    
     
-    border:0;
-    border-radius:600px;
+   
+    font-weight: bolder;
+    color: rgb(0, 5, 0);
+    font-size: x-large;
+   
+    font-size: 30px;
+    text-align: justify;
+   
+
+  
+ 
     
-    
-    text-align:center;
-    color:var(--text);
-    font-family:Poppins, sans-serif;
-    font-weight: 600;
-    font-size:1.2rem;
 
     cursor:pointer;
 
 
-    &:disabled {
-        filter: brightness(0.55);
-        &:hover {
-            cursor:not-allowed;
-        }
-    }
+   
    
  
   
@@ -66,8 +93,9 @@ export const Close = styled.button`
   
   width:30rem ;
   height: 3rem;  
-  margin-top:30px;
+  margin-top:20px;
   cursor: pointer;
+  margin-left: 100px;
   display: flex;
   border-radius: 10px;
   align-items:center;
@@ -99,7 +127,7 @@ export const BoxUpload = styled.div`
     justify-content: center;
     align-items:center;    
     place-items: center;
-    border: 1px dashed #799CD9;
+    border: 1px dashed green;
     /* padding: 36px 48px; */
     position: relative;
     cursor: pointer;
@@ -166,4 +194,12 @@ export const ImagePreview = styled.div`
     }
 `
 
-
+export const TextTitulo = styled.h1`
+    font-weight: bolder;
+    color: rgb(0, 5, 0);
+    font-size: x-large;
+    text-align: center;
+    padding: 10px;
+    margin-left: 30px;
+    margin-top: 9px;
+`
