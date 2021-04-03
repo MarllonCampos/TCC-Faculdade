@@ -4,6 +4,7 @@ import hashlib
 from backend.facialRecognizer import faceDetect
 import cv2
 
+# valida form de login de usuário
 def validateLogin(user):
     try:
         if 'email' in user and 'password' in user:
@@ -38,6 +39,7 @@ def validateLogin(user):
                 'content': str(error)},
                 'status':'erro'})
 
+# valida form de registro de usuário
 def validateRegister(user):
     try:
         if 'email' in user and 'password' in user and 'name' in user and 'photo' in user:
@@ -77,6 +79,7 @@ def validateRegister(user):
                 'content': str(error)},
                 'status':'erro'})
 
+# valida form de recuperação de senha 
 def validateRetrieve(user):
     try:
         if 'email' in user and 'photouser' in user:
@@ -93,6 +96,32 @@ def validateRetrieve(user):
                 return 'ok'
         else:
             raise Exception('Email ou Foto não informados!')
+    except Exception as error:
+        return({'message':{'title':'Erro',
+                'content': str(error)},
+                'status':'erro'})
+
+# valida form de registro de estufa
+def validateGreenRegister(green):
+    try:
+        if 'name' in green and 'iduser' in green and 'photo' in green:
+            
+            name = green['name']
+            iduser = green['iduser']
+            photo = green['photo']
+
+            if (name is None or name == ''):
+                raise Exception('Nome não informado!')
+            
+            elif (photo is None or photo == ''):
+                raise Exception('Foto não informada!') 
+            
+            elif (iduser is None or iduser == ''):
+                raise Exception('Id de usuário não informado!') 
+            else:
+                return 'ok'
+        else:
+            raise Exception('nome, id ou/e foto não informados!')
     except Exception as error:
         return({'message':{'title':'Erro',
                 'content': str(error)},

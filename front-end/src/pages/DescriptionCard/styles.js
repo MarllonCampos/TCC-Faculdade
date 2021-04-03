@@ -4,9 +4,9 @@ import FanIcon from '../../assets/fan.svg'
 import SprinkeIcon from '../../assets/sprinkle.svg'
 
 const icons = {
-    "light":LightIcon,
-    "fan":FanIcon,
-    "sprinkle":SprinkeIcon
+    "Luz":LightIcon,
+    "Ventilador":FanIcon,
+    "Irrigação":SprinkeIcon
 
 }
 
