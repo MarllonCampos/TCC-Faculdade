@@ -95,7 +95,7 @@ export const Close = styled.button`
   height: 3rem;  
   margin-top:20px;
   cursor: pointer;
-  margin-left: 100px;
+  
   display: flex;
   border-radius: 10px;
   align-items:center;

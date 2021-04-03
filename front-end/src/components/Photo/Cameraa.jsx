@@ -14,7 +14,7 @@ function Cameraa() {
 
   const isFullscreen = false;
   return (
-    <div>
+    <>
       <Styled.BoxUpload style={{ background: " #0a7f20" }}>
         {dataUri ? (
           // eslint-disable-next-line jsx-a11y/alt-text
@@ -38,7 +38,7 @@ function Cameraa() {
           salvar 
         </Styled.A>
       </Styled.Close>
-    </div>
+    </>
   );
 }
 
