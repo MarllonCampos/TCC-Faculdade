@@ -7,6 +7,7 @@ import InputText from '../../components/Input';
 import OlaLogo from '../../components/Ola';
 import Select from '../../components/Select'
 import Button from '../../components/Button'
+import Modal from '../../components/Modal'
 import api from '../../utils/api'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
 
@@ -21,6 +22,10 @@ function Page({ title, color, border, ...props }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [numero, setNumero] = useState(null)
+    const [isModalShowing, setIsModalShowing] = useState(false)
+    const [modalMessage, setModalMessage] = useState('')
+    const [modalTitle, setModalTitle] = useState('')
+    const [modalContent, setModalContent] = useState('')
     const [selectState, setSelectState] = useState(false)
     const { userName, setUserName, greenerys, setGreenerys,imagem, setImagem } = useContext(UserInfoContext)
 
@@ -37,33 +42,51 @@ function Page({ title, color, border, ...props }) {
     const handleClickLogin = async () => {
         if (email == null || password == null) return console.log('Precisa de password')
         console.log('Tentando Realizar o Login')
+        setIsModalShowing(true)
+        setModalTitle('Tentando Realizar o Login')
+        setModalMessage('Aguarde alguns instantes e seu login sera realizado')
         const response = await api.post('/login', {
             email,
             password
         })
         const data = await response.data;
-
-
-
-
+        
+        
+        
         if (data.message) {
-            return console.log(data.message.content)
+            setModalTitle('Falha em realizar o login')
+            setModalMessage(data.message.title)
+            setModalContent(data.message.content)
+            return
         }
-
+        setModalTitle('Login realizado com sucesso')
+        setModalMessage(`Ola ${data.user}`)
+        setModalContent(`Seja bem-vindo`)
         console.log(`Ola ${data.user} logado com sucesso`)
 
-        setUserName(data.user)
+        setTimeout(() => {
+            setIsModalShowing(false)
+        },2000)
+
+
         setGreenerys(data.greenerys)
+        setUserName(data.user)
 
 
+    }
+  
+    function clearModalMessage(){
+        setModalContent('')
+        setModalMessage('')
+        setModalTitle('')
     }
 
     return (
         <Conteiner>
 
-            <Header icon />
+            <Header />
             <Wrapper>
-
+                {isModalShowing && <Modal onClose={() => {setIsModalShowing(false);clearModalMessage() } } titulo={modalTitle} conteudo={modalMessage || ''}  conteudo1={modalContent || '' }/>}
                 <OlaLogo />
                 <h5 style={{ textAlign: 'center' }}> Resgate sua conta! </h5>
                 {userName &&  (<GridContainer>
