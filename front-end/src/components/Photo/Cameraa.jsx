@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import * as Styled from "./styles";
 import Camera from "react-html5-camera-photo";
+import { CloseCircleOutline } from "@styled-icons/evaicons-outline/CloseCircleOutline";
+
 import "react-html5-camera-photo/build/css/index.css";
 
 import { UserInfoContext } from "../../contexts/UserInfoContext";
@@ -14,11 +16,29 @@ function Cameraa() {
 
   const isFullscreen = false;
   return (
-    <>
+    <> 
+      {dataUri ?(
+      <a
+        style={{
+          width: "40px",
+          color: "white",
+         
+        
+          cursor: "pointer",
+        }}
+        onClick={(e) => {
+          e.preventDefault();
+          setDataUri("");
+        }}
+      >
+        <CloseCircleOutline />
+      </a>)
+      : (null)}
+
       <Styled.BoxUpload style={{ background: " #0a7f20" }}>
         {dataUri ? (
           // eslint-disable-next-line jsx-a11y/alt-text
-          <img src={dataUri} isFullscreen={isFullscreen} />
+          <Styled.Img  src={dataUri} isFullscreen={isFullscreen} />
         ) : (
           <Camera
             onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
@@ -35,7 +55,7 @@ function Cameraa() {
             setImagem(dataUri);
           }}
         >
-          salvar 
+          salvar
         </Styled.A>
       </Styled.Close>
     </>

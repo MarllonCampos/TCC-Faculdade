@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 
+export const Img = styled.img`
+
+ width:95%;
+ height:95%;
+ border-radius: 20px;
+
+`;
 
 export const Background = styled.div`
  width: 100%;
@@ -91,7 +98,7 @@ export const LabelInput = styled.label`
 export const Close = styled.button`
   background-color: #eb2828;
   
-  width:30rem ;
+  width:17rem ;
   height: 3rem;  
   margin-top:20px;
   cursor: pointer;

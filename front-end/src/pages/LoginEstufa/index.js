@@ -32,7 +32,7 @@ function LoginEstufa() {
                     {errors.name?.message  && <Modal 
                     titulo="Erro"
                     conteudo={errors.name?.message} 
-                    conteudo1={errors.email?.message} 
+                   
                     
                     page="/login-estufas"                 
                     ></Modal> }                     
@@ -47,7 +47,7 @@ function LoginEstufa() {
                     ></Modal>
                     }                    
                    
-                    <Button>Enviar</Button>
+                    <Button onClick={newUser}> Enviar</Button>
                     <Conteiner>
                         <A href="/cadastro"> Me cadastrar :) </A>
                         <A href="/recuperar" >Recuperar</A>

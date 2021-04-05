@@ -21,8 +21,7 @@ import Uploader from './pages/LoginEstufa/Uploader'
 import DescriptionCard from './pages/DescriptionCard'
 import ListEstufas from './pages/ListEstufas'
 import Modal from './components/Modal'
-import Store from './contexts/Store'
-
+import Cameraa from './components/Photo/Cameraa'
 
 function App() {
   return (
@@ -33,6 +32,7 @@ function App() {
           <Route path="/" exact component={Page} />
           <Route path="/list-estufas" component={ListEstufas} />
           <Route path="/modal" component={Modal} />
+          
           <Route path="/estufa-ativa" component={EstufaAtiva} />
           <Route path="/cadastro-estufas" component={CadastroEstufas} />
           <Route path="/cadastra-elementos" component={CadastraElementos} />
