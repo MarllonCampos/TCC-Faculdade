@@ -26,7 +26,7 @@ const Modal = ({
         <TextConte>{conteudo}</TextConte>
         <TextConte>{conteudo1}</TextConte>
       </Conteiner>
-      <A href={page}> Fechar </A>
+      <A  onClick={onClose}> Fechar </A>
     </Background>
   );
 };

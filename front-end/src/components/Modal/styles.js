@@ -24,6 +24,7 @@ export const Conteiner = styled.div`
   color: #000; 
   border-radius: 30px; 
   align-items: center;
+  padding:17px;
   
   @media(max-width: 900px) {
     width: 25rem;
@@ -66,14 +67,13 @@ export const   TextConte  = styled.p`
     color: rgb(0, 5, 0);
     font-size: 20px;
     font-weight: bolder;
-    margin-left: 40px;
     margin-top: 20px;
 `
 
-export const TextTitulo = styled.h1`
+export const TextTitulo = styled.h3`
     font-weight: bolder;
     color: rgb(0, 5, 0);
-    font-size: xx-large;
+    font-size: 28px;
     text-align: center;
-    padding: 10px;
+    padding: 18px 0 ;
 `
