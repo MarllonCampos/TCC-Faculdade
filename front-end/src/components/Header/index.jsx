@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState  } from "react";
+import {useHistory} from 'react-router-dom'
+import {ArrowIosBack} from '@styled-icons/evaicons-solid/ArrowIosBack'
 import {
   Container,
   ContentWrapper,
@@ -13,6 +14,7 @@ import {
 } from "./styles";
 
 function Header({ icon, ...props }) {
+  const history = useHistory();
   const [isInputShowing, setIsInputShowing] = useState(false);
   const [isSidemenuShowing, setIsSidemenuShowing] = useState(false);
   const [hasToWait, setHasToWait] = useState(false);
@@ -29,6 +31,7 @@ function Header({ icon, ...props }) {
     }, 280);
   }
 
+
   return (
     <Container>
       <ContentWrapper>
@@ -42,7 +45,7 @@ function Header({ icon, ...props }) {
             <IconBusca onClick={openInput} />
           )
         ) : (
-          <div>a</div>
+          <ArrowIosBack onClick={history.goBack}size={38}/>
         )}
 
         <BurgerIcon
