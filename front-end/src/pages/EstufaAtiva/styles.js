@@ -18,13 +18,14 @@ export const Conteiner = styled.div`
 `
 export const ConteinerGrid =styled.div`
     display: grid;
-    grid-template-columns: repeat(3,1fr);
     grid-template-rows: 1fr 1fr;
     grid-gap: 3%;
     width: 80%;
     height: 20%;
     max-width: 600px;
     margin-top: 40px;
+    text-align: center;
+    justify-content: center;
 
     @media (max-width:320px){
         width: 90%;
