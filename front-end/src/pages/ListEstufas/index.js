@@ -8,10 +8,6 @@ import { UserInfoContext } from '../../contexts/UserInfoContext'
 function ListEstufas() {
 
     const { userName, greenerys } = useContext(UserInfoContext)
-
-    useEffect(() => {
-        console.log(userName, greenerys)
-    }, [])
     
     return (
         <>
@@ -25,6 +21,7 @@ function ListEstufas() {
                     imagem={estufa.fotoestufa}
                     titulo={estufa.nomeestufa}
                     elementos = {estufa.elementos}
+                    estufaID={estufa.idestufa}
                 />
                 )}
             </Conteiner>

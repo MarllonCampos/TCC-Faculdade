@@ -33,7 +33,7 @@ function App() {
           <Route path="/list-estufas" component={ListEstufas} />
           <Route path="/modal" component={Modal} />
           
-          <Route path="/estufa-ativa" component={EstufaAtiva} />
+          <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
           <Route path="/cadastro-estufas" component={CadastroEstufas} />
           <Route path="/cadastra-elementos" component={CadastraElementos} />
           <Route path="/login-estufas" component={LoginEstufa} />
