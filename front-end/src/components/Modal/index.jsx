@@ -3,8 +3,7 @@ import {
   A,
   Background,
   Conteiner,
-  Close,
-  TextConte,
+   TextConte,
   TextTitulo,
 } from "./styles";
 const Modal = ({
@@ -12,8 +11,8 @@ const Modal = ({
   onClose = () => {},
   titulo,
   conteudo,
-  conteudo1,
-  page,
+  page
+  
 }) => {
   const handleOutsideClick = (e) => {
     if (e.target.id === id) onClose();
@@ -23,10 +22,10 @@ const Modal = ({
     <Background id="modal" onClick={handleOutsideClick}>
       <Conteiner>
         <TextTitulo>{titulo}</TextTitulo>
-        <TextConte>{conteudo}</TextConte>
-        <TextConte>{conteudo1}</TextConte>
+        <TextConte>{conteudo}</TextConte>        
       </Conteiner>
-      <A  onClick={onClose}> Fechar </A>
+      
+      <A  href={page}> Fechar </A>
     </Background>
   );
 };
