@@ -20,6 +20,7 @@ function LoginEstufa() {
     const newUser = (user) => {
         console.log(user)
     };
+    const [isModalVisible, setIsModalVisible] = useState(false)
     
         return (
             <Main>               
@@ -29,10 +30,8 @@ function LoginEstufa() {
                         <Title title="Entre com sua conta" />                   
                        
                     <InputText labelText="Nome" name="name"  noIcon= "true" type="text" register={register}></InputText>
-                    {errors.name?.message  && <Modal 
-                    titulo="Erro"
-                    conteudo={errors.name?.message} 
-                   
+                    {errors.name?.message  &&  <Modal 
+                    conteudo={errors.name?.message}               
                     
                     page="/login-estufas"                 
                     ></Modal> }                     
@@ -41,8 +40,7 @@ function LoginEstufa() {
                     {errors.email?.message  && <Modal 
                     titulo="Erro"
                     conteudo={errors.name?.message} 
-                    conteudo1={errors.email?.message} 
-                    
+                                      
                     page="/login-estufas"                 
                     ></Modal>
                     }                    
