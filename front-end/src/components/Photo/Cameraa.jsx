@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import * as Styled from "./styles";
-import Camera, { FACING_MODES, IMAGE_TYPES } from "react-html5-camera-photo";
+import Camera from "react-html5-camera-photo";
+import { CloseCircleOutline } from "@styled-icons/evaicons-outline/CloseCircleOutline";
+
 import "react-html5-camera-photo/build/css/index.css";
 
-
-function Cameraa(props) {
+import { UserInfoContext } from "../../contexts/UserInfoContext";
+function Cameraa() {
+  const { imagem, setImagem } = useContext(UserInfoContext);
   const [dataUri, setDataUri] = useState("");
- 
 
   function handleTakePhotoAnimationDone(dataUri) {
     setDataUri(dataUri);
-    console.log("takePhoto");
   }
-  
+
   const isFullscreen = false;
   return (
+    <>
+      {dataUri ? (
+        <Styled.A
+          style={{
+            width: "40px",
+            color: "white",
 
-    <div>
-      <Styled.BoxUpload>
+            cursor: "pointer",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            setDataUri("");
+          }}
+        >
+          <CloseCircleOutline />
+        </Styled.A>
+      ) : null}
+
+      <Styled.BoxUpload style={{ background: " #0a7f20" }}>
         {dataUri ? (
-          <img src={dataUri} isFullscreen={isFullscreen} />
+          // eslint-disable-next-line jsx-a11y/alt-text
+          <Styled.Img src={dataUri} isFullscreen={isFullscreen} />
         ) : (
           <Camera
             onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
@@ -28,8 +46,18 @@ function Cameraa(props) {
         )}
       </Styled.BoxUpload>
 
-    
-    </div>
+      <Styled.Close>
+        <Styled.A
+          href="/uploader-login"
+          onClick={(e) => {
+            e.preventDefault();
+            setImagem(dataUri);
+          }}
+        >
+          salvar
+        </Styled.A>
+      </Styled.Close>
+    </>
   );
 }
 

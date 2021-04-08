@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Title from '../../components/Title'
-import Camera from '../../assets/Camera.png'
+
 import Form from '../../components/Form'
 import Main from '../../components/Main';
 
 import Ola from '../../components/Ola'
-import Photo from '../../components/Photo';
+
 import Galeria from '../../components/Photo/Galeria'
+import Option from '../../components/Photo/Option'
+
 
 
 
@@ -19,7 +21,9 @@ function Uploader(props) {
         <Ola />
         <Title title="Faça o reconhecimento facial" />
         
+       
         <Galeria/>
+        
 
 
       </Form>
