@@ -196,7 +196,7 @@ export const Sidemenu = styled.aside`
     height:100vh;
 
 
-    position:absolute;
+    position:fixed;
     background:#EDEFED;
     z-index:10;
     right:${({openAnimation}) => (openAnimation == false ? '-100vw' : '0vw')};;
