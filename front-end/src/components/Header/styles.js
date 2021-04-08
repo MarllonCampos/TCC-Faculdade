@@ -191,7 +191,7 @@ export const BurgerIcon = styled.div`
 
 
 export const Sidemenu = styled.aside`
-    transition:all 0.3s linear ;
+    transition:right 0.3s ease ;
     width:70vw;
     height:100vh;
 
@@ -205,5 +205,5 @@ export const Sidemenu = styled.aside`
     @media (min-width:540px) {
         max-width:500px;
     }
-    max-width:230px;
+    max-width:400px;
 `;

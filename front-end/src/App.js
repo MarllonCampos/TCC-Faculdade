@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  
+
 } from "react-router-dom";
 
 
@@ -25,22 +25,30 @@ import Modal from './components/Modal'
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Page} />
-        <Route path="/list-estufas" component={ListEstufas} />
-        <Route path="/modal" component={Modal} />
-        <Route path="/estufa-ativa" component={EstufaAtiva} />
-        <Route path="/cadastro-estufas" component={CadastroEstufas} />
-        <Route path="/cadastra-elementos" component={CadastraElementos} />
-        <Route path="/login-estufas" component={LoginEstufa} />
-        <Route path="/cadastro" component={Cadastro} />
-        <Route path="/recuperar" component={Recuperar} />
-        <Route path="/uploader-login" component={Uploader} />
-        <Route path="/description-card" render={(props) => <DescriptionCard />}/>
-        
-      </Switch>
-    </Router>
+    
+       
+        <Router>
+        <Switch>
+          <Route path="/" exact component={Page} />
+          <Route path="/list-estufas" component={ListEstufas} />
+          <Route path="/modal" component={Modal} />
+          
+          <Route path="/estufa-ativa" component={EstufaAtiva} />
+          <Route path="/cadastro-estufas" component={CadastroEstufas} />
+          <Route path="/cadastra-elementos" component={CadastraElementos} />
+          <Route path="/login-estufas" component={LoginEstufa} />
+          <Route path="/cadastro" component={Cadastro} />
+          <Route path="/recuperar" component={Recuperar} />
+          <Route path="/uploader-login" component={Uploader} />
+          <Route path="/description-card" render={(props) => <DescriptionCard />} />
+
+        </Switch>
+      </Router>
+     
+
+   
+    
+
   );
 }
 
