@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {Conteiner, ImageHorta, ConteinerGrid, Back } from "./styles"
+import { faLightbulb, faFan, faWater, faSeedling } from '@fontawesome/free-solid-svg-icons'
+import { useHistory, useLocation } from 'react-router';
+
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import CardStatus from '../../components/cardDetalhe'
 import FotoHorta from '../../assets/horta.jpg'
-import { faLightbulb, faFan, faWater, faSeedling } from '@fortawesome/free-solid-svg-icons'
-import { useHistory, useLocation } from 'react-router';
+
+import {retrieveSessionData} from '../../utils/sessionStorage'
+import {Conteiner, ImageHorta, ConteinerGrid, Back } from "./styles"
 
 function EstufaAtiva() {
     const {elemento, image,titulo} = useLocation();
@@ -16,11 +19,16 @@ function EstufaAtiva() {
     const [filtroAgua,setFiltroAgua] = useState()
     const [filtroVentilador,setFiltroVentilador] = useState()
     const history = useHistory();
+
     const goBack = () => {
         history.goBack();
     }
 
     useEffect(() => {
+        if(!estadoElemento) {
+            const elementosCompleto = retrieveSessionData('greeneryData')
+            console.log(dadosDaa)
+        }
         setFiltroLuz( estadoElemento.filter(el => el.tipoelem == "Luz"))
         setFiltroAgua( estadoElemento.filter(el => el.tipoelem == "Água"))
         setFiltroVentilador( estadoElemento.filter(el => el.tipoelem == "Vento"))
