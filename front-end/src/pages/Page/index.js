@@ -8,6 +8,7 @@ import OlaLogo from '../../components/Ola';
 import Select from '../../components/Select'
 import Button from '../../components/Button'
 import api from '../../utils/api'
+import {saveData,retrieveSessionData} from '../../utils/sessionStorage'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
 
 
@@ -51,6 +52,14 @@ function Page({ title, color, border, ...props }) {
         }
 
         console.log(`Ola ${data.user} logado com sucesso`)
+    
+        if(saveData(data) == 'sucesso'){
+            console.log(retrieveSessionData('greeneryData'))
+
+        }else {
+            console.log('Falhou em salvar')
+        }
+
 
         setUserName(data.user)
         setGreenerys(data.greenerys)
