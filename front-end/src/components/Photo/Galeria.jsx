@@ -1,12 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
-import { BoxUpload, Label } from "./styles";
-import { A, LabelInput } from "./styles";
+import React, { useState, useContext } from "react";
 import Button from "../../components/Button";
 import * as Styled from "./styles";
 import { UserInfoContext } from "../../contexts/UserInfoContext";
 import Camera from "react-html5-camera-photo";
-import { CloseCircleOutline } from "@styled-icons/evaicons-outline/CloseCircleOutline";
-import "react-html5-camera-photo/build/css/index.css";
 
 function Galeria(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -39,7 +35,7 @@ function Galeria(props) {
             />
           )}
 
-          <Styled.Close style={{background: '#0b8722'}}>
+          <Styled.Close style={{ background: "#0b8722" }}>
             <Styled.A
               onClick={(e) => {
                 e.preventDefault();
@@ -65,21 +61,19 @@ function Galeria(props) {
         </di>
       ) : (
         <div>
-          <BoxUpload onClick={() => setIsModalVisible(true)}>
+          <Styled.BoxUpload onClick={() => setIsModalVisible(true)}>
             <div style={{ cursor: "pointer" }}>
-              <Label style={{ cursor: "pointer" }}>
+              <Styled.Label style={{ cursor: "pointer" }}>
                 <Styled.Img src={imagem} />
-
                 <p style={{ color: "#444", textAlign: "center" }}>
                   Click para tirar uma foto
                 </p>
-              </Label>
+              </Styled.Label>
             </div>
-          </BoxUpload>
-
+          </Styled.BoxUpload>
           <div>
             <Button>
-              <A onClick={() => setIsModalVisible(false)}>Cadastrar</A>
+              <Styled.A href="login-estufas">Cadastrar</Styled.A>
             </Button>
           </div>
         </div>

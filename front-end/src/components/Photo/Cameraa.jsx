@@ -16,29 +16,28 @@ function Cameraa() {
 
   const isFullscreen = false;
   return (
-    <> 
-      {dataUri ?(
-      <a
-        style={{
-          width: "40px",
-          color: "white",
-         
-        
-          cursor: "pointer",
-        }}
-        onClick={(e) => {
-          e.preventDefault();
-          setDataUri("");
-        }}
-      >
-        <CloseCircleOutline />
-      </a>)
-      : (null)}
+    <>
+      {dataUri ? (
+        <Styled.A
+          style={{
+            width: "40px",
+            color: "white",
+
+            cursor: "pointer",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            setDataUri("");
+          }}
+        >
+          <CloseCircleOutline />
+        </Styled.A>
+      ) : null}
 
       <Styled.BoxUpload style={{ background: " #0a7f20" }}>
         {dataUri ? (
           // eslint-disable-next-line jsx-a11y/alt-text
-          <Styled.Img  src={dataUri} isFullscreen={isFullscreen} />
+          <Styled.Img src={dataUri} isFullscreen={isFullscreen} />
         ) : (
           <Camera
             onTakePhotoAnimationDone={handleTakePhotoAnimationDone}

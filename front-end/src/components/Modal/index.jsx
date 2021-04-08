@@ -1,32 +1,37 @@
-import React from "react";
-import {
-  A,
-  Background,
-  Conteiner,
-   TextConte,
-  TextTitulo,
-} from "./styles";
+import React,{ useState } from "react";
+import { A, Background, Conteiner, TextConte, TextTitulo } from "./styles";
+import { Close } from "@styled-icons/evaicons-solid/Close";
+
 const Modal = ({
   id = "modal",
   onClose = () => {},
   titulo,
   conteudo,
-  page
-  
+  visible,
 }) => {
   const handleOutsideClick = (e) => {
     if (e.target.id === id) onClose();
   };
-
+  const [isModalVisible, setIsModalVisible] = useState(true)
+  
+  
   return (
-    <Background id="modal" onClick={handleOutsideClick}>
-      <Conteiner>
-        <TextTitulo>{titulo}</TextTitulo>
-        <TextConte>{conteudo}</TextConte>        
-      </Conteiner>
-      
-      <A  href={page}> Fechar </A>
-    </Background>
+    <>
+      {isModalVisible ? (
+           <Background>
+           <Conteiner>
+            
+             <TextTitulo>{titulo}</TextTitulo>
+             <TextConte>{conteudo}</TextConte>
+           </Conteiner>
+           <A onClick={() => setIsModalVisible( !isModalVisible) }>
+             Fechar
+           </A>
+         </Background>
+
+      ) : null}
+   
+    </>
   );
 };
 

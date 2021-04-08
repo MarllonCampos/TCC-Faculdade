@@ -30,20 +30,15 @@ function LoginEstufa() {
                         <Title title="Entre com sua conta" />                   
                        
                     <InputText labelText="Nome" name="name"  noIcon= "true" type="text" register={register}></InputText>
-                    {errors.name?.message  &&  <Modal 
-                    conteudo={errors.name?.message}               
-                    
+                    {errors.name?.message  &&   <Modal 
+                    visible={false}
+                    titulo="Error"
+                    conteudo={errors.name?.message}                   
                     page="/login-estufas"                 
-                    ></Modal> }                     
+                    ></Modal> }                    
                   
                     <InputText labelText="Senha" name="Senha" type="email" register={register} />
-                    {errors.email?.message  && <Modal 
-                    titulo="Erro"
-                    conteudo={errors.name?.message} 
-                                      
-                    page="/login-estufas"                 
-                    ></Modal>
-                    }                    
+                    {errors.email?.message }                    
                    
                     <Button onClick={newUser}> Enviar</Button>
                     <Conteiner>
