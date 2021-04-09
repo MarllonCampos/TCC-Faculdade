@@ -93,6 +93,10 @@ function Page({ title, color, border, ...props }) {
 
     }
 
+    function mostrar(e) {
+        console.log(e.target.value)
+    }
+
     const handleChange = (e) => {
         if (e.target.files[0]) {
             setImage(e.target.files[0])
@@ -112,7 +116,7 @@ function Page({ title, color, border, ...props }) {
     return (
         <Conteiner>
 
-            <Header />
+            <Header onChange={mostrar} icon/>
             <Wrapper>
 
                 {isModalShowing && <Modal onClose={() => { setIsModalShowing(false); clearModalMessage() }} titulo={modalTitle} conteudo={modalMessage || ''} conteudo1={modalContent || ''} />}
