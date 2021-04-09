@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect} from 'react';
 import Card from '../../components/card'
 import Header from '../../components/Header'
 import { Conteiner } from "./styles"
 import { UserInfoContext } from '../../contexts/UserInfoContext'
+import SearchInput from './SearchInuput';
 
 
 function ListEstufas() {
