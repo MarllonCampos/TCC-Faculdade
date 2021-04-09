@@ -14,7 +14,7 @@ import {
   SidemenuContainer,
 } from "./styles";
 
-function Header({ icon, ...props }) {
+function Header({ onChange,icon, ...props }) {
   const history = useHistory();
   const [isInputShowing, setIsInputShowing] = useState(false);
   const [isSidemenuShowing, setIsSidemenuShowing] = useState(false);
@@ -39,7 +39,7 @@ function Header({ icon, ...props }) {
         {icon ? (
           isInputShowing ? (
             <InputContainer closeAnimation={hasToWait}>
-              <Input />
+              <Input onChange={onChange} />
               <CloseIcon onClick={closeInput} />
             </InputContainer>
           ) : (
