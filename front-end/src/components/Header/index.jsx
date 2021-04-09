@@ -8,6 +8,7 @@ import {
   Input,
   CloseIcon,
   InputContainer,
+  BurgerIconContainer,
   BurgerIcon,
   Sidemenu,
   SidemenuContainer,
@@ -47,11 +48,12 @@ function Header({ icon, ...props }) {
         ) : (
           <ArrowIosBack onClick={history.goBack}size={38}/>
         )}
-
+      <BurgerIconContainer  onClick={() => setIsSidemenuShowing(!isSidemenuShowing)} >
         <BurgerIcon
           openAnimation={isSidemenuShowing}
-          onClick={() => setIsSidemenuShowing(!isSidemenuShowing)}
+         
         />
+      </BurgerIconContainer>
         <Sidemenu openAnimation={isSidemenuShowing}>
           <div style={{padding:'3%', backgroundColor:'#0B8722',display:'flex', alignItems:'center',  paddingRight:'45px' }}>
             <img style={{borderRadius:'50%',}}src="https://via.placeholder.com/45/45" />
