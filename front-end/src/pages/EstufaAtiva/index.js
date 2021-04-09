@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { faLightbulb, faFan, faWater, faSeedling } from '@fontawesome/free-solid-svg-icons'
+import { faLightbulb, faFan, faWater, faSeedling } from '@fortawesome/free-solid-svg-icons'
 import { useHistory, useLocation } from 'react-router';
 
 import Header from '../../components/Header'
@@ -27,7 +27,7 @@ function EstufaAtiva() {
     useEffect(() => {
         if(!estadoElemento) {
             const elementosCompleto = retrieveSessionData('greeneryData')
-            console.log(dadosDaa)
+            console.log(elementosCompleto)
         }
         setFiltroLuz( estadoElemento.filter(el => el.tipoelem == "Luz"))
         setFiltroAgua( estadoElemento.filter(el => el.tipoelem == "Água"))
