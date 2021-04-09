@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@firebase/storage": "^0.4.7",
-    "dotenv": "^8.2.0",
-    "firebase": "^8.3.3"
-  }
-}
