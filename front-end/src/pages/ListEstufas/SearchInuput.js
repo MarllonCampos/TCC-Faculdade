@@ -11,6 +11,12 @@ const SearchInput = ({value, onChange}) => {
         debouncedChange(event.target.value);
     }
 
-    return <Header value={displayValue} onChange={handleChange}></Header>
+    return (
+        <input
+        type="search"
+        value={displayValue}
+        onChange={handleChange}
+        />
+    );
 };
 export default SearchInput;
