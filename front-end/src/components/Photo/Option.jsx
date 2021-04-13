@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Background, OptionConteiner, TextTitulo, LabelInput } from "./styles";
-import Photo from "./index";
+import { OptionConteiner, TextTitulo, LabelInput } from "./styles";
+import Galeria from "./Galeria";
 import { CameraFill } from "@styled-icons/bootstrap/CameraFill";
 import { PhotoCameraBack } from "@styled-icons/material-sharp/PhotoCameraBack";
 import { CloseCircleOutline } from '@styled-icons/evaicons-outline/CloseCircleOutline';
@@ -64,7 +64,7 @@ const Option = () => {
          
         </div>
       </OptionConteiner>
-      {isModalVisible ? <Photo /> : null}
+      {isModalVisible ? <Galeria /> : null}
     </>
   );
 };

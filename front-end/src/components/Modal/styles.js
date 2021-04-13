@@ -10,6 +10,7 @@ export const Background = styled.div`
  left: 0;
  z-index: 10;
  background-color: #0a7f20;
+ opacity: 0.95;
  display: flex;
  flex-direction:column;
  justify-content: center;
@@ -19,8 +20,8 @@ export const Background = styled.div`
 
 export const Conteiner = styled.div`
   background-color: #eeeeee;
-  width: 30rem;
-  height: 40rem;
+  width: 25rem;
+  height: 20rem;
   color: #000; 
   border-radius: 30px; 
   align-items: center;
@@ -32,7 +33,7 @@ export const Conteiner = styled.div`
   }
   @media(max-width: 400px) {
     width: 18rem;
-    height: 25rem;
+    height: 20rem;
   }
   
 `;
@@ -41,8 +42,9 @@ export const Conteiner = styled.div`
 
 export const  A = styled.a`
   background-color: #eb2828;
-  width:30rem ;
+  width:25rem ;
   height: 3rem;  
+  font-size:25px;
   margin-top:30px;
   cursor: pointer;
   display: flex;

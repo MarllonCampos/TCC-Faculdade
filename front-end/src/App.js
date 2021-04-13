@@ -21,7 +21,7 @@ import Uploader from './pages/LoginEstufa/Uploader'
 import DescriptionCard from './pages/DescriptionCard'
 import ListEstufas from './pages/ListEstufas'
 import Modal from './components/Modal'
-import Cameraa from './components/Photo/Cameraa'
+
 
 function App() {
   return (
