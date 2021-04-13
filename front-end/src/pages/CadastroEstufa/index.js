@@ -1,48 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useFormik } from "react";
 import { Conteiner,Title1, } from "./styles"
 
 import Header from '../../components/Header'
-
+import Form from '../../components/Form';
 import Ola from '../../components/Ola'
 import InputText from '../../components/Input';
 import Button from '../../components/Button';
-import Photo from '../../components/Photo';
+import Photo from '../../components/Photo/Cameraa';
 
 
 
 function CadastroEstufa() {
 
-  const [dados, setDados] = useState({nome:''})
+  function useFormik({  initiavalues
+  }){
+      const[values, setValues]=  useState(initiavalues);
+      console.log(initiavalues);
+      
 
-  
-  
-     const handleInputChange = (event) => {
-          console.log(event.target.name)
-           console.log(event.target.value)
-          setDados({
-              ...dados,
-              [event.target.name] : event.target.value
+      function handleChange(event){
+          const fieldName= event.target.getAttribute('name');
+          const value =event.target.value;
+          setValues({
+              ...values,
+              [fieldName]:value,
+              
           })
+
       }
-  
-      const enviarDados = (event) => {
-        event.preventDefault()
-        console.log('enviando dados...' + dados.nome+'' )
-    }
+      
+      
+      return{
+          values,
+          handleChange
+      };
+  }
+   const formik= useFormik({
+       initiavalues:{
+      nomeestufa:'',
+      
+       }
+   });  
   
   
     return (
         <>
+         <Form  onSubmit={(event) => {
+            event.preventDefault();
+            console.log(formik.values);
+        }
+        }>
+        
         <Header icon />
         <Conteiner>
           <Ola/> 
         <Title1>Cadastro de Estufas </Title1>
-        <Photo  ></Photo>
-        <InputText noIcon idFor="user" labelText="Nome da Estufa:"  onChange={handleInputChange} name="nome"/> 
+        <Photo > </Photo>
+        <InputText noIcon idFor="user" 
+            placeholder="Digite o nome da Estufa"
+             name="nomeestufa"
+             type="text"
+             labelText="Nome da Estufa:" 
+             onChange={formik.handleChange}
+             value={formik.values.nomeestufa}
+              />
         
-        <Button onClick={enviarDados}>Cadastrar</Button> 
+        <Button >Cadastrar</Button> 
         
         </Conteiner>
+        </Form>
         </>
         
     )
