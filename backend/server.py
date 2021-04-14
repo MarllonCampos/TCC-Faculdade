@@ -7,11 +7,11 @@ from dotenv import load_dotenv
 load_dotenv()
 print(os.getenv("LOCAL"))
 if os.getenv("LOCAL") == 'dev':
-    from functions import login, register, retrieve, greenregister
+    from functions import login, register, retrieve, greenregister, elementregister
     port = '4000'
 
 else:
-    from backend.functions import login, register, retrieve, greenregister 
+    from backend.functions import login, register, retrieve, greenregister, elementregister
     port = int(os.environ.get('PORT', 33507))
 
 app = Flask('Greenery')
@@ -42,13 +42,15 @@ def toretrieve():
 @cross_origin(origin='*',headers=['Content-Type'])
 def green_register():
     green = request.get_json()
-    response= greenregister(green)
+    response = greenregister(green)
     return (response)
 
-@app.route('/', methods=['PATCH'])
-def patch():
-
-    return ('PATCH')
+@app.route('/elementregister', methods=['POST'])
+@cross_origin(origin='*',headers=['Content-Type'])
+def element_register():
+    element = request.get_json()
+    response = elementregister(element)
+    return (response)
 
 @app.route('/', methods=['DELETE'])
 def delete():
