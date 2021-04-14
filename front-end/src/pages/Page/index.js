@@ -9,6 +9,9 @@ import Select from '../../components/Select'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
 import api from '../../utils/api'
+import { uploadImage } from '../../utils/firebase'
+
+import { saveData, retrieveSessionData } from '../../utils/sessionStorage'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
 
 
@@ -21,21 +24,28 @@ import { TituloCima, TituloBaixo, Wrapper, GridContainer, GridItem } from './sty
 function Page({ title, color, border, ...props }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [image, setImage] = useState('');
+    const [url, setUrl] = useState('');
     const [numero, setNumero] = useState(null)
     const [isModalShowing, setIsModalShowing] = useState(false)
     const [modalMessage, setModalMessage] = useState('')
     const [modalTitle, setModalTitle] = useState('')
     const [modalContent, setModalContent] = useState('')
     const [selectState, setSelectState] = useState(false)
-    const { userName, setUserName, greenerys, setGreenerys,imagem, setImagem } = useContext(UserInfoContext)
+    const { userName, setUserName, greenerys, setGreenerys, imagem, setImagem } = useContext(UserInfoContext)
 
 
 
-    
+
     useEffect(() => {
         setNumero([{ name: "Norte", status: true }, { name: "Sul", status: false }, { name: "Leste", status: true }, { name: "Oeste", status: false }])
         console.log(imagem)
     }, [])
+
+    useEffect(() => {
+        console.log(url)
+    }, [url])
+
 
 
 
@@ -50,9 +60,9 @@ function Page({ title, color, border, ...props }) {
             password
         })
         const data = await response.data;
-        
-        
-        
+
+
+
         if (data.message) {
             setModalTitle('Falha em realizar o login')
             setModalMessage(data.message.title)
@@ -64,9 +74,17 @@ function Page({ title, color, border, ...props }) {
         setModalContent(`Seja bem-vindo`)
         console.log(`Ola ${data.user} logado com sucesso`)
 
+        if (saveData(data) == 'sucesso') {
+            console.log(retrieveSessionData('greeneryData'))
+
+        } else {
+            console.log('Falhou em salvar')
+        }
+
+
         setTimeout(() => {
             setIsModalShowing(false)
-        },2000)
+        }, 2000)
 
 
         setGreenerys(data.greenerys)
@@ -74,8 +92,22 @@ function Page({ title, color, border, ...props }) {
 
 
     }
-  
-    function clearModalMessage(){
+
+    function mostrar(e) {
+        console.log(e.target.value)
+    }
+
+    const handleChange = (e) => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0])
+        }
+    }
+
+    const upload = async () => {
+        const urlName = await uploadImage(image,setUrl);
+    }
+
+    function clearModalMessage() {
         setModalContent('')
         setModalMessage('')
         setModalTitle('')
@@ -84,12 +116,13 @@ function Page({ title, color, border, ...props }) {
     return (
         <Conteiner>
 
-            <Header />
+            <Header onChange={mostrar} icon/>
             <Wrapper>
-                {isModalShowing && <Modal onClose={() => {setIsModalShowing(false);clearModalMessage() } } titulo={modalTitle} conteudo={modalMessage || ''}  conteudo1={modalContent || '' }/>}
+
+                {isModalShowing && <Modal onClose={() => { setIsModalShowing(false); clearModalMessage() }} titulo={modalTitle} conteudo={modalMessage || ''} conteudo1={modalContent || ''} />}
                 <OlaLogo />
                 <h5 style={{ textAlign: 'center' }}> Resgate sua conta! </h5>
-                {userName &&  (<GridContainer>
+                {userName && (<GridContainer>
                     <GridItem to="cadastra-elementos">Cadastra Elementos</GridItem>
                     <GridItem to="cadastro-estufas">Cadastro Estufa</GridItem>
                     <GridItem to="estufa-ativa">Estufa Ativa</GridItem>
@@ -106,8 +139,8 @@ function Page({ title, color, border, ...props }) {
                             icon: "fan"
                         }}
                     >Description Card </Link>}
-                </GridContainer>) }
-              
+                </GridContainer>)}
+
                 <InputText
                     noIcon
                     onChange={(e) => setEmail(e.target.value)}
@@ -122,6 +155,10 @@ function Page({ title, color, border, ...props }) {
                     labelText="Senha:"
                 />
 
+                <input type="file" onChange={handleChange} />
+                {url}
+
+                <Button disabled={!image || image == ''} onClick={upload }>Upload</Button>
 
                 <Button disabled={email.length === 0 || password.length === 0} onClick={handleClickLogin}>Cadastrar</Button>
 

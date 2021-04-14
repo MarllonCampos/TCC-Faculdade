@@ -8,12 +8,13 @@ import {
   Input,
   CloseIcon,
   InputContainer,
+  BurgerIconContainer,
   BurgerIcon,
   Sidemenu,
   SidemenuContainer,
 } from "./styles";
 
-function Header({ icon, ...props }) {
+function Header({ onChange,icon, ...props }) {
   const history = useHistory();
   const [isInputShowing, setIsInputShowing] = useState(false);
   const [isSidemenuShowing, setIsSidemenuShowing] = useState(false);
@@ -38,7 +39,7 @@ function Header({ icon, ...props }) {
         {icon ? (
           isInputShowing ? (
             <InputContainer closeAnimation={hasToWait}>
-              <Input />
+              <Input onChange={onChange} />
               <CloseIcon onClick={closeInput} />
             </InputContainer>
           ) : (
@@ -47,11 +48,12 @@ function Header({ icon, ...props }) {
         ) : (
           <ArrowIosBack onClick={history.goBack}size={38}/>
         )}
-
+      <BurgerIconContainer  onClick={() => setIsSidemenuShowing(!isSidemenuShowing)} >
         <BurgerIcon
           openAnimation={isSidemenuShowing}
-          onClick={() => setIsSidemenuShowing(!isSidemenuShowing)}
+         
         />
+      </BurgerIconContainer>
         <Sidemenu openAnimation={isSidemenuShowing}>
           <div style={{padding:'3%', backgroundColor:'#0B8722',display:'flex', alignItems:'center',  paddingRight:'45px' }}>
             <img style={{borderRadius:'50%',}}src="https://via.placeholder.com/45/45" />
