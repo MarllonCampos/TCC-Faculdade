@@ -6,7 +6,7 @@ load_dotenv()
 
 if os.getenv("LOCAL") == 'dev':
     from connection import openConnection
-    from utils import validateLogin, idGenerator, passwordEncode, emailVerify, validateRegister, validateRetrieve, validateGreenRegister,dateCapture
+    from utils import validateLogin, idGenerator, passwordEncode, emailVerify, validateRegister, validateRetrieve, validateGreenRegister,dateCapture, validateElementRegister
     from facialRecognizer import faceRecognition
 
 else:
@@ -206,6 +206,7 @@ def retrieve(user):
                 conn.commit()
                 conn.close()
 
+# função que registra estufas no banco de dados
 def greenregister(green):
     try:
         conn = openConnection()
@@ -238,3 +239,40 @@ def greenregister(green):
     finally:
         conn.commit()
         conn.close()
+
+# função que registra elementos no banco de dados
+def elementregister(element):
+    try:
+        conn = openConnection()
+        print(conn)
+        if type(conn) == dict:
+            return conn
+        
+        verifiedelement = validateElementRegister(element)
+        if type(verifiedelement) == dict:
+            return verifiedelement
+        
+        idelem = idGenerator()
+        nameelem = element['name']
+        typeelem = element['type']
+        idgreen = element['idgreen']
+        date = dateCapture()
+
+        cursor = conn.cursor()
+        cursor.callproc('elementRegister',[idelem,typeelem,idgreen,date,nameelem])
+        cursor.close()
+
+        return({'message':{'title':'Sucesso',
+                'content':'Elemento cadastrado com sucesso!'},
+                'status':'ok'})
+
+    except Exception as err:
+        return({'message':{'title':'Erro',
+            'content': str(err)},
+            'status':'erro'})
+
+    finally:
+        conn.commit()
+        conn.close()
+
+    

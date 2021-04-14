@@ -138,6 +138,32 @@ def validateGreenRegister(green):
                 'content': str(error)},
                 'status':'erro'})
 
+# valida form de registro de elemento
+def validateElementRegister(element):
+    try:
+        if 'name' in element and 'type' in element and 'idgreen' in element:
+            name = element['name']
+            typeelem = element['type']
+            idgreen = element['idgreen']
+        
+            if (name is None or name == ''):
+                raise Exception('Nome do elemento não informado!')
+        
+            if (typeelem is None or typeelem == ''):
+                raise Exception('Tipo do elemento não informado!')
+        
+            if (idgreen is None or idgreen == ''):
+                raise Exception('id da estufa não informado!')
+
+            else: 
+                return 'ok'
+        else:
+            raise Exception('nome, id ou/e foto não informados!')
+    except Exception as error:
+        return({'message':{'title':'Erro',
+                'content': str(error)},
+                'status':'erro'})
+
 # codifica senha no padrão MD5
 def passwordEncode(password):
     new_password = hashlib.md5(password.encode())
