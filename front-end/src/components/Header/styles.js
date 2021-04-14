@@ -143,16 +143,27 @@ export const CloseIcon = styled.div`
 `;
 
 
+export const BurgerIconContainer= styled.div`
+    z-index:20;
+    width:45px;
+    height:45px;
+    position:absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    right:0px;
 
+    
+
+`
 
 export const BurgerIcon = styled.div`
     z-index:20;
     width:22px;
     height:4px;
-    position:absolute;
     background-color:${({openAnimation}) => (openAnimation == false && 'white')};
+    position:relative;
 
-    right:12px;
 
     background-size:25px;
 
@@ -160,7 +171,7 @@ export const BurgerIcon = styled.div`
 
     &::before,&::after {
         content:'';
-        width:100%;
+        width:22px;
         height:4px;
         display:block;
         position:absolute;
