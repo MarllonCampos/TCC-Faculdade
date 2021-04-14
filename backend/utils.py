@@ -1,8 +1,19 @@
+from datetime import datetime,timezone,timedelta
 from validate_email import validate_email
 import uuid
 import hashlib
-from backend.facialRecognizer import faceDetect
 import cv2
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+
+if os.getenv("LOCAL") == 'dev':
+    from facialRecognizer import faceDetect
+else:
+    from backend.facialRecognizer import faceDetect
+
 
 # valida form de login de usuário
 def validateLogin(user):
@@ -143,3 +154,7 @@ def emailVerify(email):
     validate = validate_email(email_address = email, check_regex = True, check_mx = False)
     return validate
 
+# Captura a data do sistema considerando fuso horario
+def dateCapture():
+    date = (datetime.now().astimezone(timezone(timedelta(hours=-3)))).strftime('%Y/%m/%d')
+    return date
