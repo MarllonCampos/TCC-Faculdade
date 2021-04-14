@@ -1,10 +1,20 @@
 from flask import Flask, request
-from backend.functions import login, register, retrieve 
 from flask_cors import CORS, cross_origin
 import cv2
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+print(os.getenv("LOCAL"))
+if os.getenv("LOCAL") == 'dev':
+    from functions import login, register, retrieve, greenregister
+    port = '4000'
+
+else:
+    from backend.functions import login, register, retrieve, greenregister 
+    port = int(os.environ.get('PORT', 33507))
+
 app = Flask('Greenery')
-port = int(os.environ.get('PORT', 33507))
 cors = CORS(app, resources={r"/": {"origins": "*"}})
 
 @app.route('/login', methods=['POST'])
