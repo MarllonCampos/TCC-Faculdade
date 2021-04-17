@@ -23,10 +23,7 @@ function  CadastroElemento() {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState(initialValues);
 
-  useEffect(() => {
-    console.log('Alguém mexeu nos values', values);
-    validateValues(values);
-  }, [values]);
+ 
 
   function handleChange(event) {
     const fieldName = event.target.getAttribute('name');
