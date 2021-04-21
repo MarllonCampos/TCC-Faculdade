@@ -6,7 +6,7 @@ import Form from '../../components/Form';
 import Ola from '../../components/Ola'
 import InputText from '../../components/Input';
 import Button from '../../components/Button';
-import Photo from '../../components/Photo/Cameraa';
+
 
 
 
@@ -55,7 +55,7 @@ function CadastroEstufa() {
         <Conteiner>
           <Ola/> 
         <Title1>Cadastro de Estufas </Title1>
-        <Photo > </Photo>
+        
         <InputText noIcon idFor="user" 
             placeholder="Digite o nome da Estufa"
              name="nomeestufa"

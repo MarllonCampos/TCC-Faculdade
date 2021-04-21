@@ -1,12 +1,13 @@
 import firebase from 'firebase/app'
 import "firebase/storage"
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_APIKEY,
-    authDomain: process.env.REACT_APP_AUTHDOMAIN,
-    projectId: process.env.REACT_APP_PROJECTID,
-    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-    appId: process.env.REACT_APP_APPID,
+      apiKey: "AIzaSyCwBy5PoRhuvQxuKbO8rF8VciRnxLRen_I",
+    authDomain: "tcc-faculdade-bfbb8.firebaseapp.com",
+    projectId: "tcc-faculdade-bfbb8",
+    storageBucket: "tcc-faculdade-bfbb8.appspot.com",
+    messagingSenderId: "279833007170",
+    appId: "1:279833007170:web:67a6e9ecea16a91c30c9db"
+  
 }
 
 
@@ -35,3 +36,6 @@ const uploadImage = (image,setUrl) => {
 }
 
 export {uploadImage};
+
+
+export { storage, firebase as default };

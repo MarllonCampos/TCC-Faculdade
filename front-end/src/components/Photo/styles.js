@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
+export const Conter = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+`;
 
 export const Img = styled.img`
-
  width:95%;
  height:95%;
  border-radius: 20px;
-
 `;
 
 export const Background = styled.div`
@@ -21,8 +25,8 @@ export const Background = styled.div`
  flex-direction:column;
  justify-content: center;
  align-items: center;
- 
-`;
+ `;
+
 export const Conteiner = styled.div`
  width: 100%;
  height: 100vh;
@@ -40,22 +44,19 @@ export const Conteiner = styled.div`
 
 export const OptionConteiner = styled.div`
   background-color: #eeeeee;
-  width: 30rem;
-  height: 15rem;
+  width: 22rem;
+  height: 14rem;
   color: #000; 
   border-radius: 10px; 
-
-
-
   align-items: center;
   
-  @media(max-width: 900px) {
-    width: 25rem;
-    height: 30rem;
+  @media(max-width: 800px) {
+    width: 22rem;
+    height: 12rem;
   }
   @media(max-width: 400px) {
-    width: 18rem;
-    height: 25rem;
+    width: 20rem;
+    height: 12rem;
   }
   
 `;
@@ -77,17 +78,17 @@ export const LabelInput = styled.label`
    
     font-weight: bolder;
     color: rgb(0, 5, 0);
-    font-size: x-large;
-   
+    font-size: x-large;  
     font-size: 30px;
     text-align: justify;
-   
-
-  
- 
-    
-
     cursor:pointer;
+
+    @media(max-width: 800px) {
+    font-size: large;
+  }
+  @media(max-width: 400px) {
+    font-size: large;
+  }
 
 
    
