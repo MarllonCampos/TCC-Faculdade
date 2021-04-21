@@ -13,11 +13,14 @@ import Option from '../../components/Photo/Option'
 
 
 
+
 function Uploader(props) {
-  
+  const onSubmit = (e) => {
+    e.preventDefault();
+  }
   return (
     <Main>
-      <Form>
+      <Form  onSubmit={onSubmit}>
         <Ola />
         <Title title="Faça o reconhecimento facial" />
         

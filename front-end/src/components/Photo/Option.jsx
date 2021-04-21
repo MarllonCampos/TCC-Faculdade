@@ -4,7 +4,7 @@ import Galeria from "./Galeria";
 import { CameraFill } from "@styled-icons/bootstrap/CameraFill";
 import { PhotoCameraBack } from "@styled-icons/material-sharp/PhotoCameraBack";
 import { CloseCircleOutline } from '@styled-icons/evaicons-outline/CloseCircleOutline';
-
+import Camera, { IMAGE_TYPES } from "react-html5-camera-photo";
 const Option = () => {
   const [state, setState] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -17,7 +17,7 @@ const Option = () => {
       "mediaDevices" in navigator &&
       "getUserMedia" in navigator.mediaDevices
     ) {
-      // ok, o navegador tem suporte
+     
     }
     if (e.target.files && e.target.files[0]) {
       setTypeFile(e.target.files[0].type);
@@ -34,8 +34,7 @@ const Option = () => {
 
   return (
    <>
-       <CloseCircleOutline             
-              style={{ width: "7%", marginLeft:'450px', marginTop:'10px' , cursor: "pointer" }}/>
+      
       <OptionConteiner>
         <TextTitulo>Escolha da imagem com</TextTitulo>
        
@@ -57,7 +56,7 @@ const Option = () => {
             style={{ display: "none" }}
             id="selecao-arquivo"
             type="file"
-            accept=".jpg,.jpeg,.gif,.png,.mov,.mp4"
+            accept=".jpg,.jpeg,.png"
             onChange={handleImageChange}
           />
 
