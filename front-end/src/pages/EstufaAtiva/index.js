@@ -15,9 +15,10 @@ function EstufaAtiva() {
     const [estadoElemento, setEstadoElemento] = useState(elemento);
     const [estadoImagem, setEstadoImagem] = useState(image);
     const [estadoTitulo, setEstadoTitulo] = useState(titulo);
-    const [filtroLuz,setFiltroLuz] = useState()
-    const [filtroAgua,setFiltroAgua] = useState()
-    const [filtroVentilador,setFiltroVentilador] = useState()
+    const [filtroLuz,setFiltroLuz] = useState();
+    const [filtroAgua,setFiltroAgua] = useState();
+    const [filtroVentilador,setFiltroVentilador] = useState();
+    const [filtroPlantas,setFiltroPlantas] = useState();
     const history = useHistory();
 
     const goBack = () => {
@@ -32,13 +33,14 @@ function EstufaAtiva() {
         setFiltroLuz( estadoElemento.filter(el => el.tipoelem == "Luz"))
         setFiltroAgua( estadoElemento.filter(el => el.tipoelem == "Água"))
         setFiltroVentilador( estadoElemento.filter(el => el.tipoelem == "Vento"))
+        // setFiltroPlantas ( estadoElemento.filter(el => el.tipoelem == "Planta"))
+        setFiltroPlantas ([]);
     }, [])
 
 
     return (
         <>
-            <Header icon />
-            <Back onClick={goBack}>Voltar</Back>
+            <Header/>
             {filtroLuz &&(<Conteiner>
                 <Title style={{ marginTop: "50px" }} title={titulo} />
                 <ImageHorta src={image} />
@@ -53,7 +55,8 @@ function EstufaAtiva() {
                     <CardStatus elementos={filtroAgua} cor="blue" tipo="Irrigação" corIcon="red" iconess={faWater} planta_ou_ativa="ativos" 
                     ativos={filtroAgua.filter(el => el.ativo == 1).length } quant={filtroAgua.length}/>
 
-                    <CardStatus lastItem={true} cor="darkgreen" tipo="Plantas" corIcon="red" iconess={faSeedling} planta_ou_ativa="plantas" />
+                    <CardStatus lastItem={true} elementos={filtroPlantas} cor="darkgreen" tipo="Plantas" corIcon="red" iconess={faSeedling} planta_ou_ativa="plantas" 
+                    ativos={filtroPlantas.filter(el => el.ativo == 1).length } quant={filtroPlantas.length}/>
 
                 </ConteinerGrid>
             </Conteiner>)}
