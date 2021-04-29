@@ -73,7 +73,7 @@ function  CadastroElemento() {
         />
          
 
-            <Select    style={{marginTop:"100px"}} labelText="Tipo de Porta"  
+            <Select     labelText="Tipo de Porta"  
             name="tipoporta"
             type="text"
             idgreen="portaelemnt"
