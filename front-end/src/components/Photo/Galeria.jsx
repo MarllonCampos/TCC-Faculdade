@@ -1,38 +1,84 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback, useRef } from "react";
 import Button from "../../components/Button";
 import * as Styled from "./styles";
 import { UserInfoContext } from "../../contexts/UserInfoContext";
-import Camera from "react-html5-camera-photo";
+import { storage } from "../../utils/firebase";
+import { v4 as uuid } from "uuid";
+import Webcam from "react-webcam";
+import { RadioCircle } from "@styled-icons/boxicons-regular/RadioCircle";
 
+const videoConstraints = {
+  width: "400",
+  height: "450",
+  facingMode: "user",
+};
 function Galeria(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { imagem, setImagem } = useContext(UserInfoContext);
-
+  const webcamRef = useRef(null);
   const [dataUri, setDataUri] = useState("");
-  function handleTakePhotoAnimationDone(dataUri) {
-    setDataUri(dataUri);
-  }
+
+  // funcão de captura imagem
+  const capture = useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setDataUri(imageSrc);
+  }, [webcamRef]);
+
+  // Função upload para o firebase storege
+  const handleUpload = () => {
+    const id = uuid();
+    const uploadTask = storage
+      .ref(`retrievePhotos/${id}`)
+      .putString(imagem, "data_url");
+    uploadTask.on(
+      "state_changed",
+      null,
+      (error) => {
+        console.log(error);
+      },
+
+      () => {
+        storage
+          .ref("retrievePhotos")
+          .child(id)
+          .getDownloadURL()
+          .then((url) => {
+            setImagem(url);
+          });
+      }
+    );
+  };
+
+  console.log(imagem);
 
   const isFullscreen = false;
   return (
     <>
       {isModalVisible ? (
-        <di
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
+        <Styled.Conter>
           {dataUri ? (
-            // eslint-disable-next-line jsx-a11y/alt-text
             <Styled.Img src={dataUri} isFullscreen={isFullscreen} />
           ) : (
-            <Camera
-              onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
-              isFullscreen={isFullscreen}
-            />
+            <Styled.Conter>
+              <Webcam
+                audio={false}
+                height={videoConstraints.height}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                width={videoConstraints.width}
+                videoConstraints={videoConstraints}
+              />
+              <RadioCircle
+                onClick={capture}
+                style={{
+                  position: "absolute",
+                  width: "7%",
+                  cursor: "pointer",
+                  marginTop: "250px"
+                  
+                }}
+              />
+            </Styled.Conter>
           )}
 
           <Styled.Close style={{ background: "#0b8722" }}>
@@ -58,7 +104,7 @@ function Galeria(props) {
               excluir
             </Styled.A>
           </Styled.Close>
-        </di>
+        </Styled.Conter>
       ) : (
         <div>
           <Styled.BoxUpload onClick={() => setIsModalVisible(true)}>
@@ -73,7 +119,7 @@ function Galeria(props) {
           </Styled.BoxUpload>
           <div>
             <Button>
-              <Styled.A href="login-estufas">Cadastrar</Styled.A>
+              <Styled.A onClick={handleUpload}>Cadastrar</Styled.A>
             </Button>
           </div>
         </div>

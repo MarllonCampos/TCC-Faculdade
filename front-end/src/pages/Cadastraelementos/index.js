@@ -1,12 +1,14 @@
-import React, {useState, useFormik} from "react";
+import React, {useState, useEffect, Component} from "react";
 import { useForm } from "react-hook-form";
+import api from '../../utils/api'
 import Form from '../../components/Form';
-import { Conteiner,Title1,Title2, } from "./styles"
+import { Conteiner,Title1,Title2, } from './styles'
 import Header from '../../components/Header'
 import Select from '../../components/Select'
 import Ola from '../../components/Ola'
 import InputText from '../../components/Input';
 import Button from '../../components/Button';
+import axios from "axios";
 
 
 
@@ -14,72 +16,77 @@ import Button from '../../components/Button';
 
 
 function  CadastroElemento() {
-    function useFormik({  initiavalues
-    }){
-        const[values, setValues]=  useState(initiavalues);
-        console.log(initiavalues);
-        
+   
 
-        function handleChange(event){
-            const fieldName= event.target.getAttribute('name');
-            const value =event.target.value;
-            setValues({
-                ...values,
-                [fieldName]:value,
-                
-            })
+    const [portaelemnt, setportaelemnt] = useState(false)
+
+    useEffect(() => {
+        if (portaelemnt!= false) {
+           console.log(portaelemnt.target.name)
+            
 
         }
+    }, [portaelemnt])
+    
+
+
+
+    const [campos, setCampos] = useState({
         
-        
-        return{
-            values,
-            handleChange
-        }
+  
+
+    });
+    function handleInputChange(event){
+        campos[event.target.name] = event.target.value;
+        setCampos(campos);
     }
-     const formik= useFormik({
-         initiavalues:{
-        nomelemt:'',
-        tipoelemt:'',
-         }
-     });  
+    
+    function handleFormSubmit(event){
+        event.preventDefault();
+        console.log(campos);
+    }
     return (
         <>
-        <Form  onSubmit={(event) => {
-            event.preventDefault();
-            console.log(formik.values);
-        }
-        }>
-        <Header icon/>
-        <Conteiner>
-           
-        
-            <Ola/>
-            <Title1>Cadastro de Estufas </Title1>
-            <Title2>Elementos da Estufa</Title2>
+        <Form onSubmit={handleFormSubmit}>
+           <Header  icon />
+          <Conteiner>
+          <Ola/>
+          <Title2>Elementos da Estufa</Title2>
+
+            
            
             <InputText noIcon idFor="user" 
             placeholder="Digite o nome do Elemento"
-             name="nomelemt"
-             type="text"
+            name="nomeelem"
+             type="text" 
              labelText="Nome do Elemento:" 
-             onChange={formik.handleChange}
-             value={formik.values.nomelemt}
-              />
+             onChange={handleInputChange}  />
 
-            <Select  labelText="Tipo de elemento:"  
-             name="tipoelemt"
+            <Select   labelText="Tipo de elemento:"  
+             name="tipoelemnt"
              type="text"
-             elements={["Lampada", "Ventilador","Agua"]} 
-             onChange={formik.handleChange}
-             value={formik.values.tipoelemt}
+             idgreen="tipo"
+             option="Seleciona um elemento"
+             onChange={handleInputChange}
+             elements={["Agua","Ventilador","Lampada"]}
+   
+        />
+         
+
+            <Select     labelText="Tipo de Porta"  
+            name="tipoporta"
+            type="text"
+            idgreen="portaelemnt"
+             elements={[,1,2,3,4,5]} 
+             onChange={handleInputChange}
              />
-             
+
             <Button  >Cadastrar</Button>
-        </Conteiner>
-        </Form>
-        </>
+          </Conteiner>
+          </ Form>
+          </>
     )
-    
-}
-export default CadastroElemento;
+
+}    
+
+ export default CadastroElemento;
