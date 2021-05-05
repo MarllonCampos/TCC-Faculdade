@@ -4,9 +4,10 @@ const Main = styled.main`
 display: flex;
 justify-content:center;
 align-items: center;
-background-color: green;
+background-color: var(--quintiary);
 width: 100vw;
-height: 100vh;
+min-height: 100vh;
+padding-bottom:30px;
 
 
 `
