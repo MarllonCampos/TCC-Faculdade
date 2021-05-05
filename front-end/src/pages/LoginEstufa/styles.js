@@ -1,16 +1,15 @@
 import styled from 'styled-components';
-
+import {Link} from 'react-router-dom'
 export const Conteiner = styled.div`
   
-    background-color: green;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin:30px 0 ;
 
     .input[type='file'] {
-  display: none
+    display: none
 }
 
 /* Aparência que terá o seletor de arquivo */
@@ -74,11 +73,13 @@ export const LabelInput = styled.label`
 `;
 
 
-export const A = styled.a`
+
+export const A = styled(Link)`
 
   padding: 10px;
  color: white;
  font-size: 20px;
+ font-family:Roboto, sans-serif;
 `;
 
 
