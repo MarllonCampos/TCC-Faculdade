@@ -8,7 +8,7 @@ import OlaLogo from '../../components/Ola';
 import Select from '../../components/Select'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
-import api from '../../utils/api'
+import {api} from '../../utils/api'
 import { uploadImage } from '../../utils/firebase'
 
 import { saveData, retrieveSessionData } from '../../utils/sessionStorage'
