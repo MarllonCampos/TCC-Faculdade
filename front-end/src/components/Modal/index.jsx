@@ -24,7 +24,7 @@ const Modal = ({
              <TextTitulo>{titulo}</TextTitulo>
              <TextConte>{conteudo}</TextConte>
            </Conteiner>
-           <A onClick={() => setIsModalVisible( !isModalVisible) }>
+           <A to="#" onClick={() => setIsModalVisible( !isModalVisible) }>
              Fechar
            </A>
          </Background>
