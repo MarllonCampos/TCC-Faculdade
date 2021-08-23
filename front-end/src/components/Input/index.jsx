@@ -17,6 +17,7 @@ const InputText = ({
   labelText,
   register,
   noIcon,
+  required,
   ...props
 }) => {
   const [isPasswordType, setIsPasswordType] = useState(true);
@@ -32,6 +33,7 @@ const InputText = ({
             placeholder={placeholder}
             ref={register}
             onChange={onChange}
+            required={required}
             type={isPasswordType ? "password" : "text"}
             {...props}
           />

@@ -10,7 +10,7 @@ const element = <FontAwesomeIcon icon={faFan} />
 
 const CardStatus = props => { 
 return (
-    <Container lastItem={props.lastItem} cor={props.cor}>
+    <Container to={{pathname:"/description-card", elements:props.elementos, icon:props.tipo}} lastItem={props.lastItem} cor={props.cor}>
         <RowTop>
             <Element>{props.tipo}</Element><FontAwesomeIcon icon={props.iconess}/>
         </RowTop>

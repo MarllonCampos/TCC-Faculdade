@@ -19,7 +19,7 @@ const Select = ({elements,label,labelText,onChange,ref, ...props}) => {
           <option selected disabled >Selecione uma Opção</option>
 
           {elements && elements.map(
-            (options) => <option value={String(options).split(" ")[0]}>{options}</option>
+            (options) => <option key={`${options}+${Math.random()}`} value={String(options).split(" ")[0]}>{options}</option>
             )
           }      
         </Input>

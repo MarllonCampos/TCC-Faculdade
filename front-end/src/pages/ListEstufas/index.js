@@ -1,30 +1,60 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import Card from '../../components/card'
 import Header from '../../components/Header'
 import { Conteiner } from "./styles"
-import {UserInfoContext} from '../../contexts/UserInfoContext'
-
+import { UserInfoContext } from '../../contexts/UserInfoContext'
 
 function ListEstufas() {
 
-    const {userName,greenerys} = useContext(UserInfoContext)
+    const { userName, greenerys } = useContext(UserInfoContext)
+
+    const [filtrarEstufa, setFiltrarEstufa] = useState(false);
+    const timeoutRef = useRef(null);
+
+    function SetDebounce(event, fn, delay) {
+        
+        window.clearTimeout(timeoutRef.current);
+        timeoutRef.current = window.setTimeout(() => {
+            console.log(event.target.value)
+            let debouncedValue = event.target.value.trim();
+            fn(debouncedValue);
+        }, delay);
+    }
 
     useEffect(() => {
-        console.log(userName,greenerys)
-    },[])
+        console.log(userName, greenerys)
+    }, [])
 
     return (
         <>
-        <Header icon />
-        <Conteiner>
-            <Card title="Estufa Jão" luz={true} ventilador={false} irrigacao={true} date="03/03/2021"/>
-            <Card title="Estufa Marllon" luz={true} ventilador={false} irrigacao={false} date="03/03/2021"/>
-            <Card title="Estufa Ruty" luz={false} ventilador={false} irrigacao={true} date="03/03/2021"/>
-            <Card title="Estufa Rafa" luz={true} ventilador={false} irrigacao={true} date="03/03/2021"/>
-            <Card title="Estufa Weza" luz={true} ventilador={false} irrigacao={true} date="03/03/2021"/>
-        </Conteiner>
+            <Header
+                onChange={(event) => SetDebounce(event, setFiltrarEstufa, 500)}
+                icon />
+            <Conteiner>
+                {filtrarEstufa ? greenerys.filter(estufa => estufa.nomeestufa.indexOf(filtrarEstufa) >= 0)
+                    .map(estufa => <Card
+                        title={estufa.nomeestufa}
+                        luz={estufa.elementos.filter(elemento => elemento.tipoelem == "Luz" && elemento.ativo != 0).length > 0}
+                        ventilador={estufa.elementos.filter(elemento => elemento.tipoelem == "Vento" && elemento.ativo != 0).length > 0}
+                        irrigacao={estufa.elementos.filter(elemento => elemento.tipoelem == "Água" && elemento.ativo != 0).length > 0}
+                        date={estufa.dataestufa || "00/00/00"}
+                        imagem={estufa.fotoestufa}
+                        titulo={estufa.nomeestufa}
+                        elementos={estufa.elementos}
+                    />)
+                    :
+                    greenerys.map(estufa => <Card title={estufa.nomeestufa}
+                        luz={estufa.elementos.filter(elemento => elemento.tipoelem == "Luz" && elemento.ativo != 0).length > 0}
+                        ventilador={estufa.elementos.filter(elemento => elemento.tipoelem == "Vento" && elemento.ativo != 0).length > 0}
+                        irrigacao={estufa.elementos.filter(elemento => elemento.tipoelem == "Água" && elemento.ativo != 0).length > 0}
+                        date={estufa.dataestufa || "00/00/00"}
+                        imagem={estufa.fotoestufa}
+                        titulo={estufa.nomeestufa}
+                        elementos={estufa.elementos}
+                    />)}
+            </Conteiner>
         </>
     )
-    
+
 }
 export default ListEstufas;

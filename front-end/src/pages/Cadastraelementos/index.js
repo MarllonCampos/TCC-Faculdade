@@ -1,66 +1,92 @@
-import React, {useEffect, useState } from "react";
-
-import { Conteiner,Title1,Title2, } from "./styles"
+import React, {useState, useEffect, Component} from "react";
+import { useForm } from "react-hook-form";
+import api from '../../utils/api'
+import Form from '../../components/Form';
+import { Conteiner,Title1,Title2, } from './styles'
 import Header from '../../components/Header'
 import Select from '../../components/Select'
 import Ola from '../../components/Ola'
 import InputText from '../../components/Input';
 import Button from '../../components/Button';
+import axios from "axios";
+
+
 
 
 
 
 function  CadastroElemento() {
-    const [selectState, setSelectState] = useState(false)
+   
+
+    const [portaelemnt, setportaelemnt] = useState(false)
 
     useEffect(() => {
-        if (selectState != false) {
-            console.log(selectState.target.value)
+        if (portaelemnt!= false) {
+           console.log(portaelemnt.target.name)
+            
 
         }
-    }, [selectState])
- 
-        
+    }, [portaelemnt])
     
 
-       const [dados, setDados] = useState({nome:''})
 
+
+    const [campos, setCampos] = useState({
+        
   
-     const handleInputChange = (event) => {
-          console.log(event.target.name)
-           console.log(event.target.value)
-          setDados({
-              ...dados,
-              [event.target.name] : event.target.value
-          })
-      }
-  
-      const enviarDados = (event) => {
-        event.preventDefault()
-        console.log('enviando dados...' + dados.nome+''+ selectState+'' )
+
+    });
+    function handleInputChange(event){
+        campos[event.target.name] = event.target.value;
+        setCampos(campos);
+    }
+    
+    function handleFormSubmit(event){
+        event.preventDefault();
+        console.log(campos);
     }
     return (
         <>
-        <Header icon/>
-        <Conteiner>
+        <Form onSubmit={handleFormSubmit}>
+           <Header  icon />
+          <Conteiner>
+          <Ola/>
+          <Title2>Elementos da Estufa</Title2>
+
+            
            
-        
-            <Ola/>
-            <Title1>Cadastro de Estufas </Title1>
-            <Title2>Elementos da Estufa</Title2>
-           
-            <InputText noIcon idFor="user" placeholder="Digite o nome do Elemento"
-             labelText="Nome do Elemento:" onChange={handleInputChange} name="nome" />
+            <InputText noIcon idFor="user" 
+            placeholder="Digite o nome do Elemento"
+            name="nomeelem"
+             type="text" 
+             labelText="Nome do Elemento:" 
+             onChange={handleInputChange}  />
+
             <Select   labelText="Tipo de elemento:"  
-             elements={["Lampada", "Ventilador","Agua"]} 
-             onChange={setSelectState} label="select"
+             name="tipoelemnt"
+             type="text"
+             idgreen="tipo"
+             option="Seleciona um elemento"
+             onChange={handleInputChange}
+             elements={["Agua","Ventilador","Lampada"]}
+   
+        />
+         
+
+            <Select     labelText="Tipo de Porta"  
+            name="tipoporta"
+            type="text"
+            idgreen="portaelemnt"
+             elements={[,1,2,3,4,5]} 
+             onChange={handleInputChange}
              />
-             
-            <Button onClick={enviarDados} >Cadastrar</Button>
-        </Conteiner>
-        
-        </>
+
+            <Button  >Cadastrar</Button>
+          </Conteiner>
+          </ Form>
+          </>
     )
-    
-}
-export default CadastroElemento;
+
+}    
+
+ export default CadastroElemento;
