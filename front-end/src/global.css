@@ -19,10 +19,11 @@ body {
     --primary:#064712;
     --secondary:#0B8722;
     --tertiary:#0EAD2B;
-    --quartiary:#10C732;
+    --quartiary:#10C731;
     --quintiary:#11D435;
     --text:#FFFFFF;
     --text-green:#0B8722;
     --dot-blue:#0FFF00;
     --dot-red: #FF4307;
+    --error-message:#D41111;
 }

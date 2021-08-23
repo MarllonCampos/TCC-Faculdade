@@ -1,7 +1,22 @@
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 import searchIcon from '../../assets/search-icon.svg'
 import closeIcon from '../../assets/close-icon.svg'
 import sidemenuIcon from '../../assets/sidemenu-icon.svg'
+
+
+const after = css`
+    top:0px;
+    transform:rotate(-45deg);
+    
+    
+    `;
+const before = css`
+    bottom:0px;
+    transform:rotate(45deg);
+    
+
+
+`;
 
 export const Container = styled.div`
     width:100%;
@@ -12,7 +27,8 @@ export const Container = styled.div`
 export const ContentWrapper = styled.div`
     margin:0 auto;
     height:100%;
-    max-width:600px;
+    padding-left:12px;
+    max-width:1024px;
     display:flex;
     align-items:center;
     background:var(--quartiary);
@@ -31,7 +47,6 @@ export const IconBusca = styled.div`
 
     height:100%;
 
-    margin-left:12px;
     background:url(${searchIcon}) no-repeat 10px 50%;
     background-size:25px;
 
@@ -53,7 +68,6 @@ export const InputContainer = styled.div`
     display:flex;
     align-items:center;
 
-    margin-left:12px;
     position:relative;
     background:white;
     animation-delay: 0.1s;
@@ -65,6 +79,7 @@ export const InputContainer = styled.div`
     @keyframes appear-input-transition {
 
         0% {
+            pointer-events: none;
             width:10px;
             opacity:0.2;
 
@@ -128,20 +143,78 @@ export const CloseIcon = styled.div`
 `;
 
 
-
-
-export const Sidemenu = styled.div`
+export const BurgerIconContainer= styled.div`
+    z-index:20;
     width:45px;
-    height:100%;
+    height:45px;
     position:absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    right:0px;
 
-    right:5px;
+    
 
-    background:url(${sidemenuIcon}) no-repeat center;
+`
+
+export const BurgerIcon = styled.div`
+    z-index:20;
+    width:22px;
+    height:4px;
+    background-color:${({openAnimation}) => (openAnimation == false && 'white')};
+    position:relative;
+
+
     background-size:25px;
+
+    transition:all .3s linear ;
+
+    &::before,&::after {
+        content:'';
+        width:22px;
+        height:4px;
+        display:block;
+        position:absolute;
+        background-color:white;
+    transition:all .3s linear ;
+
+
+    }
+
+
+    &::before {
+        bottom:8px;
+        ${({openAnimation}) => (openAnimation == true && before)}
+    }
+
+
+
+    &::after {
+        top:8px;
+        ${({openAnimation}) => (openAnimation == true && after)}
+    }
+  
+
+
 
 
 `;
 
 
+export const Sidemenu = styled.aside`
+    transition:right 0.3s ease ;
+    width:70vw;
+    height:100vh;
 
+
+    position:fixed;
+    background:#EDEFED;
+    z-index:10;
+    right:${({openAnimation}) => (openAnimation == false ? '-100vw' : '0vw')};;
+    top:0;
+    
+    @media (min-width:540px) {
+        max-width:500px;
+    }
+    max-width:400px;
+`;

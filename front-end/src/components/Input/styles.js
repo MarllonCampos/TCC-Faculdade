@@ -28,7 +28,7 @@ export const Container = styled.div`
 
 export const Label = styled.label`
     color:var(--text);
-    font-weight:400;
+    font-weight:600;
     padding-left:15px;
     font-family:Poppins,sans-serif;
 `;

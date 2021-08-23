@@ -19,7 +19,7 @@ export const HouseImage = styled.img`
 
 export const Text = styled.p`
     color:var(--text);
-    font-size:4rem;
+    font-size:2rem;
     font-family:Poppins;
     font-weight: bold;
 

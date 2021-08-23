@@ -6,14 +6,19 @@ import './global.css'
 import Base from './styles/generic/elements/Base';
 import Reset from './styles/generic/Reset';
 import {UserInfoProvider} from './contexts/UserInfoContext'
-
+import Store from './contexts/Store'
 ReactDOM.render(
   <React.StrictMode>
     <Reset />
     <Base />
     <UserInfoProvider>
-      <App />
+   
+    <App />
+    
     </UserInfoProvider>
+    
+     
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

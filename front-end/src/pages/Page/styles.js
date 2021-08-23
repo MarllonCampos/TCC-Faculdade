@@ -16,7 +16,7 @@ export const TituloBaixo = styled.p`
 
 export const Wrapper = styled.div`
     flex:1;
-    background-color: green;
+    background-color: var(--quartiary);
     width:100%;
 `
 
