@@ -6,10 +6,6 @@ import Page from './pages/Page'
 import CadastroEstufas from './pages/CadastroEstufa'
 import CadastroElemento from './pages/CadastroElemento'
 import EstufaAtiva from './pages/EstufaAtiva'
-import LoginEstufa from './pages/LoginEstufa'
-import Cadastro from './pages/LoginEstufa/Cadastro'
-import Recuperar from './pages/LoginEstufa/Recuperar'
-import Uploader from './pages/LoginEstufa/Uploader'
 import ListaEstufa from './pages/ListaEstufa'
 import Modal from './components/Modal'
 
@@ -24,10 +20,6 @@ function Routes() {
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
-        <Route path="/login-estufas" component={LoginEstufa} />
-        <Route path="/cadastro" component={Cadastro} />
-        <Route path="/recuperar" component={Recuperar} />
-        <Route path="/uploader-login" component={Uploader} />
       </Switch>
     </Router>
   )
