@@ -1,1 +1,0 @@
-web: gunicorn backend.server --pythonpath backend --preload -b 0.0.0.0:${PORT}
