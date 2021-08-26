@@ -5,7 +5,8 @@
     "nomeestufa": "Teste 1",
     "fotoestufa": "https://via.placeholder.com/150",
     "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
-    "elementos": [
+    "elementos": {
+      "sensores":[
       {
         "ativo": true,
         "nomeelem": "Luz",
@@ -14,14 +15,22 @@
       {
         "ativo": false,
         "nomeelem": "Irrigador",
-        "tipoelem": 1
+        "tipoelem": 2
       },
       {
         "ativo": true,
         "nomeelem": "Ventilador",
-        "tipoelem": 1
+        "tipoelem": 3
+      }
+    ],
+    "plantas": [
+      {
+       "nomeplanta":"TICARACATI",
+       "tipoelem":4 ,
+       "dataplanta":"Tue 21 Mar 2000 00:00:00 GMT"
       }
     ]
+  }
     },
     {
       "ativo": 1,
