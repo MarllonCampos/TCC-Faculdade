@@ -35,7 +35,11 @@ function Page({ title, color, border, ...props }) {
     const { userName, setUserName, greenerys, setGreenerys, imagem, setImagem } = useContext(UserInfoContext)
 
 
+    async function getApi(){
+        const response = await api.get("/")
 
+        console.log(response)
+    }
 
     useEffect(() => {
         setNumero([{ name: "Norte", status: true }, { name: "Sul", status: false }, { name: "Leste", status: true }, { name: "Oeste", status: false }])
@@ -162,7 +166,8 @@ function Page({ title, color, border, ...props }) {
 
                 <Button disabled={email.length === 0 || password.length === 0} onClick={handleClickLogin}>Cadastrar</Button>
 
-
+                <Button onClick={getApi}/>
+                
             </Wrapper>
         </Conteiner>
     )
