@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const config = {
-    baseURL: process.env.REACT_APP_API_URL === 'dev' ? 'http://localhost:3003' : 'https://backend-greenery.herokuapp.com',
+    baseURL: process.env.REACT_APP_LOCAL === 'dev' ? 'http://localhost:3003' : process.env.REACT_APP_API_URL,
     timeout: 20000,
 
 }
