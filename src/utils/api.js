@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-const backend = process.env.BACKEND === 'dev' ? 'http://localhost:3003' : 'https://backend-greenery.herokuapp.com'
+const config = {
+    baseURL: process.env.REACT_APP_API_URL === 'dev' ? 'http://localhost:3003' : 'https://backend-greenery.herokuapp.com',
+    timeout: 20000,
 
-const api = axios.create({
-    baseURL: backend,
-    timeout:20000,
-});
+}
+
+
+const api = axios.create(config);
 
 
 
