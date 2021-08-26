@@ -36,6 +36,13 @@ function Page({ title, color, border, ...props }) {
   const { userName, setUserName, greenerys, setGreenerys, imagem, setImagem } =
     useContext(UserInfoContext)
 
+
+  async function getApi(){
+    console.log(process.env.REACT_APP_API_URL)
+    const response = await api.get('/greenerys')
+    console.log (response)
+  }
+
   useEffect(() => {
     setNumero([
       { name: 'Norte', status: true },
@@ -165,6 +172,11 @@ function Page({ title, color, border, ...props }) {
           onClick={handleClickLogin}
         >
           Cadastrar
+        </Button>
+
+
+        <Button onClick={getApi}>
+          Fetch
         </Button>
       </Wrapper>
     </Conteiner>
