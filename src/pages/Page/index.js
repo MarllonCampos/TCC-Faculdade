@@ -38,7 +38,6 @@ function Page({ title, color, border, ...props }) {
 
 
   async function getApi(){
-    console.log(process.env.REACT_APP_API_URL)
     const response = await api.get('/greenerys')
     console.log (response)
   }
@@ -50,12 +49,7 @@ function Page({ title, color, border, ...props }) {
       { name: 'Leste', status: true },
       { name: 'Oeste', status: false }
     ])
-    console.log(imagem)
   }, [])
-
-  useEffect(() => {
-    console.log(url)
-  }, [url])
 
   const handleClickLogin = async () => {
     if (email == null || password == null)
