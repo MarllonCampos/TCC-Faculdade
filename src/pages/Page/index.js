@@ -39,7 +39,7 @@ function Page({ title, color, border, ...props }) {
 
   async function getApi(){
     const response = await api.get('/greenerys')
-    console.log (response)
+    console.log (process.env.REACT_APP_API_URL)
   }
 
   useEffect(() => {
