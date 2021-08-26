@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
-import Card from '../../components/card'
+import Card from '../../components/Card'
 import Header from '../../components/Header'
 import { Conteiner } from './styles'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
