@@ -36,6 +36,12 @@ function Page({ title, color, border, ...props }) {
   const { userName, setUserName, greenerys, setGreenerys, imagem, setImagem } =
     useContext(UserInfoContext)
 
+
+  async function getApi(){
+    const response = await api.get('/greenerys')
+    console.log (process.env.REACT_APP_API_URL)
+  }
+
   useEffect(() => {
     setNumero([
       { name: 'Norte', status: true },
@@ -43,12 +49,7 @@ function Page({ title, color, border, ...props }) {
       { name: 'Leste', status: true },
       { name: 'Oeste', status: false }
     ])
-    console.log(imagem)
   }, [])
-
-  useEffect(() => {
-    console.log(url)
-  }, [url])
 
   const handleClickLogin = async () => {
     if (email == null || password == null)
@@ -165,6 +166,11 @@ function Page({ title, color, border, ...props }) {
           onClick={handleClickLogin}
         >
           Cadastrar
+        </Button>
+
+
+        <Button onClick={getApi}>
+          Fetch
         </Button>
       </Wrapper>
     </Conteiner>
