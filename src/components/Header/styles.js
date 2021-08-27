@@ -14,15 +14,16 @@ const before = css`
 export const Container = styled.div`
   width: 100%;
   height: 55px;
-  background: var(--quartiary);
+  background: transparent;
 `;
 
 export const ContentWrapper = styled.div`
   margin: 0 auto;
   height: 100%;
-  padding-left: 12px;
+  padding:0 12px;
   max-width: 1024px;
   display: flex;
+  justify-content:space-between;
   align-items: center;
   background: var(--quartiary);
   position: relative;

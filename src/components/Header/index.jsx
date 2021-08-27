@@ -1,6 +1,8 @@
 import React, { useState  } from "react";
 import {useHistory} from 'react-router-dom'
 import {ArrowIosBack} from '@styled-icons/evaicons-solid/ArrowIosBack'
+import { PersonFill } from '@styled-icons/bootstrap/PersonFill'
+
 import {
   Container,
   ContentWrapper,
@@ -10,7 +12,7 @@ import {
   InputContainer,
 } from "./styles";
 
-function Header({ onChange,icon, ...props }) {
+function Header({ onChange,icon, goTo="", ...props }) {
   const history = useHistory();
   const [isInputShowing, setIsInputShowing] = useState(false);
   const [hasToWait, setHasToWait] = useState(false);
@@ -27,9 +29,15 @@ function Header({ onChange,icon, ...props }) {
     }, 280);
   }
 
+  function goToBack() {
+    if (goTo === '') {
+      history.goBack()
+    }
+    history.push(goTo)
+  }
 
   return (
-    <Container>
+    <Container {...props}>
       <ContentWrapper>
         {icon ? (
           isInputShowing ? (
@@ -41,8 +49,9 @@ function Header({ onChange,icon, ...props }) {
             <IconBusca onClick={openInput} />
           )
         ) : (
-          <ArrowIosBack onClick={history.goBack}size={38}/>
+          <ArrowIosBack cursor="pointer" onClick={goToBack} size={38} fill="#fff" />
         )}
+        <PersonFill cursor="pointer" onClick={() => history.push('/page')} size={38} fill="#fff"/>
       </ContentWrapper>
     </Container>
   );
