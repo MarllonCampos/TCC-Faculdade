@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import { Conteiner } from './styles'
