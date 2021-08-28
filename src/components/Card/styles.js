@@ -9,6 +9,7 @@ export const Conteiner = styled(Link)`
   width: 300px;
   height: 200px;
   margin-top: 20px;
+  text-decoration: none;
 
   & > div {
     flex: 1;
@@ -62,7 +63,7 @@ export const TextData = styled.p`
   font-size: 14px;
   font-weight: bolder;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-bottom: 10px;
 `
 
 export const TextoStatus = styled.p`

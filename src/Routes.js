@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Page from './pages/Page'
 
-import CadastroEstufas from './pages/CadastroEstufa'
+import CadastroEstufas from './pages/CadastroTipo'
 import CadastroElemento from './pages/CadastroElemento'
 import EstufaAtiva from './pages/EstufaAtiva'
 import ListaEstufa from './pages/ListaEstufa'
@@ -21,8 +21,7 @@ function Routes() {
         <Route path="/modal" component={Modal} />
 
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
-        <Route path="/cadastro-usuario" component={Cadastro} />
-        <Route path="/cadastro-estufas" component={CadastroEstufas} />
+        <Route path="/cadastro-tipo/:tipo" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
       </Switch>
     </Router>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
 import FotoHorta from '../../assets/horta.jpg'
@@ -7,15 +7,15 @@ import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatu
 
 function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem,estufaID ,...rest }) {
 
-    function SubtraiDatas(date) {
+
+    function SubtraiDatas() {
         const data = new Date();
-        console.log(date)
-        const dataCriacao = Date.parse(date)
+        const dataCriacao = new Date(date)
         console.log(dataCriacao)
         const diferencaDatas = Math.abs(data.getTime() - dataCriacao.getTime());
         const dataCriacaoFinal = Math.ceil(diferencaDatas / ( 1000 *  60 * 60 * 24));
 
-       return `Tempo de vida: ${dataCriacaoFinal}`
+        return dataCriacaoFinal
       }
 
     return (
@@ -54,7 +54,7 @@ function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem,estufa
                     {/lista-estufas/.test(window.location.href) ?
                     `Criado em: ${date}`
                     :
-                       (() => SubtraiDatas(date))
+                       `Tempo de vida: ${SubtraiDatas()} Dias`
                     }
                 </TextData>
             </Coluna>
