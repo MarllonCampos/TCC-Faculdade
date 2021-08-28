@@ -12,7 +12,7 @@ import {
   InputContainer,
 } from "./styles";
 
-function Header({ onChange,icon, goTo="", ...props }) {
+function Header({ onChange,icon, goTo="", noPerson, ...props }) {
   const history = useHistory();
   const [isInputShowing, setIsInputShowing] = useState(false);
   const [hasToWait, setHasToWait] = useState(false);
@@ -51,7 +51,8 @@ function Header({ onChange,icon, goTo="", ...props }) {
         ) : (
           <ArrowIosBack cursor="pointer" onClick={goToBack} size={38} fill="#fff" />
         )}
-        <PersonFill cursor="pointer" onClick={() => history.push('/page')} size={38} fill="#fff"/>
+        {!noPerson && (<PersonFill cursor="pointer" onClick={() => history.push('/page')} size={38} fill="#fff"/>)}
+        
       </ContentWrapper>
     </Container>
   );
