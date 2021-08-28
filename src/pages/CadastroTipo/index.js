@@ -35,28 +35,30 @@ function CadastroEstufa() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit(newUser)}>
-        <Header icon />
-        <Conteiner>
-          <Ola />
-          <Title1>Cadastro de Estufas </Title1>
+      <Header icon />
 
+      <Conteiner>
+        <Ola style={{ marginTop: '-60px' }} />
+
+        <Title1>Cadastro de Plantas </Title1>
+
+        <Form onSubmit={handleSubmit(newUser)}>
           <InputText
             noIcon
-            idFor="user"
-            placeholder="Digite o nome da Estufa"
-            name="nomeestufa"
+            idFor="planta"
+            placeholder="Digite o nome da Planta"
+            name="nomePlanta"
             type="text"
-            labelText="Nome da Estufa:"
+            labelText="Nome da Planta:"
             register={register}
           />
 
-          <Button onClick={testeCliqueBotao} style={{ marginTop: '25px' }}>
+          <Button type="submit" style={{ marginTop: '25px' }}>
             Cadastrar
           </Button>
-        </Conteiner>
-      </Form>
+        </Form>
+      </Conteiner>
     </>
   )
 }
-export default CadastroEstufa
+export default CadastroTipo
