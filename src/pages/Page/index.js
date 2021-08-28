@@ -124,7 +124,8 @@ function Page({ title, color, border, ...props }) {
         {userName && (
           <GridContainer>
             <GridItem to="cadastra-elementos">Cadastra Elementos</GridItem>
-            <GridItem to="cadastro-estufas">Cadastro Estufa</GridItem>
+            <GridItem to="cadastro-tipo/estufa">Cadastro Estufa</GridItem>
+            <GridItem to="cadastro-tipo/planta">Cadastro Planta</GridItem>
             <GridItem to="estufa-ativa">Estufa Ativa</GridItem>
             <GridItem to="list-estufas">List Estufas</GridItem>
             <GridItem to="login-estufas">Login Estufa</GridItem>
