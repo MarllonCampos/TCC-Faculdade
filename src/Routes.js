@@ -9,6 +9,7 @@ import EstufaAtiva from './pages/EstufaAtiva'
 import ListaEstufa from './pages/ListaEstufa'
 import Modal from './components/Modal'
 import Cadastro from './pages/CadastroUsuario'
+import { PainelElementos } from './pages/PainelElementos/styles'
 
 function Routes() {
   return (
@@ -22,6 +23,7 @@ function Routes() {
         <Route path="/cadastro-usuario" component={Cadastro} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
+        <Route path="/painel-elementos" component={PainelElementos} />
       </Switch>
     </Router>
   )
