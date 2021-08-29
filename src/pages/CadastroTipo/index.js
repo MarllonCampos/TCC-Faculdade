@@ -35,7 +35,7 @@ function CadastroEstufa() {
 
   return (
     <>
-      <Header icon />
+      <Header />
 
       <Conteiner>
         <Ola style={{ marginTop: '-60px' }} />
