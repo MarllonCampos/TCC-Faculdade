@@ -41,7 +41,7 @@ function CadastroTipo() {
 
   return (
     <>
-      <Header icon />
+      <Header />
 
       <Conteiner>
         <Ola style={{ marginTop: '-60px' }} />
