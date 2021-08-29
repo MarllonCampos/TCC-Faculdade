@@ -25,29 +25,30 @@
     },
     {
       "ativo": 1,
-    "id": 2,
-    "nomeestufa": "Teste 2",
-    "fotoestufa": "https://via.placeholder.com/150",
-    "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
-    "elementos": [
-      {
-        "ativo": true,
-        "nomeelem": "Luz",
-        "tipoelem": 1
-      },
-      {
-        "ativo": false,
-        "nomeelem": "Irrigador",
-        "tipoelem": 1
-      },
-      {
-        "ativo": true,
-        "nomeelem": "Ventilador",
-        "tipoelem": 1
-      }
-    ]
+      "id": 2,
+      "nomeestufa": "Teste 2",
+      "fotoestufa": "https://via.placeholder.com/150",
+      "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
+      "elementos": [
+        {
+          "ativo": true,
+          "nomeelem": "Luz",
+          "tipoelem": 1
+        },
+        {
+          "ativo": false,
+          "nomeelem": "Irrigador",
+          "tipoelem": 1
+        },
+        {
+          "ativo": true,
+          "nomeelem": "Ventilador",
+          "tipoelem": 1
+        }
+      ]
     },
-    {"ativo": 1,
+    {
+      "ativo": 1,
       "id": 3,
       "nomeestufa": "Teste 3",
       "fotoestufa": "https://via.placeholder.com/150",
@@ -68,7 +69,21 @@
           "nomeelem": "Ventilador",
           "tipoelem": 1
         }
-      ]}
+      ]
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Nome Usuári",
+      "senha": "senha",
+      "email": "emailvalido@email.com"
+    },
+    {
+      "nome": "Marllon Campos",
+      "senha": "senha",
+      "email": "marlloncampos@hotmail.com",
+      "id": 2
+    }
   ]
-  
 }
