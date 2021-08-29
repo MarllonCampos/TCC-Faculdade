@@ -23,13 +23,6 @@
             "nomeelem": "Ventilador",
             "tipoelem": 3
           }
-        ],
-        "plantas": [
-          {
-            "nomeplanta": "TICARACATI",
-            "tipoelem": 4,
-            "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT"
-          }
         ]
       }
     },
@@ -94,6 +87,34 @@
       "senha": "senha",
       "email": "marlloncampos@hotmail.com",
       "id": 2
+    }
+  ],
+  "plantas": [
+    {
+      "id":1,
+      "idUser":3,
+      "nomeplanta": "TICARACATI",
+      "tipoelem": 4,
+      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
+      "imagem":"https://via.placeholder.com/150"
+    },
+    {
+      "id":2,
+      "idUser":3,
+      "nomeplanta": "TICARACATI",
+      "tipoelem": 4,
+      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
+      "imagem":"https://via.placeholder.com/350"
+
+    },
+    {
+      "id":3,
+      "idUser":3,
+      "nomeplanta": "TICARACATI",
+      "tipoelem": 4,
+      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
+      "imagem":"https://via.placeholder.com/450"
+
     }
   ]
 }
