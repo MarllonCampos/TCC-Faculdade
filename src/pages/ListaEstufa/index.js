@@ -3,6 +3,7 @@ import Card from '../../components/Card'
 import Header from '../../components/Header'
 import { Conteiner } from './styles'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
+import { BotaoMais } from '../../components/BotaoMais'
 
 function ListaEstufa() {
   const { userName, greenerys } = useContext(UserInfoContext)
@@ -87,6 +88,8 @@ function ListaEstufa() {
                 elementos={estufa.elementos}
               />
             ))}
+
+            <BotaoMais color="green"/>
       </Conteiner>
     </>
   )
