@@ -4,9 +4,26 @@ import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
 import FotoHorta from '../../assets/horta.jpg'
 
 import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatus } from "./styles"
+import useLongPress from '../../utils/useLongPress'
 
-function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem,estufaID ,...rest }) {
+function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,imagem,estufaID ,...rest }) {
+    const [dataDiff,setDataDiff]= useState('')
+    function cliqueLongo(){
+        console.log("clique longo")
+    }
+    function cliqueCurto(){
+        console.log('clque curto')
+    }
+     const configCliqueLongo = {
+        PreventDefault: true,
+        delay: 1500
+        
+     }
+    const eventoCliqueLongo = useLongPress(cliqueLongo, cliqueCurto, configCliqueLongo)
 
+    useEffect(()=>{
+        SubtraiDatas()
+    },[date])
 
     function SubtraiDatas() {
         const data = new Date();
@@ -15,16 +32,16 @@ function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem,estufa
         const diferencaDatas = Math.abs(data.getTime() - dataCriacao.getTime());
         const dataCriacaoFinal = Math.ceil(diferencaDatas / ( 1000 *  60 * 60 * 24));
 
-        return dataCriacaoFinal
-      }
+        setDataDiff(dataCriacaoFinal)
+    }
+
 
     return (
-        <Conteiner to={{
-            pathname: `estufa-ativa/${estufaID}`,
-            elemento: elementos,
-            image: imagem,
-            titulo: title,
-            }}>
+        <Conteiner {...rest}
+        {...eventoCliqueLongo}
+        
+
+        >
             <Image src={FotoHorta} />
             <Coluna>
                 <TextoStatus>
@@ -54,7 +71,7 @@ function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem,estufa
                     {/lista-estufas/.test(window.location.href) ?
                     `Criado em: ${date}`
                     :
-                       `Tempo de vida: ${SubtraiDatas()} Dias`
+                       `Tempo de vida: ${dataDiff} Dias`
                     }
                 </TextData>
             </Coluna>
