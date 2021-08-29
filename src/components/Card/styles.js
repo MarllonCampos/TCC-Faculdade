@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
-export const Conteiner = styled(Link)`
+export const Conteiner = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: 10px;
@@ -13,6 +12,10 @@ export const Conteiner = styled(Link)`
 
   & > div {
     flex: 1;
+  }
+
+  & > * {
+    pointer-events: none;
   }
 `
 
