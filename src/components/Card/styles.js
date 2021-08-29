@@ -9,6 +9,7 @@ export const Conteiner = styled.div`
   height: 200px;
   margin-top: 20px;
   text-decoration: none;
+  background-color: white;
 
   & > div {
     flex: 1;
@@ -63,16 +64,18 @@ export const OnOff = styled.p`
 
 export const TextData = styled.p`
   color: rgb(13, 139, 41);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bolder;
   margin-left: 10px;
   margin-bottom: 10px;
 `
 
-export const TextoStatus = styled.p`
+export const Titulo = styled.p`
   font-weight: bolder;
   color: rgb(0, 5, 0);
   font-size: x-large;
   text-align: center;
   padding: 10px;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 `
