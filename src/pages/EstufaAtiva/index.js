@@ -12,7 +12,7 @@ import Title from '../../components/Title'
 import CardStatus from '../../components/CardDetalhe'
 import FotoHorta from '../../assets/horta.jpg'
 
-import { retrieveSessionData } from '../../utils/sessionStorage'
+// import { retrieveSessionData } from '../../utils/sessionStorage'
 import { Conteiner, ImageHorta, ConteinerGrid, Back } from './styles'
 
 function EstufaAtiva() {
@@ -32,8 +32,8 @@ function EstufaAtiva() {
 
   useEffect(() => {
     if (!estadoElemento) {
-      const elementosCompleto = retrieveSessionData('greeneryData')
-      console.log(elementosCompleto)
+      // const elementosCompleto = retrieveSessionData('greeneryData')
+      // console.log(elementosCompleto)
     }
     setFiltroLuz(estadoElemento.filter(el => el.tipoelem == 'Luz'))
     setFiltroAgua(estadoElemento.filter(el => el.tipoelem == 'Água'))
