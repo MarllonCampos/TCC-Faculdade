@@ -22,6 +22,7 @@ function Routes() {
         <Route path="/modal" component={Modal} />
 
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
+        <Route path="/login-usuario" component={LoginUsuario} />
         <Route path="/cadastro-usuario" component={Cadastro} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-tipo/:tipo" component={CadastroEstufas} />
