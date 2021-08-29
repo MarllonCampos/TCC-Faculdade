@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLightbulb, faFan, faWater } from '@fortawesome/free-solid-svg-icons'
 import FotoHorta from '../../assets/horta.jpg'
 
-import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, TextoStatus } from "./styles"
+import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, Titulo } from "./styles"
 import useLongPress from '../../utils/useLongPress'
 
 function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,imagem,estufaID ,...rest }) {
@@ -44,9 +44,9 @@ function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,image
         >
             <Image src={FotoHorta} />
             <Coluna>
-                <TextoStatus>
+                <Titulo>
                     {title}
-                </TextoStatus>
+                </Titulo>
                 <div>
                 {luz && (<Luz>
                     <FontAwesomeIcon style={{ color: "#11f024" }} icon={faLightbulb} />
