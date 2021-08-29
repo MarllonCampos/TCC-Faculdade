@@ -9,6 +9,8 @@ import EstufaAtiva from './pages/EstufaAtiva'
 import ListaEstufa from './pages/ListaEstufa'
 import Modal from './components/Modal'
 import Cadastro from './pages/CadastroUsuario'
+import RecuperarSenha from './pages/RecuperarSenha'
+import Recuperar from './pages/RecuperarSenha/Recuperar'
 
 function Routes() {
   return (
@@ -20,6 +22,8 @@ function Routes() {
 
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
         <Route path="/cadastro-usuario" component={Cadastro} />
+        <Route path="/recuperar-senha" component={RecuperarSenha} />
+        <Route path="/recuperar" component={Recuperar} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
       </Switch>
