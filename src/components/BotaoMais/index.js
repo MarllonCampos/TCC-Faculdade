@@ -10,6 +10,7 @@ export function BotaoMais({color="white",to,...props}) {
   return (
     <Link to={to}>
       <img 
+        {...props}
         style={{
             width:42,
             height:42,
@@ -22,10 +23,3 @@ export function BotaoMais({color="white",to,...props}) {
     </Link>
   )
 }
-
-
-
-
-
-
-
