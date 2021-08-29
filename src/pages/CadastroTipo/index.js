@@ -11,6 +11,9 @@ import Ola from '../../components/Ola'
 import InputText from '../../components/Input'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
+import { useParams } from 'react-router-dom'
+import { localData } from '../../utils/localStorage'
+import { api } from '../../utils/api'
 
 import ReactSwal from 'sweetalert2'
 
@@ -21,16 +24,28 @@ function CadastroEstufa() {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema)
   })
-  const newUser = user => {
-    console.log(user)
-  }
-
-  async function testeCliqueBotao() {
-    ReactSwal.fire({
-      icon: 'success',
-      title: 'Sucessoo',
-      text: 'Estufa cadastrada com sucesso'
-    })
+  async function newUser(tipoCadastro, ...rest) {
+    const userInfo = localData('userInfo')
+    console.log(userInfo)
+    const email = userInfo.email
+    console.log(email)
+    if (tipo == 'estufa') {
+      console.log('Criar Estufa', tipoCadastro.nomeEstufa)
+      const resposta = await api.post(
+        '/estufas',
+        {
+          nomeEstufa: tipoCadastro.nomeEstufa
+        },
+        { headers: { 'User-Email': email } }
+      )
+      console.log(resposta)
+    } else {
+      console.log('Criar Planta', tipoCadastro.nomePlanta)
+      const resposta = await api.post('/plantas', {
+        nomePlanta: tipoCadastro.nomePlanta
+      })
+      console.log(resposta)
+    }
   }
 
   return (
