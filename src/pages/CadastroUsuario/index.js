@@ -4,11 +4,14 @@ import Title from "../../components/Title";
 import Button from "../../components/Button";
 
 import Form from "../../components/Form";
+import { api } from "../../utils/api";
+import axios from "axios";
 
 import Main from "../../components/Main";
 import Ola from "../../components/Ola";
 import InputText from "../../components/Input";
-import { Span } from "./styles"
+import { Span } from "./styles";
+import { Windows } from "@styled-icons/simple-icons";
 
 //Validação de Usuario
 function useFormik({ initialValues, validate }) {
@@ -16,7 +19,7 @@ function useFormik({ initialValues, validate }) {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState(initialValues);
 
-  useEffect(() => {   
+  useEffect(() => {
     validateValues(values);
   }, [values]);
 
@@ -53,6 +56,14 @@ function useFormik({ initialValues, validate }) {
 }
 
 function Cadastro() {
+  async function handleSubmit() {
+    const response = await api.post("/client", formik.values);
+    if (response.status === 201) {
+      alert("Cadastrado");
+    } else {
+      alert("erro ao cadatra o usuario");
+    }
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -60,7 +71,6 @@ function Cadastro() {
       senha: "",
       confirmaSenha: "",
       nome: "",
-
     },
     validate: function (values) {
       const errors = {};
@@ -86,11 +96,8 @@ function Cadastro() {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          console.log(formik.values);
-
         }}
-
-        style={{textAlign:"center"}}
+        style={{ textAlign: "center" }}
       >
         <Ola></Ola>
         <Title title="Faça seu cadastro" />
@@ -102,13 +109,9 @@ function Cadastro() {
             id="nome"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            value={formik.values.nome}
+            value={formik.values.name}
           />
-
         </div>
-
-
-
         <InputText
           labelText="Senha:"
           type="text"
@@ -118,10 +121,9 @@ function Cadastro() {
           onChange={formik.handleChange}
           value={formik.values.senha}
         />
-        {formik.touched.senha && formik.errors.senha && <Span>{formik.errors.senha}</Span>}
-
-
-
+        {formik.touched.senha && formik.errors.senha && (
+          <Span>{formik.errors.senha}</Span>
+        )}
         <InputText
           labelText="Confirmar Senha:"
           type="text"
@@ -131,11 +133,9 @@ function Cadastro() {
           onChange={formik.handleChange}
           value={formik.values.confirmaSenha}
         />
-        {formik.touched.senha && formik.errors.confirmaSenha && <Span>{formik.errors.confirmaSenha}</Span>}
-
-
-
-
+        {formik.touched.senha && formik.errors.confirmaSenha && (
+          <Span>{formik.errors.confirmaSenha}</Span>
+        )}
         <InputText
           labelText="Email:"
           noIcon="true"
@@ -146,16 +146,21 @@ function Cadastro() {
           onChange={formik.handleChange}
           value={formik.values.email}
         />
-        {formik.touched.email && formik.errors.email && <Span >{formik.errors.email}</Span>}
-
-
-
-
-        <Button>
-          <A href="#">Register</A>
+        {formik.touched.email && formik.errors.email && (
+          <Span>{formik.errors.email}</Span>
+        )}
+        <Button
+          disabled={
+            formik.values.email.length === 0 || formik.values.senha.length === 0
+          }
+        >
+          <A onClick={handleSubmit} href="#">
+            Register
+          </A>
         </Button>
       </Form>
     </Main>
   );
 }
 export default Cadastro;
+
