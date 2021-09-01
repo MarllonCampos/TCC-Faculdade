@@ -33,8 +33,9 @@ function ListaEstufa() {
         {filtrarEstufa
           ? greenerys
               .filter(estufa => estufa.nomeestufa.indexOf(filtrarEstufa) >= 0)
-              .map(estufa => (
+              .map((estufa, index) => (
                 <Card
+                  key={`${estufa.nomestufa}-${index}`}
                   title={estufa.nomeestufa}
                   irrigacao={
                     estufa.elementos.filter(
@@ -60,8 +61,9 @@ function ListaEstufa() {
                   elementos={estufa.elementos}
                 />
               ))
-          : greenerys.map(estufa => (
+          : greenerys.map((estufa, index) => (
               <Card
+                key={`${estufa.nomestufa}-${index}`}
                 title={estufa.nomeestufa}
                 irrigacao={
                   estufa.elementos.filter(
