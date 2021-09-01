@@ -48,6 +48,12 @@ function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,image
                     {title}
                 </Titulo>
                 <div>
+                {irrigacao && (<Agua>
+                    <FontAwesomeIcon style={{ color: "#0000ff" }} icon={faWater} />
+                    <OnOff status={irrigacao}>
+                        {irrigacao ? "Ativo" : "Desativado"}
+                    </OnOff>
+                </Agua>)}
                 {luz && (<Luz>
                     <FontAwesomeIcon style={{ color: "#11f024" }} icon={faLightbulb} />
                     <OnOff status={luz}>
@@ -60,12 +66,6 @@ function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,image
                         {ventilador ? "Ativo" : "Desativado"}
                     </OnOff>
                 </Vento>)}
-                {irrigacao && (<Agua>
-                    <FontAwesomeIcon style={{ color: "#0000ff" }} icon={faWater} />
-                    <OnOff status={irrigacao}>
-                        {irrigacao ? "Ativo" : "Desativado"}
-                    </OnOff>
-                </Agua>)}
                 </div>
                 <TextData>
                     {/lista-estufas/.test(window.location.href) ?

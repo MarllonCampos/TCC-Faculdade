@@ -36,6 +36,12 @@ function ListaEstufa() {
               .map(estufa => (
                 <Card
                   title={estufa.nomeestufa}
+                  irrigacao={
+                    estufa.elementos.filter(
+                      elemento =>
+                        elemento.tipoelem == 'Água' && elemento.ativo != 0
+                    ).length > 0
+                  }
                   luz={
                     estufa.elementos.filter(
                       elemento =>
@@ -48,12 +54,6 @@ function ListaEstufa() {
                         elemento.tipoelem == 'Vento' && elemento.ativo != 0
                     ).length > 0
                   }
-                  irrigacao={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Água' && elemento.ativo != 0
-                    ).length > 0
-                  }
                   date={estufa.dataestufa || '00/00/00'}
                   imagem={estufa.fotoestufa}
                   titulo={estufa.nomeestufa}
@@ -63,6 +63,12 @@ function ListaEstufa() {
           : greenerys.map(estufa => (
               <Card
                 title={estufa.nomeestufa}
+                irrigacao={
+                  estufa.elementos.filter(
+                    elemento =>
+                      elemento.tipoelem == 'Água' && elemento.ativo != 0
+                  ).length > 0
+                }
                 luz={
                   estufa.elementos.filter(
                     elemento =>
@@ -73,12 +79,6 @@ function ListaEstufa() {
                   estufa.elementos.filter(
                     elemento =>
                       elemento.tipoelem == 'Vento' && elemento.ativo != 0
-                  ).length > 0
-                }
-                irrigacao={
-                  estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Água' && elemento.ativo != 0
                   ).length > 0
                 }
                 date={estufa.dataestufa || '00/00/00'}
