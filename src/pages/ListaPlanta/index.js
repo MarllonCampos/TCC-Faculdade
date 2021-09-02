@@ -35,7 +35,7 @@ function ListaPlanta() {
             imagem={planta.imagem}
           />
         ))}
-        <BotaoMais to="" />
+        <BotaoMais to="cadastro-tipo/planta" />
       </Conteiner>
     </>
   )

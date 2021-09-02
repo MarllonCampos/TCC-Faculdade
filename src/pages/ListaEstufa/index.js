@@ -26,10 +26,7 @@ function ListaEstufa() {
 
   return (
     <>
-      <Header
-        onChange={event => SetDebounce(event, setFiltrarEstufa, 500)}
-        icon
-      />
+      <Header />
       <Conteiner>
         {filtrarEstufa
           ? greenerys
@@ -90,7 +87,7 @@ function ListaEstufa() {
                 elementos={estufa.elementos}
               />
             ))}
-        <BotaoMais color="green" to="" />
+        <BotaoMais color="green" to="cadastro-tipo/estufa" />
       </Conteiner>
     </>
   )
