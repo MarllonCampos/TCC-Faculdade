@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react'
 import Card from '../../components/card'
 import Header from '../../components/Header'
 import { Conteiner } from './styles'
+import BotaoMais from '../../components/BotaoMais'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
 
 function ListaEstufa() {
@@ -89,6 +90,7 @@ function ListaEstufa() {
                 elementos={estufa.elementos}
               />
             ))}
+        <BotaoMais color="green" to="" />
       </Conteiner>
     </>
   )

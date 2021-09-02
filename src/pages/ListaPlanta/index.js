@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
+import BotaoMais from '../../components/BotaoMais'
 import { Conteiner } from './styles'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
 import { api } from '../../utils/api'
@@ -34,8 +35,7 @@ function ListaPlanta() {
             imagem={planta.imagem}
           />
         ))}
-
-        <Link to="cadastro-tipo/planta">+</Link>
+        <BotaoMais to="" />
       </Conteiner>
     </>
   )
