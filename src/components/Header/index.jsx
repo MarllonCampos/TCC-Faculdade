@@ -1,6 +1,8 @@
 import React, { useState  } from "react";
 import {useHistory} from 'react-router-dom'
 import {ArrowIosBack} from '@styled-icons/evaicons-solid/ArrowIosBack'
+import { PersonFill } from '@styled-icons/bootstrap/PersonFill'
+
 import {
   Container,
   ContentWrapper,
@@ -8,16 +10,11 @@ import {
   Input,
   CloseIcon,
   InputContainer,
-  BurgerIconContainer,
-  BurgerIcon,
-  Sidemenu,
-  SidemenuContainer,
 } from "./styles";
 
-function Header({ onChange,icon, ...props }) {
+function Header({ onChange,icon, goTo="", noPerson, ...props }) {
   const history = useHistory();
   const [isInputShowing, setIsInputShowing] = useState(false);
-  const [isSidemenuShowing, setIsSidemenuShowing] = useState(false);
   const [hasToWait, setHasToWait] = useState(false);
 
   function openInput() {
@@ -32,9 +29,15 @@ function Header({ onChange,icon, ...props }) {
     }, 280);
   }
 
+  function goToBack() {
+    if (goTo === '') {
+      history.goBack()
+    }
+    history.push(goTo)
+  }
 
   return (
-    <Container>
+    <Container {...props}>
       <ContentWrapper>
         {icon ? (
           isInputShowing ? (
@@ -46,21 +49,10 @@ function Header({ onChange,icon, ...props }) {
             <IconBusca onClick={openInput} />
           )
         ) : (
-          <ArrowIosBack onClick={history.goBack}size={38}/>
+          <ArrowIosBack cursor="pointer" onClick={goToBack} size={38} fill="#fff" />
         )}
-      <BurgerIconContainer  onClick={() => setIsSidemenuShowing(!isSidemenuShowing)} >
-        <BurgerIcon
-          openAnimation={isSidemenuShowing}
-         
-        />
-      </BurgerIconContainer>
-        <Sidemenu openAnimation={isSidemenuShowing}>
-          <div style={{padding:'3%', backgroundColor:'#0B8722',display:'flex', alignItems:'center',  paddingRight:'45px' }}>
-            <img style={{borderRadius:'50%',}}src="https://via.placeholder.com/45/45" />
-            <p style={{marginLeft:'10px'}}>Marllon Campos</p>
-          </div>
-
-        </Sidemenu>
+        {!noPerson && (<PersonFill cursor="pointer" onClick={() => history.push('/page')} size={38} fill="#fff"/>)}
+        
       </ContentWrapper>
     </Container>
   );
