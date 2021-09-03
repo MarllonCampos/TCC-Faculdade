@@ -28,66 +28,31 @@ function ListaEstufa() {
     <>
       <Header />
       <Conteiner>
-        {filtrarEstufa
-          ? greenerys
-              .filter(estufa => estufa.nomeestufa.indexOf(filtrarEstufa) >= 0)
-              .map((estufa, index) => (
-                <Card
-                  key={`${estufa.nomestufa}-${index}`}
-                  title={estufa.nomeestufa}
-                  irrigacao={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Água' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  luz={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Luz' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  ventilador={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Vento' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  date={estufa.dataestufa || '00/00/00'}
-                  imagem={estufa.fotoestufa}
-                  titulo={estufa.nomeestufa}
-                  elementos={estufa.elementos}
-                />
-              ))
-          : greenerys.map((estufa, index) => (
-              <Card
-                key={`${estufa.nomestufa}-${index}`}
-                title={estufa.nomeestufa}
-                irrigacao={
-                  estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Água' && elemento.ativo != 0
-                  ).length > 0
-                }
-                luz={
-                  estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Luz' && elemento.ativo != 0
-                  ).length > 0
-                }
-                ventilador={
-                  estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Vento' && elemento.ativo != 0
-                  ).length > 0
-                }
-                date={estufa.dataestufa || '00/00/00'}
-                imagem={estufa.fotoestufa}
-                titulo={estufa.nomeestufa}
-                elementos={estufa.elementos}
-              />
-            ))}
-        <BotaoMais color="green" to="cadastro-tipo/estufa" />
+        {greenerys.map((estufa, index) => (
+          <Card
+            key={`${estufa.nomestufa}-${index}`}
+            title={estufa.nomeestufa}
+            irrigacao={
+              estufa.elementos.filter(
+                elemento => elemento.tipoelem == 'Água' && elemento.ativo != 0
+              ).length > 0
+            }
+            luz={
+              estufa.elementos.filter(
+                elemento => elemento.tipoelem == 'Luz' && elemento.ativo != 0
+              ).length > 0
+            }
+            ventilador={
+              estufa.elementos.filter(
+                elemento => elemento.tipoelem == 'Vento' && elemento.ativo != 0
+              ).length > 0
+            }
+            date={estufa.dataestufa || '00/00/00'}
+            imagem={estufa.fotoestufa}
+            titulo={estufa.nomeestufa}
+            elementos={estufa.elementos}
+          />
+        ))}
       </Conteiner>
     </>
   )
