@@ -47,25 +47,26 @@ function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,image
                 <Titulo>
                     {title}
                 </Titulo>
-                <div>
-                {irrigacao && (<Agua>
-                    <FontAwesomeIcon style={{ color: "#0000ff" }} icon={faWater} />
-                    <OnOff status={irrigacao}>
-                        {irrigacao ? "Ativo" : "Desativado"}
-                    </OnOff>
-                </Agua>)}
-                {luz && (<Luz>
-                    <FontAwesomeIcon style={{ color: "#11f024" }} icon={faLightbulb} />
-                    <OnOff status={luz}>
-                        {luz == true ? "Ativo" : "Desativado"}
-                    </OnOff>
-                </Luz>)}
-                {ventilador && (<Vento>
-                    <FontAwesomeIcon style={{ color: "#ffff00" }} icon={faFan} />
-                    <OnOff status={ventilador}>
-                        {ventilador ? "Ativo" : "Desativado"}
-                    </OnOff>
-                </Vento>)}
+                <div style={{textAlign: `center`}}>
+                    {irrigacao && (<Agua>
+                        <FontAwesomeIcon style={{ color: "#0000ff" }} icon={faWater} />
+                        <OnOff status={irrigacao}>
+                            {irrigacao ? "Ativo" : "Desativado"}
+                        </OnOff>
+                    </Agua>)}
+                    {luz && (<Luz>
+                        <FontAwesomeIcon style={{ color: "#11f024" }} icon={faLightbulb} />
+                        <OnOff status={luz}>
+                            {luz == true ? "Ativo" : "Desativado"}
+                        </OnOff>
+                    </Luz>)}
+                    {ventilador && (<Vento>
+                        <FontAwesomeIcon style={{ color: "#ffff00" }} icon={faFan} />
+                        <OnOff status={ventilador}>
+                            {ventilador ? "Ativo" : "Desativado"}
+                        </OnOff>
+                    </Vento>)}
+                    {!irrigacao && !luz && !ventilador && (<span style={{color:'red'}} >Não há nenhum elemento ativo.</span>)}
                 </div>
                 <TextData>
                     {/lista-estufas/.test(window.location.href) ?
