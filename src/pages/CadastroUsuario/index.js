@@ -12,6 +12,7 @@ import Ola from "../../components/Ola";
 import InputText from "../../components/Input";
 import { Span } from "./styles";
 import { Windows } from "@styled-icons/simple-icons";
+import swal from 'sweetalert';
 
 //Validação de Usuario
 function useFormik({ initialValues, validate }) {
@@ -59,9 +60,9 @@ function Cadastro() {
   async function handleSubmit() {
     const response = await api.post("/client", formik.values);
     if (response.status === 201) {
-      alert("Cadastrado");
+      swal("Sucesso!", "Seu cadastro foi realizado com sucesso!", "success");
     } else {
-      alert("erro ao cadatra o usuario");
+      swal("Error!", "Error em realizar o cadastro!", "warning");
     }
   }
 
@@ -150,13 +151,12 @@ function Cadastro() {
           <Span>{formik.errors.email}</Span>
         )}
         <Button
+         onClick={handleSubmit} href="#"
           disabled={
-            formik.values.email.length === 0 || formik.values.senha.length === 0
-          }
-        >
-          <A onClick={handleSubmit} href="#">
-            Register
-          </A>
+            formik.values.email.length === 0 || formik.values.senha.length < 8 ||  formik.values.confirmaSenha !== formik.values.senha }
+            >
+          
+          Registro
         </Button>
       </Form>
     </Main>
