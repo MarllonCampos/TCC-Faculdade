@@ -51,7 +51,7 @@ function CadastroEstufa() {
             register={register}
           />
 
-          <Button onClick={testeCliqueBotao()} style={{ marginTop: '25px' }}>
+          <Button onClick={testeCliqueBotao} style={{ marginTop: '25px' }}>
             Cadastrar
           </Button>
         </Conteiner>
