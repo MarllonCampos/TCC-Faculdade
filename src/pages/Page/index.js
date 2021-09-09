@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react'
-import { ReactSwal } from '../../components/ReactSwal' // Importa a biblioteca dos modais
+import axios from 'axios'
 
 import Header from '../../components/Header'
 import InputText from '../../components/Input'
 import OlaLogo from '../../components/Ola'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
+import { ReactSwal } from '../../components/ReactSwal' // Importa a biblioteca dos modais
+
 import { api } from '../../utils/api'
 
 import { UserInfoContext } from '../../contexts/UserInfoContext'
@@ -14,12 +16,9 @@ import { Conteiner } from '../EstufaAtiva/styles'
 
 import { Wrapper, GridContainer, GridItem } from './styles'
 
-import axios from 'axios'
-
 function Page({ title, color, border, ...props }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
   const [isModalShowing, setIsModalShowing] = useState(false)
   const [modalMessage, setModalMessage] = useState('')
   const [modalTitle, setModalTitle] = useState('')
@@ -97,7 +96,6 @@ function Page({ title, color, border, ...props }) {
         // Ativa o modal
         title: 'Sucesso',
         text: 'Você foi logado com sucesso',
-        html: <ComponentTeste />, // Aqui foi só um exemplo, ele aceita componentes react
         icon: 'info'
       })
 
@@ -170,7 +168,7 @@ function Page({ title, color, border, ...props }) {
         />
 
         <Button
-          // disabled={email.length === 0 || password.length === 0}
+          disabled={email.length === 0 || password.length === 0}
           onClick={handleClickLogin}
         >
           Cadastrar
@@ -180,25 +178,4 @@ function Page({ title, color, border, ...props }) {
   )
 }
 
-function ComponentTeste() {
-  function handleSubmit(ev) {
-    ev.preventDefault()
-    console.log(ev.target)
-  }
-  return (
-    <form onSubmit={handleSubmit}>
-      <InputText
-        noIcon
-        name="email"
-        type="email"
-        labelText="E-mail:"
-        required
-      />
-
-      <InputText idFor="password" labelText="Senha:" name="password" />
-
-      <Button type="submit"> Logar </Button>
-    </form>
-  )
-}
 export default Page
