@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Loading from "../Loading";
 import { Container, Li, LigadoDesligado } from "./styles";
 
 export function RenderizaListaElemento({
   listaElemento,
+  elem,
   ...props
 }) {
-  
+  const [elementos,setElementos] = useState([])
+
+  useEffect(() => {
+    function filtraElementos() {
+      setElementos(listaElemento.filter(elemento => elemento.tipoelem === elem))
+    }
+    filtraElementos()
+  },[])
 
   return (
-    <Container {...props}>
+      <Container {...props}>
       <ul>
-        {listaElemento.map(({nome,ligado,id},index) => 
+        {elementos.map(({nomeelem,ativo,id},index) => 
           <ElementoRenderizado 
-            key={`${nome}-${id}`} 
+            key={`${nomeelem}-${id}`} 
             index={index}
-            text={nome} 
-            estaLigado={ligado} /> 
+            text={nomeelem} 
+            estaLigado={ativo} /> 
         )}
       </ul>
     </Container>
@@ -28,9 +37,9 @@ function ElementoRenderizado({ text,estaLigado,index, ...props }) {
     setLigarDesligarElemento(prevState => !prevState)
   }
   return (
-    <Li index={index}>
+    <Li index={index} onClick={trocaEstadoElemento}>
       {text}
-      <LigadoDesligado onClick={trocaEstadoElemento} className={`${LigarDesligarElemento ? 'active': ''}`}>
+      <LigadoDesligado  className={`${LigarDesligarElemento ? 'active': ''}`}>
         {LigarDesligarElemento ? 'Ligado' : 'Desligado'} <span />
       </LigadoDesligado>
     </Li>

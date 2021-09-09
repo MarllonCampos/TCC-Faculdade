@@ -7,49 +7,37 @@ import LuzElemento from '../../assets/luzElemento.svg'
 import VentiladorElemento from '../../assets/ventiladorElemento.svg'
 import ArrowDown from '../../assets/arrow-down-branco.svg'
 import { RenderizaListaElemento } from '../../components/RenderizaListaElemento'
-
-
-
+import {api} from '../../utils/api'
+import Loading from '../../components/Loading'
 export function ListaElemento(){
-
-  const {idEstufa} = useParams();
-  const [setaIrrigadoresAparece,setSetaIrrigadoresAparece] = useState(false)
+    const [setaIrrigadoresAparece,setSetaIrrigadoresAparece] = useState(false)
   const [setaLuzesAparece,setSetaLuzesAparece] = useState(false)
   const [setaVentiladoresAparece,setSetaVentiladoresAparece] = useState(false)
-
-  
-  const elementosIrrigadores = [
-      {nome:'Irrigador 1', id:1, ligado: false}, 
-      {nome:'Irrigador 2', id:2, ligado: true},
-      {nome:'Irrigador 3', id:3, ligado: false},
-      {nome:'Irrigador 4', id:4, ligado: false}
-  ]
-  const elementosLuzes = [
-      {nome:'Luz 1', id:1, ligado: false}, 
-      {nome:'Luz 2', id:2, ligado: true},
-      {nome:'Luz 3', id:3, ligado: false},
-      {nome:'Luz 4', id:4, ligado: false}
-  ]
-  const elementosVentiladores = [
-      {nome:'Ventilador 1', id:1, ligado: false}, 
-      {nome:'Ventilador 2', id:2, ligado: true},
-      {nome:'Ventilador 3', id:3, ligado: false},
-      {nome:'Ventilador 4', id:4, ligado: false}
-  ]
-
+  const [estufa,setEstufa] = useState()
+  const {idEstufa} = useParams();
   function reverteEstado(setEstado){
     setEstado( prevState => !prevState);
   }
 
-  // useEffect(()=>{
-  //   api.
-  // },[])
+  useEffect(()=>{
+    async function fetchData(){
+      const response = await api.get(`/estufas/${idEstufa}`)
+      const estufas = await response.data
+      setEstufa(estufas)
+      
+    }
+    if (!estufa) {
+      fetchData()
+    }
+  },[estufa])
   return(
     <>
       <Header />
       <Container>
-        <h1>Estufa A</h1>
-
+    {!estufa ? <Loading /> : (
+      <>
+        <h1>{estufa?.nomeestufa}</h1>
+        
         <BotaoElemento  
           onClick={() => reverteEstado(setSetaIrrigadoresAparece)} 
           className={`${setaIrrigadoresAparece ? 'semBordaInferior' : ''}`}>
@@ -70,7 +58,7 @@ export function ListaElemento(){
         </BotaoElemento >
         {
           setaIrrigadoresAparece &&
-          <RenderizaListaElemento listaElemento={elementosIrrigadores} />
+          <RenderizaListaElemento listaElemento={estufa.elementos} elem={2} />
         }
 
         <BotaoElemento 
@@ -95,7 +83,7 @@ export function ListaElemento(){
         </BotaoElemento >
         {
           setaLuzesAparece &&
-          <RenderizaListaElemento listaElemento={elementosLuzes} />
+          <RenderizaListaElemento listaElemento={estufa.elementos} elem={1} />
         }
 
         <BotaoElemento 
@@ -120,9 +108,10 @@ export function ListaElemento(){
         </BotaoElemento >
         {
           setaVentiladoresAparece &&
-          <RenderizaListaElemento listaElemento={elementosVentiladores} />
+          <RenderizaListaElemento listaElemento={estufa.elementos} elem={3} />
         }
-        
+      </>
+    )}
 
       </Container>
     </>
