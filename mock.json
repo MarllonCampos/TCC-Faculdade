@@ -1,128 +1,26 @@
 {
-  "estufas": [
-    {
-      "ativo": 1,
-      "id": 1,
-      "nomeestufa": "Teste 1",
-      "fotoestufa": "https://via.placeholder.com/150",
-      "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
-      "elementos": {
-        "sensores": [
-          {
-            "ativo": true,
-            "nomeelem": "Luz",
-            "tipoelem": 1
-          },
-          {
-            "ativo": false,
-            "nomeelem": "Irrigador",
-            "tipoelem": 2
-          },
-          {
-            "ativo": true,
-            "nomeelem": "Ventilador",
-            "tipoelem": 3
-          }
-        ]
+  "greenery":
+    {"ativo": 1,
+    "id": 1,
+    "nomeestufa": "Teste 1",
+    "fotoestufa": "https://via.placeholder.com/150",
+    "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
+    "elementos": [  
+      {
+        "ativo": true,
+        "nomeelem": "Luz",
+        "tipoelem": 1
+      },
+      {
+        "ativo": false,
+        "nomeelem": "Irrigador",
+        "tipoelem": 2
+      },
+      {
+        "ativo": true,
+        "nomeelem": "Ventilador",
+        "tipoelem": 3
       }
-    },
-    {
-      "ativo": 1,
-      "id": 2,
-      "nomeestufa": "Teste 2",
-      "fotoestufa": "https://via.placeholder.com/150",
-      "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
-      "elementos": [
-        {
-          "ativo": true,
-          "nomeelem": "Luz",
-          "tipoelem": 1
-        },
-        {
-          "ativo": false,
-          "nomeelem": "Irrigador",
-          "tipoelem": 1
-        },
-        {
-          "ativo": true,
-          "nomeelem": "Ventilador",
-          "tipoelem": 1
-        }
-      ]
-    },
-    {
-      "ativo": 1,
-      "id": 3,
-      "nomeestufa": "Teste 3",
-      "fotoestufa": "https://via.placeholder.com/150",
-      "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
-      "elementos": [
-        {
-          "ativo": true,
-          "nomeelem": "Luz",
-          "tipoelem": 1
-        },
-        {
-          "ativo": false,
-          "nomeelem": "Irrigador",
-          "tipoelem": 1
-        },
-        {
-          "ativo": true,
-          "nomeelem": "Ventilador",
-          "tipoelem": 1
-        }
-      ]
-    }
-  ],
-  "usuarios": [
-    {
-      "id": 1,
-      "nome": "Nome Usuári",
-      "senha": "senha",
-      "email": "emailvalido@email.com"
-    },
-    {
-      "nome": "Marllon Campos",
-      "senha": "senha",
-      "email": "marlloncampos@hotmail.com",
-      "id": 2
-    }
-  ],
-  "plantas": [
-    {
-      "id":1,
-      "idUser":3,
-      "nomeplanta": "TICARACATI",
-      "tipoelem": 4,
-      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
-      "imagem":"https://via.placeholder.com/150"
-    },
-    {
-      "id":2,
-      "idUser":3,
-      "nomeplanta": "TICARACATI",
-      "tipoelem": 4,
-<<<<<<< HEAD
-      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
-      "imagem":"https://via.placeholder.com/350"
-
-=======
-      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT"
->>>>>>> feature/cadastro-estufa
-    },
-    {
-      "id":3,
-      "idUser":3,
-      "nomeplanta": "TICARACATI",
-      "tipoelem": 4,
-<<<<<<< HEAD
-      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
-      "imagem":"https://via.placeholder.com/450"
-
-=======
-      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT"
->>>>>>> feature/cadastro-estufa
-    }
-  ]
+    ]
+    }  
 }
