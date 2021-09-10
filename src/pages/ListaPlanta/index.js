@@ -7,6 +7,7 @@ import BotaoMais from '../../components/BotaoMais'
 import { Conteiner } from './styles'
 import { UserInfoContext } from '../../contexts/UserInfoContext'
 import { api } from '../../utils/api'
+import { ReactSwal } from '../../components/ReactSwal'
 
 function ListaPlanta() {
   const [plantas, setPlantas] = useState([])
@@ -22,6 +23,8 @@ function ListaPlanta() {
     }
     fetchData()
   }, [])
+
+  async function alterarExcluirPlanta() {}
 
   return (
     <>
