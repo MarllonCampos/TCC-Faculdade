@@ -30,6 +30,8 @@ function ListaEstufa() {
       <Conteiner>
         {greenerys.map((estufa, index) => (
           <Card
+            cliqueLongo={() => console.log('longo')}
+            cliqueCurto={() => console.log('curto')}
             key={`${estufa.nomestufa}-${index}`}
             title={estufa.nomeestufa}
             irrigacao={
