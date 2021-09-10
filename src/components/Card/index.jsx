@@ -32,8 +32,10 @@ function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,image
 
 
     return (
-        <Conteiner {...rest}
-        {...eventoCliqueLongo}
+        <Conteiner 
+        onClick={onClick}
+        {...rest}
+        {...cliqueLongo && cliqueCurto && eventoCliqueLongo}
         
 
         >
