@@ -7,6 +7,7 @@ import CadastroEstufas from './pages/CadastroEstufa'
 import CadastroElemento from './pages/CadastroElemento'
 import EstufaAtiva from './pages/EstufaAtiva'
 import ListaEstufa from './pages/ListaEstufa'
+import Dashbordestufa from './pages/Dashbordestufa'
 import Modal from './components/Modal'
 
 function Routes() {
@@ -18,6 +19,7 @@ function Routes() {
         <Route path="/modal" component={Modal} />
 
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
+         <Route path="/dashbord-estufa/" component={Dashbordestufa} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
       </Switch>
