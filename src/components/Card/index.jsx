@@ -6,14 +6,9 @@ import FotoHorta from '../../assets/horta.jpg'
 import { Conteiner, Image, Coluna, Luz, Vento, Agua, OnOff, TextData, Titulo } from "./styles"
 import useLongPress from '../../utils/useLongPress'
 
-function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,imagem,estufaID ,...rest }) {
+function Card({ onClick,title, luz, ventilador, irrigacao, date, elementos,imagem,estufaID , cliqueLongo, cliqueCurto, ...rest }) {
     const [dataDiff,setDataDiff]= useState('')
-    function cliqueLongo(){
-        console.log("clique longo")
-    }
-    function cliqueCurto(){
-        console.log('clque curto')
-    }
+   
      const configCliqueLongo = {
         PreventDefault: true,
         delay: 1500
