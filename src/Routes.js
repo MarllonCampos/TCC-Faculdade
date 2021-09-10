@@ -26,7 +26,7 @@ function Routes() {
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-tipo/:tipo" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
-        <Route path="/lista-elemento/:idEstufa" component={ListaElemento} />
+        <Route path="/lista-elemento" component={ListaElemento} />
       </Switch>
     </Router>
   )
