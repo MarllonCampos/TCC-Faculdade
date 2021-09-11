@@ -10,11 +10,33 @@ import Form from '../../components/Form'
 import Ola from '../../components/Ola'
 import InputText from '../../components/Input'
 import Button from '../../components/Button'
-import Modal from '../../components/Modal'
 import { useParams } from 'react-router-dom'
+import { localData } from '../../utils/localStorage'
+import { api } from '../../utils/api'
+import { ReactSwal } from '../../components/ReactSwal'
 
 function CadastroTipo() {
   const { tipo } = useParams()
+
+  async function cadastradoSucesso() {
+    ReactSwal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Planta cadastrada com sucesso!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+  async function cadastradoFalha() {
+    ReactSwal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Não foi possível fazer cadastro! \n\n Tente novamente!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
 
   let schema
 
@@ -32,10 +54,26 @@ function CadastroTipo() {
     resolver: yupResolver(schema)
   })
   async function newUser(tipoCadastro, ...rest) {
+    const userInfo = localData('userInfo')
+    console.log(userInfo)
+    const email = userInfo.email
+    console.log(email)
     if (tipo == 'estufa') {
       console.log('Criar Estufa', tipoCadastro.nomeEstufa)
+      const resposta = await api.post(
+        '/estufas',
+        {
+          nomeEstufa: tipoCadastro.nomeEstufa
+        },
+        { headers: { 'User-Email': email } }
+      )
+      console.log(resposta)
     } else {
       console.log('Criar Planta', tipoCadastro.nomePlanta)
+      const resposta = await api.post('/plantas', {
+        nomePlanta: tipoCadastro.nomePlanta
+      })
+      console.log(resposta)
     }
   }
 
@@ -45,43 +83,25 @@ function CadastroTipo() {
 
       <Conteiner>
         <Ola style={{ marginTop: '-60px' }} />
-        {tipo == 'estufa' ? (
-          <Title1>Cadastro de Estufas </Title1>
-        ) : (
-          <Title1>Cadastro de Plantas </Title1>
-        )}
+
+        <Title1>Cadastro de Plantas </Title1>
+
         <Form onSubmit={handleSubmit(newUser)}>
-          {tipo == 'estufa' ? (
-            <InputText
-              noIcon
-              idFor="estufa"
-              placeholder="Digite o nome da Estufa"
-              name="nomeEstufa"
-              type="text"
-              labelText="Nome da Estufa:"
-              register={register}
-            />
-          ) : (
-            <InputText
-              noIcon
-              idFor="planta"
-              placeholder="Digite o nome da Planta"
-              name="nomePlanta"
-              type="text"
-              labelText="Nome da Planta:"
-              register={register}
-            />
-          )}
-          {errors?.nomeEstufa?.message && (
-            <Modal
-              style={{ marginTop: '25px' }}
-              visible={false}
-              titulo="Error"
-              conteudo={errors?.nomeEstufa?.message}
-              page="/login-estufas"
-            ></Modal>
-          )}
-          <Button type="submit" style={{ marginTop: '25px' }}>
+          <InputText
+            noIcon
+            idFor="planta"
+            placeholder="Digite o nome da Planta"
+            name="nomePlanta"
+            type="text"
+            labelText="Nome da Planta:"
+            register={register}
+          />
+
+          <Button
+            onClick={cadastradoFalha}
+            type="submit"
+            style={{ marginTop: '25px' }}
+          >
             Cadastrar
           </Button>
         </Form>
