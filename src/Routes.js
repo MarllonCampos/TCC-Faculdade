@@ -12,6 +12,7 @@ import Modal from './components/Modal'
 import Cadastro from './pages/CadastroUsuario'
 import { ListaElemento } from './pages/ListaElemento'
 import { LoginUsuario } from './pages/LoginUsuario'
+import PainelUsuario from './pages/PainelUsuario'
 
 function Routes() {
   return (
@@ -28,6 +29,7 @@ function Routes() {
         <Route path="/cadastro-tipo/:tipo" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
         <Route path="/lista-elemento" component={ListaElemento} />
+        <Route path="/painel-usuario" component={PainelUsuario} />
       </Switch>
     </Router>
   )
