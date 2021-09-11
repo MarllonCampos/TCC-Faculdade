@@ -5,6 +5,7 @@ export const Container = styled.div`
   width:100%;
   background:var(--quartiary);
   padding:20px 0;
+  min-width:100vw;
   
   
   
