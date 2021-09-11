@@ -8,9 +8,13 @@ import Form from "../../components/Form";
 import Main from "../../components/Main";
 import Ola from "../../components/Ola";
 import InputText from "../../components/Input";
+import { api } from "../../utils/api";
 import { Span } from "./styles";
 
+import swal from 'sweetalert';
+
 //Validação de Usuario
+
 function useFormik({ initialValues, validate }) {
   const [touched, setTouchedFields] = useState({});
   const [errors, setErrors] = useState({});
@@ -52,7 +56,10 @@ function useFormik({ initialValues, validate }) {
   };
 }
 
+
+
 function RecuperarSenha() {
+ 
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -68,6 +75,13 @@ function RecuperarSenha() {
       return errors;
     },
   });
+  
+  async function handleSubmit() {   
+    const response = await api.get("/client");
+    console.log(response.data)
+    swal("Recupere sua senha acessando o email!",formik.values.email, "success");
+  
+  }
 
   return (
     <Main>
@@ -93,8 +107,10 @@ function RecuperarSenha() {
         />
         {formik.touched.email && formik.errors.email && <Span >{formik.errors.email}</Span>}
 
-        <Button style={{marginTop: "30px"}}>
-          <A href="recuperar">Recuperar</A>
+        <Button onClick={handleSubmit}
+        style={{marginTop: "30px"}}>
+          reuperar senha
+          {/* <A href="recuperar">Recuperar</A> */}
         </Button>
       </Form>
     </Main>

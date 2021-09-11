@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { A } from "./styles";
 import Title from "../../components/Title";
 import Button from "../../components/Button";
+import Loading from "../../components/Loading";
 
 import Form from "../../components/Form";
 
 import Main from "../../components/Main";
 import Ola from "../../components/Ola";
 import InputText from "../../components/Input";
+import { api } from "../../utils/api";
 import { Span } from "./styles";
+
+import swal from "sweetalert";
+
 
 //Validação de Usuario
 function useFormik({ initialValues, validate }) {
@@ -55,13 +60,12 @@ function useFormik({ initialValues, validate }) {
 
 function Recuperar() {
   const formik = useFormik({
-    initialValues: {      
+    initialValues: {
       senha: "",
       confirmaSenha: "",
-      
     },
     validate: function (values) {
-      const errors = {};    
+      const errors = {};
 
       if (values.senha.length < 8) {
         errors.senha = "A senha deve conter no minimo 8 caracteres ";
@@ -74,20 +78,32 @@ function Recuperar() {
       return errors;
     },
   });
+  async function handleSubmit() {
+    if (formik.values.senha.length < 1  || formik.values.confirmaSenha.length < 1 || formik.values.senha !== formik.values.confirmaSenha )
+      return swal("Error!","Precisa de uma senha valida ", "warning");   
+  else{
+    const response = await api.post("/client",formik.values);
+    console.log(response.data);
+    swal("Sucesso!","Nova senha Cadastrada ",  "success");
 
+  }
+    
+  }
   return (
-    <Main>
-      <Form  style={{ textAlign: "center" }}
-        onSubmit={(event) => {
-          event.preventDefault();
-          console.log(formik.values);
-        }}
-       
-      >
-        <Ola></Ola>
-        <Title title="Resgate sua conta" />
-
-        <InputText
+    
+      
+        <Main>
+           { formik.values ? (
+        <Form
+          style={{ textAlign: "center" }}
+          onSubmit={(event) => {
+            event.preventDefault();
+            console.log(formik.values);
+          }}
+        >
+          <Ola></Ola>
+          <Title title="Resgate sua conta" />
+          <InputText
           labelText="Senha:"
           type="text"
           name="senha"
@@ -113,11 +129,21 @@ function Recuperar() {
           <Span>{formik.errors.confirmaSenha}</Span>
         )}
 
-        <Button>
-          <A href="#">Register</A>
+        <Button onClick={handleSubmit} style={{ marginTop: "30px" }}>
+          Recuperar
         </Button>
       </Form>
-    </Main>
+   
+
+
+
+       ): (
+        <Loading />
+       )
+      }
+       </Main>
+
+       
   );
 }
 export default Recuperar;

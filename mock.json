@@ -1,53 +1,55 @@
 {
-  "greenerys":
-    [{"ativo": 1,
-    "id": 1,
-    "nomeestufa": "Teste 1",
-    "fotoestufa": "https://via.placeholder.com/150",
-    "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
-    "elementos": [
-      {
-        "ativo": true,
-        "nomeelem": "Luz",
-        "tipoelem": 1
-      },
-      {
-        "ativo": false,
-        "nomeelem": "Irrigador",
-        "tipoelem": 1
-      },
-      {
-        "ativo": true,
-        "nomeelem": "Ventilador",
-        "tipoelem": 1
-      }
-    ]
+  "greenerys": [
+    {
+      "ativo": 1,
+      "id": 1,
+      "nomeestufa": "Teste 1",
+      "fotoestufa": "https://via.placeholder.com/150",
+      "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
+      "elementos": [
+        {
+          "ativo": true,
+          "nomeelem": "Luz",
+          "tipoelem": 1
+        },
+        {
+          "ativo": false,
+          "nomeelem": "Irrigador",
+          "tipoelem": 1
+        },
+        {
+          "ativo": true,
+          "nomeelem": "Ventilador",
+          "tipoelem": 1
+        }
+      ]
     },
     {
       "ativo": 1,
-    "id": 2,
-    "nomeestufa": "Teste 2",
-    "fotoestufa": "https://via.placeholder.com/150",
-    "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
-    "elementos": [
-      {
-        "ativo": true,
-        "nomeelem": "Luz",
-        "tipoelem": 1
-      },
-      {
-        "ativo": false,
-        "nomeelem": "Irrigador",
-        "tipoelem": 1
-      },
-      {
-        "ativo": true,
-        "nomeelem": "Ventilador",
-        "tipoelem": 1
-      }
-    ]
+      "id": 2,
+      "nomeestufa": "Teste 2",
+      "fotoestufa": "https://via.placeholder.com/150",
+      "dataestufa": "Tue 21 Mar 2000 00:00:00 GMT",
+      "elementos": [
+        {
+          "ativo": true,
+          "nomeelem": "Luz",
+          "tipoelem": 1
+        },
+        {
+          "ativo": false,
+          "nomeelem": "Irrigador",
+          "tipoelem": 1
+        },
+        {
+          "ativo": true,
+          "nomeelem": "Ventilador",
+          "tipoelem": 1
+        }
+      ]
     },
-    {"ativo": 1,
+    {
+      "ativo": 1,
       "id": 3,
       "nomeestufa": "Teste 3",
       "fotoestufa": "https://via.placeholder.com/150",
@@ -68,7 +70,110 @@
           "nomeelem": "Ventilador",
           "tipoelem": 1
         }
-      ]}
+      ]
+    }
+  ],
+  "client": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "senha": "123456",
+      "confirmaSenha": "123456",
+      "id": 3
+    },
+    {
+      "email": "rafaelbenassi25@gmail.com",
+      "senha": "123456789",
+      "confirmaSenha": "123456789",
+      "nome": "RAFAEL BISPO DOS SANTOS",
+      "id": 4
+    },
+    {
+      "senha": "12345678",
+      "confirmaSenha": "12345678",
+      "id": 5
+    },
+    {
+      "senha": "",
+      "confirmaSenha": "",
+      "id": 6
+    },
+    {
+      "senha": "",
+      "confirmaSenha": "",
+      "id": 7
+    },
+    {
+      "senha": "",
+      "confirmaSenha": "",
+      "id": 8
+    },
+    {
+      "senha": "",
+      "confirmaSenha": "",
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "senha": "12",
+      "confirmaSenha": "12",
+      "id": 11
+    },
+    {
+      "senha": "12233",
+      "confirmaSenha": "12454",
+      "id": 12
+    },
+    {
+      "senha": "12233",
+      "confirmaSenha": "12454",
+      "id": 13
+    },
+    {
+      "senha": "12233",
+      "confirmaSenha": "12454",
+      "id": 14
+    },
+    {
+      "senha": "12233",
+      "confirmaSenha": "12454",
+      "id": 15
+    },
+    {
+      "senha": "12233",
+      "confirmaSenha": "12454",
+      "id": 16
+    },
+    {
+      "senha": "12233",
+      "confirmaSenha": "12454",
+      "id": 17
+    },
+    {
+      "senha": "22665654",
+      "confirmaSenha": "jbjnjkn",
+      "id": 18
+    },
+    {
+      "senha": "123456789",
+      "confirmaSenha": "123456789",
+      "id": 19
+    },
+    {
+      "senha": "123456789",
+      "confirmaSenha": "123456789",
+      "id": 20
+    },
+    {
+      "senha": "aaaaaaaaaaa",
+      "confirmaSenha": "aaaaaaaaaaa",
+      "id": 21
+    }
   ]
-  
 }
