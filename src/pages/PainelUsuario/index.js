@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
-
+import {useHistory} from 'react-router-dom'
 import InputText from "../../components/Input";
-import Loading from "../../components/Loading";
 import { ReactSwal } from "../../components/ReactSwal";
 import { api } from "../../utils/api";
 import { Container } from "./styles";
@@ -98,7 +96,7 @@ export default function PainelUsuario() {
         })
       }
     })
-    const response = await api.put(`/user/modify`, {
+    const response = await api.put(`/user/modify/`, {
       nome,
       email,
       senha: senha,
@@ -128,21 +126,23 @@ export default function PainelUsuario() {
 
   return (
     <>
-      <Header noPerson />
+      <Header  noPerson />
       <Container>
-        {nome && (
+        {(nome || nome === "") && (
           <>
             <form onSubmit={(event) => handleSubmitForm(event)}>
             <a href="#alterarSenha" onClick={() => setApareceBotoes(prevState => true )}>editar</a>
               <InputText
                 noIcon
-                onChange={(e) => setNome(e.target.value)}
+                onChange={(e) => {return setNome(e.target.value)}}
                 type="text"
+                readOnly={!apareceBotoes}
                 value={nome}
                 labelText="Nome"
                 required
+                className={`${!apareceBotoes && 'disabled' }`}
                 
-              />
+                />
 
 
               <InputText
@@ -150,16 +150,20 @@ export default function PainelUsuario() {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 type="text"
+                readOnly={!apareceBotoes}
                 labelText="Email"
-              />
+                className={`${!apareceBotoes && 'disabled' }`}
+                />
 
 
               <InputText
                 onChange={(e) => setSenha(e.target.value)}
                 type="password"
                 labelText="Senha atual"
+                readOnly={!apareceBotoes}
+                className={`${!apareceBotoes && 'disabled' }`}
                 
-              />
+                />
 
 
               <InputText

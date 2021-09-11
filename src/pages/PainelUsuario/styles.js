@@ -31,6 +31,13 @@ export const Container = styled.div`
       margin-left:0;
       margin-right:0;
       align-self:flex-start;  
+      input {
+        margin:0;
+
+        &.disabled {
+          color:#ccc;
+        }
+      }
 
     }
     .buttons-container{
