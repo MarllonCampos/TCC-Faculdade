@@ -24,7 +24,26 @@ function ListaPlanta() {
     fetchData()
   }, [])
 
-  async function alterarExcluirPlanta() {}
+  async function alterarExcluirPlanta() {
+    ReactSwal.fire({
+      title: 'Você deseja fazer mudanças?',
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Alterar',
+      denyButtonText: `Deletar`
+    }).then(result => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        ReactSwal.fire('Alterado com sucesso', '', 'success')
+      } else if (result.isDenied) {
+        ReactSwal.fire('Deletado com sucesso', '', 'success')
+      }
+    })
+  }
 
   return (
     <>
