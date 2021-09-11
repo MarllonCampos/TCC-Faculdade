@@ -98,7 +98,7 @@ export default function PainelUsuario() {
         })
       }
     })
-    const response = await api.put(`/modify/${id}`, {
+    const response = await api.put(`/user/modify`, {
       nome,
       email,
       senha: senha,
@@ -125,7 +125,7 @@ export default function PainelUsuario() {
       })
     }
   }
-  
+
   return (
     <>
       <Header noPerson />
