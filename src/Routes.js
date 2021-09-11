@@ -9,6 +9,8 @@ import EstufaAtiva from './pages/EstufaAtiva'
 import ListaEstufa from './pages/ListaEstufa'
 import Modal from './components/Modal'
 import Cadastro from './pages/CadastroUsuario'
+import PainelUsuario from './pages/PainelUsuario'
+
 
 function Routes() {
   return (
@@ -22,6 +24,7 @@ function Routes() {
         <Route path="/cadastro-usuario" component={Cadastro} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
+        <Route path="/painel-usuario" component={PainelUsuario} />
       </Switch>
     </Router>
   )
