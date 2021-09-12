@@ -103,18 +103,26 @@
       "idUser":3,
       "nomeplanta": "TICARACATI",
       "tipoelem": 4,
+<<<<<<< HEAD
       "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
       "imagem":"https://via.placeholder.com/350"
 
+=======
+      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT"
+>>>>>>> feature/cadastro-estufa
     },
     {
       "id":3,
       "idUser":3,
       "nomeplanta": "TICARACATI",
       "tipoelem": 4,
+<<<<<<< HEAD
       "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT",
       "imagem":"https://via.placeholder.com/450"
 
+=======
+      "dataplanta": "Tue 21 Mar 2000 00:00:00 GMT"
+>>>>>>> feature/cadastro-estufa
     }
   ]
 }

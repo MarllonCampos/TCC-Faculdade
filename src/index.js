@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Routes from './Routes'
 
-import './global.css'
 import GlobalStyles from './GlobalStyles'
 import { UserInfoProvider } from './contexts/UserInfoContext'
 import Store from './contexts/Store'
