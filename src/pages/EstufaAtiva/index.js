@@ -4,7 +4,7 @@ import { useHistory, useLocation } from 'react-router';
 
 import Header from '../../components/Header'
 import Title from '../../components/Title'
-import CardStatus from '../../components/cardDetalhe'
+import CardStatus from '../../components/CardDetalhe'
 import FotoHorta from '../../assets/horta.jpg'
 
 import {retrieveSessionData} from '../../utils/sessionStorage'
