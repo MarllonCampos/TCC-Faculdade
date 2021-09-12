@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { A } from "./styles";
+
 import Title from "../../components/Title";
 import Button from "../../components/Button";
-
 import Form from "../../components/Form";
-import { api } from "../../utils/api";
-import axios from "axios";
-
+import InputText from "../../components/Input";
 import Main from "../../components/Main";
 import Ola from "../../components/Ola";
-import InputText from "../../components/Input";
-import { Span } from "./styles";
-import { Windows } from "@styled-icons/simple-icons";
-import swal from 'sweetalert';
+import Loading from "../../components/Loading";
 
-//Validação de Usuario
+import { api } from "../../utils/api";
+
+import { Span } from "./styles";
+
+import swal from "sweetalert";
+
+import { useHistory } from "react-router-dom";
+
+
+// função para Validação de Usuario
 function useFormik({ initialValues, validate }) {
   const [touched, setTouchedFields] = useState({});
   const [errors, setErrors] = useState({});
@@ -57,11 +60,32 @@ function useFormik({ initialValues, validate }) {
 }
 
 function Cadastro() {
+
+  const history = useHistory()
+  const rota = () => history.push('/');
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 400);
+    return () => clearTimeout(timer);
+  });
+
   async function handleSubmit() {
+    setLoading(true);
     const response = await api.post("/client", formik.values);
-    if (response.status === 201) {
-      swal("Sucesso!", "Seu cadastro foi realizado com sucesso!", "success");
-    } else {
+    console.log(response);
+    
+
+    if (response.status == 201) {
+      swal("Sucesso!", "Seu cadastro foi realizado com sucesso!", "success").then(function(){
+      rota()
+      });
+       
+    }
+    if (response.status !== 201) {
       swal("Error!", "Error em realizar o cadastro!", "warning");
     }
   }
@@ -94,73 +118,79 @@ function Cadastro() {
 
   return (
     <Main>
-      <Form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-        style={{ textAlign: "center" }}
-      >
-        <Ola></Ola>
-        <Title title="Faça seu cadastro" />
-        <div>
+      
+    {loading && <Loading></Loading>}
+      {!loading && (
+        <Form
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+          style={{ textAlign: "center" }}
+        >
+          <Ola></Ola>
+          <Title title="Faça seu cadastro" />
+          <div>
+            <InputText
+              labelText="Nome:"
+              noIcon="true"
+              name="nome"
+              id="nome"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.name}
+            />
+          </div>
           <InputText
-            labelText="Nome:"
-            noIcon="true"
-            name="nome"
-            id="nome"
+            labelText="Senha:"
+            type="text"
+            name="senha"
+            id="senha"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            value={formik.values.name}
+            value={formik.values.senha}
           />
-        </div>
-        <InputText
-          labelText="Senha:"
-          type="text"
-          name="senha"
-          id="senha"
-          onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
-          value={formik.values.senha}
-        />
-        {formik.touched.senha && formik.errors.senha && (
-          <Span>{formik.errors.senha}</Span>
-        )}
-        <InputText
-          labelText="Confirmar Senha:"
-          type="text"
-          name="confirmaSenha"
-          id="confirmaSenha"
-          onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
-          value={formik.values.confirmaSenha}
-        />
-        {formik.touched.senha && formik.errors.confirmaSenha && (
-          <Span>{formik.errors.confirmaSenha}</Span>
-        )}
-        <InputText
-          labelText="Email:"
-          noIcon="true"
-          type="email"
-          name="email"
-          id="email"
-          onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        {formik.touched.email && formik.errors.email && (
-          <Span>{formik.errors.email}</Span>
-        )}
-        <Button
-         onClick={handleSubmit} href="#"
-          disabled={
-            formik.values.email.length === 0 || formik.values.senha.length < 8 ||  formik.values.confirmaSenha !== formik.values.senha }
-            >
-          
-          Registro
-        </Button>
-      </Form>
+          {formik.touched.senha && formik.errors.senha && (
+            <Span>{formik.errors.senha}</Span>
+          )}
+          <InputText
+            labelText="Confirmar Senha:"
+            type="text"
+            name="confirmaSenha"
+            id="confirmaSenha"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.confirmaSenha}
+          />
+          {formik.touched.senha && formik.errors.confirmaSenha && (
+            <Span>{formik.errors.confirmaSenha}</Span>
+          )}
+          <InputText
+            labelText="Email:"
+            noIcon="true"
+            type="email"
+            name="email"
+            id="email"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+          {formik.touched.email && formik.errors.email && (
+            <Span>{formik.errors.email}</Span>
+          )}
+          <Button
+            href="/"
+            onClick={handleSubmit}
+            disabled={
+              formik.values.email.length === 0 ||
+              formik.values.senha.length < 8 ||
+              formik.values.confirmaSenha !== formik.values.senha
+            }
+          >
+            Registro
+          </Button>
+        </Form>
+      )}
     </Main>
   );
 }
 export default Cadastro;
-
