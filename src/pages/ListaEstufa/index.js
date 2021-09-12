@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState, useRef } from 'react'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import { Conteiner } from './styles'
-import { UserInfoContext } from '../../contexts/UserInfoContext'
+import Loading from '../../components/Loading'
+import { Router, useHistory } from 'react-router'
+import { api } from '../../utils/api'
+import { localData } from '../../utils/localStorage'
 
 function ListaEstufa() {
-  const { userName, greenerys } = useContext(UserInfoContext)
-
-  const [filtrarEstufa, setFiltrarEstufa] = useState(false)
+  const history = useHistory()
+  const [estufa, setEstufa] = useState(false)
   const timeoutRef = useRef(null)
 
   function SetDebounce(event, fn, delay) {
@@ -20,74 +22,57 @@ function ListaEstufa() {
   }
 
   useEffect(() => {
-    console.log(userName, greenerys)
+    const { email, user } = localData('userInfo')
+
+    async function fetchData() {
+      const resposta = await api.get('/greenery', {
+        headers: { 'user-email': email }
+      })
+
+      const data = await resposta.data
+      setEstufa(data)
+    }
+    fetchData()
   }, [])
 
   return (
     <>
-      <Header
-        onChange={event => SetDebounce(event, setFiltrarEstufa, 500)}
-        icon
-      />
-      <Conteiner>
-        {filtrarEstufa
-          ? greenerys
-              .filter(estufa => estufa.nomeestufa.indexOf(filtrarEstufa) >= 0)
-              .map(estufa => (
-                <Card
-                  title={estufa.nomeestufa}
-                  luz={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Luz' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  ventilador={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Vento' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  irrigacao={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Água' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  date={estufa.dataestufa || '00/00/00'}
-                  imagem={estufa.fotoestufa}
-                  titulo={estufa.nomeestufa}
-                  elementos={estufa.elementos}
-                />
-              ))
-          : greenerys.map(estufa => (
-              <Card
-                title={estufa.nomeestufa}
-                luz={
-                  estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Luz' && elemento.ativo != 0
-                  ).length > 0
-                }
-                ventilador={
-                  estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Vento' && elemento.ativo != 0
-                  ).length > 0
-                }
-                irrigacao={
-                  estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Água' && elemento.ativo != 0
-                  ).length > 0
-                }
-                date={estufa.dataestufa || '00/00/00'}
-                imagem={estufa.fotoestufa}
-                titulo={estufa.nomeestufa}
-                elementos={estufa.elementos}
-              />
-            ))}
-      </Conteiner>
+      <Header />
+      {estufa ? (
+        <Conteiner>
+          {estufa.map((estufa, index) => (
+            <Card
+              onClick={() => {
+                history.push(`/estufa-ativa/${estufa.idestufa}`)
+              }}
+              key={`${estufa.nomestufa}-${index}`}
+              title={estufa.nomeestufa}
+              irrigacao={
+                estufa.elementos.filter(
+                  elemento => elemento.tipoelem == 'Água' && elemento.ativo != 0
+                ).length > 0
+              }
+              luz={
+                estufa.elementos.filter(
+                  elemento => elemento.tipoelem == 'Luz' && elemento.ativo != 0
+                ).length > 0
+              }
+              ventilador={
+                estufa.elementos.filter(
+                  elemento =>
+                    elemento.tipoelem == 'Vento' && elemento.ativo != 0
+                ).length > 0
+              }
+              date={estufa.dataestufa || '00/00/00'}
+              imagem={estufa.fotoestufa}
+              titulo={estufa.nomeestufa}
+              elementos={estufa.elementos}
+            />
+          ))}
+        </Conteiner>
+      ) : (
+        <Loading verde />
+      )}
     </>
   )
 }
