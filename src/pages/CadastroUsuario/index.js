@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 import Title from "../../components/Title";
 import Button from "../../components/Button";
@@ -7,189 +9,190 @@ import InputText from "../../components/Input";
 import Main from "../../components/Main";
 import Ola from "../../components/Ola";
 import Loading from "../../components/Loading";
+import { ReactSwal } from "../../components/ReactSwal";
 
 import { api } from "../../utils/api";
-
-import { Span } from "./styles";
-
-import swal from "sweetalert";
-
-import { useHistory } from "react-router-dom";
-
-
-// função para Validação de Usuario
-function useFormik({ initialValues, validate }) {
-  const [touched, setTouchedFields] = useState({});
-  const [errors, setErrors] = useState({});
-  const [values, setValues] = useState(initialValues);
-
-  useEffect(() => {
-    validateValues(values);
-  }, [values]);
-
-  function handleChange(event) {
-    const campoNome = event.target.getAttribute("name");
-    const { value } = event.target;
-    setValues({
-      ...values,
-      [campoNome]: value,
-    });
-  }
-
-  function handleBlur(event) {
-    const campoNome = event.target.getAttribute("name");
-    console.log(campoNome);
-    setTouchedFields({
-      ...touched,
-      [campoNome]: true,
-    });
-  }
-
-  function validateValues(values) {
-    setErrors(validate(values));
-  }
-
-  return {
-    values,
-    errors,
-    touched,
-    handleBlur,
-    setErrors,
-    handleChange,
-  };
-}
+import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";
 
 function Cadastro() {
-
-  const history = useHistory()
-  const rota = () => history.push('/');
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 400);
-    return () => clearTimeout(timer);
+  const history = useHistory();
+  const [registerState, setRegisterState] = useState({
+    nome: "",
+    senha: "",
+    confirmeSenha: "",
+    email: "",
   });
 
-  async function handleSubmit() {
-    setLoading(true);
-    const response = await api.post("/client", formik.values);
-    console.log(response);
-    
+  const Toast = ReactSwal.mixin({
+    // Cria o modelo de pop-up
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener(
+        "mouseenter",
+        ReactSwal.stopTimer
+      );
+      toast.addEventListener(
+        "mouseleave",
+        ReactSwal.resumeTimer
+      );
+    },
+  });
 
-    if (response.status == 201) {
-      swal("Sucesso!", "Seu cadastro foi realizado com sucesso!", "success").then(function(){
-      rota()
-      });
-       
-    }
-    if (response.status !== 201) {
-      swal("Error!", "Error em realizar o cadastro!", "warning");
-    }
+  function handleInputChange(ev) {
+    const { name, value } = ev.target;
+    setRegisterState({ ...registerState, [name]: value });
   }
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      senha: "",
-      confirmaSenha: "",
-      nome: "",
-    },
-    validate: function (values) {
-      const errors = {};
+  async function handleSubmit(event) {
+    event.preventDefault();
 
-      if (!values.email.includes("@")) {
-        errors.email = "Por favor, insira um e-mail válido";
+    const ifRequestCancelled = axios.CancelToken.source();
+
+    if (registerState["nome"].length < 3) {
+      return  Toast.fire({
+        icon: "error",
+        title: "O nome deve conter no mínimo 3 caracteres",
+        timerProgressBar: true,
+        timer: 2500,
+      });
+
+    }else if(registerState['senha'].length < 7){
+      return  Toast.fire({
+        icon: "error",
+        title: "A senha deve conter no mínimo 7 caracteres",
+        timerProgressBar: true,
+        timer: 2500,
+      });
+    } else if (registerState['confirmeSenha'] !== registerState['senha'] ) {
+      return  Toast.fire({
+        icon: "error",
+        title: "As senhas não coincidem",
+        timerProgressBar: true,
+        timer: 2500,
+      });
+    }else if (registerState['email'].includes('@') === false) {
+      return  Toast.fire({
+        icon: "error",
+        title: "Insira um email válido",
+        timerProgressBar: true,
+        timer: 2500,
+      });
+    }
+
+    ReactSwal.fire({
+      title: "Realizando Cadastro",
+      text: "Aguarde alguns instantes e seu login será realizado",
+      didOpen: () => ReactSwal.showLoading(),
+      willClose: () => ifRequestCancelled.cancel(),
+      showCancelButton: false,
+      showConfirmButton: false,
+      timer: 5000,
+    }).then((result) => {
+      if (
+        result.dismiss === ReactSwal.DismissReason.timer
+      ) {
+        ReactSwal.fire({
+          icon: "info",
+          title: "Aguarde alguns instates",
+          text: "Esta demorando mais que o esperado",
+          showCancelButton: false,
+          showConfirmButton: false,
+        });
       }
+    });
+    try {
+      const { data } = await api.post("/user/register/", {
+        ...registerState,
+        nome: capitalizeFirstLetter(registerState["nome"]),
+      });
+      
+          if (data.status.toLowerCase() === "ok") {
+            console.log(data)
 
-      if (values.senha.length < 8) {
-        errors.senha = "A senha deve conter no minimo 8 caracteres ";
-      }
-
-      if (values.confirmaSenha !== values.senha) {
-        errors.confirmaSenha = "Senha diferente";
-      }
-
-      return errors;
-    },
-  });
+            ReactSwal.fire(
+              {
+                title: data.mensagem.titulo,
+                icon: "success",
+                text: data.mensagem.conteudo,
+                timer: 3500,
+                footer: "Enviando você para tela de login",
+              }
+            ).then((result) => {
+              if (result.dissmiss === ReactSwal.DismissReason.timer) {history.push("/");}
+            });
+          } else if (data.status.toLowerCase() === 'erro'){
+            console.log(data)
+            ReactSwal.fire({
+              title: data.mensagem.titulo,
+              icon: "error",
+              text: data.mensagem.conteudo,
+              timer: 3500,
+            });
+          }
+    }catch (error) {
+      console.log(error)
+      ReactSwal.fire({
+        icon:"error",
+        title:error,
+        showConfirmButton:true,
+      })
+    }
+  }
 
   return (
     <Main>
-      
-    {loading && <Loading></Loading>}
-      {!loading && (
-        <Form
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
-          style={{ textAlign: "center" }}
+      <Form
+        onSubmit={(event) => handleSubmit(event) }
+        style={{ textAlign: "center" }}
+      >
+        <Ola></Ola>
+        <Title title="Faça seu cadastro" />
+
+        <InputText
+          labelText="Nome:"
+          noIcon="true"
+          name="nome"
+          id="nome"
+          onChange={(ev) => handleInputChange(ev)}
+        />
+
+        <InputText
+          labelText="Senha:"
+          type="text"
+          name="senha"
+          id="senha"
+          onChange={(ev) => handleInputChange(ev)}
+        />
+
+        <InputText
+          labelText="Confirmar Senha:"
+          type="text"
+          name="confirmeSenha"
+          id="confirmeSenha"
+          onChange={(ev) => handleInputChange(ev)}
+        />
+
+        <InputText
+          labelText="Email:"
+          noIcon="true"
+          type="email"
+          name="email"
+          id="email"
+          onChange={(ev) => handleInputChange(ev)}
+        />
+
+        <Button
+          href="/"
+          onClick={handleSubmit}
+          style={{ marginTop: 32 }}
         >
-          <Ola></Ola>
-          <Title title="Faça seu cadastro" />
-          <div>
-            <InputText
-              labelText="Nome:"
-              noIcon="true"
-              name="nome"
-              id="nome"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.name}
-            />
-          </div>
-          <InputText
-            labelText="Senha:"
-            type="text"
-            name="senha"
-            id="senha"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.senha}
-          />
-          {formik.touched.senha && formik.errors.senha && (
-            <Span>{formik.errors.senha}</Span>
-          )}
-          <InputText
-            labelText="Confirmar Senha:"
-            type="text"
-            name="confirmaSenha"
-            id="confirmaSenha"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.confirmaSenha}
-          />
-          {formik.touched.senha && formik.errors.confirmaSenha && (
-            <Span>{formik.errors.confirmaSenha}</Span>
-          )}
-          <InputText
-            labelText="Email:"
-            noIcon="true"
-            type="email"
-            name="email"
-            id="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-          {formik.touched.email && formik.errors.email && (
-            <Span>{formik.errors.email}</Span>
-          )}
-          <Button
-            href="/"
-            onClick={handleSubmit}
-            disabled={
-              formik.values.email.length === 0 ||
-              formik.values.senha.length < 8 ||
-              formik.values.confirmaSenha !== formik.values.senha
-            }
-          >
-            Registro
-          </Button>
-        </Form>
-      )}
+          Registrar
+        </Button>
+      </Form>
     </Main>
   );
 }
