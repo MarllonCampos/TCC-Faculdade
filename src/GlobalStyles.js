@@ -78,6 +78,7 @@ body {
     --dot-blue:#0FFF00;
     --dot-red: #FF4307;
     --error-message:#D41111;
+    --radius:15px;
 }
 
 `
