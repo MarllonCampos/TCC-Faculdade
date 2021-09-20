@@ -1,13 +1,23 @@
 import styled from 'styled-components';
+import {Link} from 'react-router-dom'
 
-export const Conteiner = styled.div`
+export const ButtonContainer= styled.div`
   
    
     display:flex;
-    flex-direction:column;
+    width:80vw;
+    margin:0 auto;
+    margin-top: 32px;
+    max-width:300px;
     align-items:center;
-    justify-content: center;
-    margin-top: 25px;
+    justify-content: space-between;
+
+    a {
+      font-family:Roboto,sans-serif;
+      font-size:1.2rem;
+      color:var(--text);
+      text-decoration:none;
+    }
 
 
     
@@ -26,11 +36,7 @@ export const Label = styled.label`
   
 `;
 
-export const A = styled.a`
-
-  padding: 10px;
- color: white;
- font-size: 20px;
+export const A = styled(Link)`
 `;
 
 
