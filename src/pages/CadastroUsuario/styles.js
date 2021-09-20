@@ -15,7 +15,7 @@ export const A = styled.a`
 `;
 
 export const Span = styled.span`
-color: #FFF;
+color: #D41111;
 margin-left:10px;
   
 `;

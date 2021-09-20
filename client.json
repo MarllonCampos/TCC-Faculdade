@@ -1,0 +1,175 @@
+{
+  "client": [
+    {
+      "nome": "RAFAEL BISPO DOS SANTOS",
+      "email": "rafaelbenassi25@gmail.com",
+      "senha": "123456789",
+      "id": 1
+    },
+    {
+      "nome": "Eduardo",
+      "email": "contraataquerap@hotmail.com",
+      "senha": "5555478888",
+      "id": 2
+    },
+    {
+      "nome": "Carla",
+      "email": "carlapatricia90@gmail.com",
+      "senha": "123456789",
+      "id": 3
+    },
+    {
+      "nome": "duduardo",
+      "email": "rafael@hotmail.com",
+      "senha": "123456789",
+      "id": 4
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 5
+    },
+    {
+      "email": "contraataquerap@hotmail.com",
+      "senha": "123456789",
+      "confirmaSenha": "123456789",
+      "nome": "bispo",
+      "id": 6
+    },
+    {
+      "email": "patricia@patricia.com",
+      "senha": "5555555555",
+      "confirmaSenha": "5555555555",
+      "nome": "Patricia",
+      "id": 7
+    },
+    {
+      "email": "jose@jose.com",
+      "senha": "444444444444",
+      "confirmaSenha": "444444444444",
+      "nome": "jose",
+      "id": 8
+    },
+    {
+      "email": "rafael_bispo23@hotmail.com",
+      "senha": "12345689",
+      "confirmaSenha": "12345689",
+      "nome": "Rafael Bispo dos Santos",
+      "id": 9
+    },
+    {
+      "email": "nadai@nadia.com",
+      "senha": "22222222",
+      "confirmaSenha": "22222222",
+      "nome": "Nadia",
+      "id": 10
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 11
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 12
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 13
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 14
+    },
+    {
+      "email": "rafael@rafael.com",
+      "senha": "13dialoko",
+      "confirmaSenha": "13dialoko",
+      "nome": "Rafael",
+      "id": 15
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 16
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 17
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 18
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 19
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 20
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 21
+    },
+    {
+      "email": "",
+      "senha": "",
+      "confirmaSenha": "",
+      "nome": "",
+      "id": 22
+    },
+    {
+      "email": "rafael_bispo23@hotmail.com",
+      "senha": "123456789",
+      "confirmaSenha": "123456789",
+      "nome": "Rafael Bispo dos Santos",
+      "id": 23
+    },
+    {
+      "email": "rafael_bispo23@hotmail.com",
+      "senha": "12345678",
+      "confirmaSenha": "123456789",
+      "nome": "Rafael Bispo dos Santos",
+      "id": 24
+    },
+    {
+      "email": "rafael_bispo23@hotmail.com",
+      "senha": "12345678",
+      "confirmaSenha": "12345678",
+      "nome": "Rafael Bispo dos Santos",
+      "id": 25
+    }
+  ]
+}
