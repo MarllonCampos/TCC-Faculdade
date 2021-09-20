@@ -38,7 +38,7 @@ export const InputContainer = styled.div`
   height: 45px;
   width: 100%;
 
-  border-radius: 500px;
+  border-radius: var(--radius);
 
   margin-top: 12px;
 `

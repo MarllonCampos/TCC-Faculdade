@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const HouseImage = styled.img`
   max-width: 100%;
   height: 80px;
-  margin-top: 40px;
+  margin: 20px 0;
 `
 
 export const Text = styled.p`
