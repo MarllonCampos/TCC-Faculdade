@@ -1,87 +1,88 @@
-import React, { useContext, useEffect, useState, useRef } from 'react'
-import Card from '../../components/Card'
-import Header from '../../components/Header'
-import { Conteiner } from './styles'
-import { UserInfoContext } from '../../contexts/UserInfoContext'
+import React, { useEffect, useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
+
+import Card from "../../components/Card";
+import Header from "../../components/Header";
+import { ReactSwal } from "../../components/ReactSwal";
+
+import { api } from "../../utils/api";
+import { Conteiner } from "./styles";
 
 function ListaEstufa() {
-  const { userName, greenerys } = useContext(UserInfoContext)
+  // const [filtrarEstufa, setFiltrarEstufa] = useState(false)
+  const [greenerys, setGreenerys] = useState([]);
+  const history = useHistory();
+  const timeoutRef = useRef(null);
 
-  const [filtrarEstufa, setFiltrarEstufa] = useState(false)
-  const timeoutRef = useRef(null)
-
-  function SetDebounce(event, fn, delay) {
-    window.clearTimeout(timeoutRef.current)
-    timeoutRef.current = window.setTimeout(() => {
-      console.log(event.target.value)
-      let debouncedValue = event.target.value.trim()
-      fn(debouncedValue)
-    }, delay)
-  }
+  // function SetDebounce(event, fn, delay) {
+  //   window.clearTimeout(timeoutRef.current)
+  //   timeoutRef.current = window.setTimeout(() => {
+  //     console.log(event.target.value)
+  //     let debouncedValue = event.target.value.trim()
+  //     fn(debouncedValue)
+  //   }, delay)
+  // }
 
   useEffect(() => {
-    console.log(userName, greenerys)
-  }, [])
+    async function fetchData() {
+      const { id } = JSON.parse(
+        localStorage.getItem("userInfo")
+      );
+      try {
+        const { data } = await api.get("/greenery/get", {
+          headers: { "user-id": id },
+        });
+        console.log(data);
+        if (data.status.toLowerCase() === "erro") {
+          return ReactSwal.fire({
+            title: data.mensagem.titulo,
+            text: data.mensagem.conteudo,
+            timer: 3500,
+            timerProgressBar: true,
+            showCancelButton: false,
+            showConfirmButton: false,
+          });
+        } else if (data.status.toLowerCase() === "ok") {
+          setGreenerys(data.mensagem.conteudo);
+        }
+      } catch (er) {
+        console.log(er);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
-      <Header
-        onChange={event => SetDebounce(event, setFiltrarEstufa, 500)}
-        icon
-      />
+      <Header noIcon />
       <Conteiner>
-        {filtrarEstufa
-          ? greenerys
-              .filter(estufa => estufa.nomeestufa.indexOf(filtrarEstufa) >= 0)
-              .map(estufa => (
-                <Card
-                  title={estufa.nomeestufa}
-                  luz={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Luz' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  ventilador={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Vento' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  irrigacao={
-                    estufa.elementos.filter(
-                      elemento =>
-                        elemento.tipoelem == 'Água' && elemento.ativo != 0
-                    ).length > 0
-                  }
-                  date={estufa.dataestufa || '00/00/00'}
-                  imagem={estufa.fotoestufa}
-                  titulo={estufa.nomeestufa}
-                  elementos={estufa.elementos}
-                />
-              ))
-          : greenerys.map(estufa => (
+        {greenerys
+          && greenerys.map((estufa) => (
               <Card
+                key={estufa.idestufa}
                 title={estufa.nomeestufa}
                 luz={
                   estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Luz' && elemento.ativo != 0
+                    (elemento) =>
+                      elemento.tipoelem == "Luz" &&
+                      elemento.ativo != 0
                   ).length > 0
                 }
                 ventilador={
                   estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Vento' && elemento.ativo != 0
+                    (elemento) =>
+                      elemento.tipoelem == "Vento" &&
+                      elemento.ativo != 0
                   ).length > 0
                 }
                 irrigacao={
                   estufa.elementos.filter(
-                    elemento =>
-                      elemento.tipoelem == 'Água' && elemento.ativo != 0
+                    (elemento) =>
+                      elemento.tipoelem == "Água" &&
+                      elemento.ativo != 0
                   ).length > 0
                 }
-                date={estufa.dataestufa || '00/00/00'}
+                date={estufa.dataestufa || "00/00/00"}
                 imagem={estufa.fotoestufa}
                 titulo={estufa.nomeestufa}
                 elementos={estufa.elementos}
@@ -89,6 +90,6 @@ function ListaEstufa() {
             ))}
       </Conteiner>
     </>
-  )
+  );
 }
-export default ListaEstufa
+export default ListaEstufa;
