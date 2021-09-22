@@ -11,7 +11,7 @@ const Button = styled.button`
     background-color:var(--secondary);
     
     border:0;
-    border-radius:600px;
+    border-radius:var(--radius);
     
     text-align:center;
     color:var(--text);
