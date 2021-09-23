@@ -38,7 +38,6 @@ export function LoginUsuario() {
   async function handleSubmitLogin(event) {
     event.preventDefault()
     const {email,senha} = loginState
-    console.log(loginState)
     const ifRequestCancelled = axios.CancelToken.source() // Isso aqui informa para o axios quando a req. foi cancelada
 
     if (loginState.email === '' || loginState.email.includes('@') === false) {
