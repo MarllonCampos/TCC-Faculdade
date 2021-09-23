@@ -10,20 +10,17 @@ export function RenderizaListaElemento({
   const [elementos,setElementos] = useState([])
 
   useEffect(() => {
-    function filtraElementos() {
-      setElementos(listaElemento.filter(elemento => elemento.tipoelem === elem))
-    }
-    filtraElementos()
-  },[])
+    setElementos(listaElemento.filter(elemento => elemento.tipoElem === elem))
+  },[listaElemento])
 
   return (
       <Container {...props}>
       <ul>
-        {elementos.map(({nomeelem,ativo,id},index) => 
+        {elementos.map(({nomeElem,ativo,idElem},index) => 
           <ElementoRenderizado 
-            key={`${nomeelem}-${id}`} 
+            key={`${nomeElem}-${idElem}`} 
             index={index}
-            text={nomeelem} 
+            text={nomeElem} 
             estaLigado={ativo} /> 
         )}
       </ul>
