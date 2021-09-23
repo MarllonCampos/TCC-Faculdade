@@ -12,7 +12,7 @@ import {ReactSwal} from '../../components/ReactSwal'
 import {useHistory} from 'react-router-dom'
 export function ListaElemento(){
   const history = useHistory();
-    const [setaIrrigadoresAparece,setSetaIrrigadoresAparece] = useState(false)
+  const [setaIrrigadoresAparece,setSetaIrrigadoresAparece] = useState(false)
   const [setaLuzesAparece,setSetaLuzesAparece] = useState(false)
   const [setaVentiladoresAparece,setSetaVentiladoresAparece] = useState(false)
   const [estufa,setEstufa] = useState()
@@ -23,37 +23,49 @@ export function ListaElemento(){
 
   useEffect(()=>{
     async function fetchData(){
-      let userData
+      let userId
       try{
-        userData = JSON.parse(localStorage.getItem('userInfo'))
-
-        if (!userData){
-          // eslint-disable-next-line no-throw-literal
-          throw "Você não esta logado"
-        }
+        let {id} = JSON.parse(localStorage.getItem('userInfo'))
+        userId = id
       }
       catch(error){
-        return ReactSwal.fire({
-          title:error,
-          text: 'Sera enviado para a tela de login',
+        ReactSwal.fire({
+          icon:'warning',
+          title:'Você não esta logado',
+          text: 'Será enviado para a tela de login',
           timer:3000,
           timerProgressBar:true,
           showCancelButton:false,
           showConfirmButton:false,
           willClose: () => history.push('/')
         })
+        return null
       }
       try{
-        const response = await api.get(`/greenery `,{
+        const {data} = await api.get(`/greenery/get `,{
           headers:{
-            'user-email':userData.email
+            'user-id':userId
           }
         })
-        const estufas = await response.data
+        if (data.status.toLowerCase() === 'erro'){
+          ReactSwal.fire({
+            icon:3500,
+            title:data.mensagem.titulo,
+            text:data.mensagem.conteudo,
+            timer:3500,
+            timerProgressBar:true,
+            showCancelButton:false,
+            showConfirmButton:false,
+            willClose:() => history.goBack()
+
+          })
+          return null
+        }
+        
+        const estufas = await data.mensagem.conteudo[0]
         setEstufa(estufas)
       }catch(error) {
-        console.log(error)
-        return ReactSwal.fire({
+        ReactSwal.fire({
           title:'Ops',
           text: 'Houve um erro no servidor tente novamente mais tarde, agradecemos pela paciência',
           timer:3500,
@@ -62,13 +74,15 @@ export function ListaElemento(){
           showConfirmButton:false,
           willClose: () => history.goBack()
         })
+        return null
       }
       
     }
     if (!estufa) {
-      fetchData()
+      fetchData();
     }
-  },[estufa])
+
+  })
   return(
     <>
       <Header />
@@ -97,7 +111,7 @@ export function ListaElemento(){
         </BotaoElemento >
         {
           setaIrrigadoresAparece &&
-          <RenderizaListaElemento listaElemento={estufa.elementos} elem={2} />
+          <RenderizaListaElemento listaElemento={estufa.elementos} elem="Água" />
         }
 
         <BotaoElemento 
@@ -122,7 +136,7 @@ export function ListaElemento(){
         </BotaoElemento >
         {
           setaLuzesAparece &&
-          <RenderizaListaElemento listaElemento={estufa.elementos} elem={1} />
+          <RenderizaListaElemento listaElemento={estufa.elementos} elem="Luz" />
         }
 
         <BotaoElemento 
@@ -147,7 +161,7 @@ export function ListaElemento(){
         </BotaoElemento >
         {
           setaVentiladoresAparece &&
-          <RenderizaListaElemento listaElemento={estufa.elementos} elem={3} />
+          <RenderizaListaElemento listaElemento={estufa.elementos} elem="Vento" />
         }
       </>
     )}
