@@ -42,7 +42,7 @@ export function ListaElemento(){
         return null
       }
       try{
-        const {data} = await api.get(`/greenery/get `,{
+        const {data} = await api.get(`/greenery/get/`,{
           headers:{
             'user-id':userId
           }
