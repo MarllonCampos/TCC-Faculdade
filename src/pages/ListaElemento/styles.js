@@ -35,6 +35,10 @@ export const BotaoElemento = styled.div`
 
   & > img {
     pointer-events:none;
+    &::selection{
+      color:transparent;
+      background:transparent;
+    }
   }
 
 `;
