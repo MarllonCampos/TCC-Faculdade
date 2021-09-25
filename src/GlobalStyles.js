@@ -75,7 +75,7 @@ body {
     --quintiary:#11D435;
     --text:#FFFFFF;
     --text-green:#0B8722;
-    --dot-blue:#0FFF00;
+    --dot-blue:#118DFF;
     --dot-red: #FF4307;
     --error-message:#D41111;
     --radius:15px;
