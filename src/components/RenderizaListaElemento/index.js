@@ -40,8 +40,6 @@ export function RenderizaListaElemento({
 function AlteraElementoForm({id, ...props}) {
   const [nome,setNome] = useState('');
 
-
-
   function handleNameChange(event) {
     setNome(event.target.value)
   }
@@ -51,7 +49,7 @@ function AlteraElementoForm({id, ...props}) {
 
     event.preventDefault();
     const body = {
-      'elemento-id':'a',
+      'elemento-id':id,
       'elemento-nome':nome,
     }
 
@@ -60,19 +58,20 @@ function AlteraElementoForm({id, ...props}) {
       ,{
         cancelToken: ifRequestCancelled.token
       })
-      console.log(data);
       if (data.status === 'erro') {throw data}
-      return ReactSwal.fire({
+      ReactSwal.fire({
         title:data.mensagem.titulo,
         text:data.mensagem.conteudo,
         timer:2500,
         timerProgressBar:true,
         showConfirmButton:true,
       })
+      props.outSideState(nome)
+      return null
     }catch (error) {
       console.log(error)
       if (error.status === 'erro') {
-        return ReactSwal.fire({
+       return ReactSwal.fire({
           title:error.mensagem.titulo,
           text:error.mensagem.conteudo,
           icon:'error',
@@ -86,12 +85,8 @@ function AlteraElementoForm({id, ...props}) {
           timer:2500,
           timerProgressBar:true,
         })
-
       }
-      
     }
-
-
   }
   return (
     <form onSubmit={(ev) => handleFormSubmit(ev)}>
@@ -112,6 +107,7 @@ function AlteraElementoForm({id, ...props}) {
 
 function ElementoRenderizado({ text,estaLigado,index, id,...props }) {
   const [LigarDesligarElemento, setLigarDesligarElemento] = useState(estaLigado)
+  const [nome,setNome] = useState('')
   function trocaEstadoElemento(){
     ReactSwal.fire({
       title: 'Atenção',
@@ -141,27 +137,13 @@ function ElementoRenderizado({ text,estaLigado,index, id,...props }) {
 
   function alteraElemento(){
     ReactSwal.fire({
-      html:<AlteraElementoForm id={id} />,
+      html:<AlteraElementoForm id={id} outSideState={setNome}/>,
       title:'<p style="font-size:22px;color:#000">Fazendo isso você alterará o elemento, deseja continuar?</p>',
-      text:'a',
       showCancelButton: true,
       showConfirmButton:false,
       cancelButtonColor: '#d33',
       cancelButtonText:'Cancelar',
 
-    }).then((result) => {
-      if (result.isConfirmed) {
-        
-        ReactSwal.fire({
-          title: LigarDesligarElemento ? "Desligando o sensor" : 'Ligando o sensor',
-          text: "Estamos alterando o sensor aguarde um pouco",
-          timer: 3500,
-          showCancelButton:false,
-          showConfirmButton:false,
-          timerProgressBar:true,
-          willClose: () =>  setLigarDesligarElemento(prevState => !prevState),
-        }) 
-      }
     })
   }
 
@@ -171,10 +153,9 @@ function ElementoRenderizado({ text,estaLigado,index, id,...props }) {
   
 
 
-
   return (
     <Li index={index} {...longPress} className={`${LigarDesligarElemento && 'active'} `}>
-      {text}
+      {nome == '' ? text : nome}
       <LigadoDesligado  className={`${LigarDesligarElemento ? 'active': ''}`}>
         {LigarDesligarElemento ? 'Ligado' : 'Desligado'} <span />
       </LigadoDesligado>
