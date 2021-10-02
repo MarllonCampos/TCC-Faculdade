@@ -18,12 +18,12 @@ function Routes() {
   return (
     <Router>
       <Switch>
+        <Route path="/" exact component={LoginUsuario} />
         <Route path="/lista-estufas" component={ListaEstufa} />
         <Route path="/lista-plantas" component={ListaPlanta} />
         <Route path="/modal" component={Modal} />
 
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
-        <Route path="/" component={LoginUsuario} />
         <Route path="/cadastro-usuario" component={Cadastro} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-tipo/:tipo" component={CadastroEstufas} />

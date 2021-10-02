@@ -10,11 +10,8 @@ import axios from 'axios'
 
 export default function PainelUsuario() {
   const [nome, setNome] = useState(false);
-  const [id, setId] = useState(false);
   const [email, setEmail] = useState(false);
-  const [senha, setSenha] = useState(false);
-  const [novaSenha, setNovaSenha] = useState('');
-  const [confirmeSenha, setConfirmeSenha] = useState('');
+  const [senha, setSenha] = useState('');
   const [apareceBotoes, setApareceBotoes] = useState(false)
   const history = useHistory();
 
@@ -49,9 +46,7 @@ export default function PainelUsuario() {
 
     setNome(userInfo.user)
     setEmail(userInfo.email)
-    setId(userInfo.id)
 
-    console.log(userInfo);
   }, []);
 
 
@@ -59,25 +54,8 @@ export default function PainelUsuario() {
     const ifRequestCancelled = axios.CancelToken.source() // Isso aqui informa para o axios quando a req. foi cancelada
 
     event.preventDefault()
-    if (!senha || senha === '' || senha === false) {
-      console.log('h1',senha)
-      return Toast.fire({
-        // Mostra o pop-up de erro em cima
-        icon: 'error',
-        title: 'Por favor insira sua senha',
-        timerProgressBar: true,
-        timer: 2000
-      })
-    }
-    if(novaSenha !== "" && novaSenha !== confirmeSenha) {
-      return Toast.fire({
-        // Mostra o pop-up de erro em cima
-        icon: 'error',
-        title: 'As senhas novas não coincidem',
-        timerProgressBar: true,
-        timer: 2000
-      })
-    }
+
+  
     ReactSwal.fire({
       // Aparece a modal de loading para fazer o login
       title: 'Realizando Alterações',
@@ -96,11 +74,11 @@ export default function PainelUsuario() {
         })
       }
     })
+    console.log(senha)
     const response = await api.put(`/user/modify/`, {
       nome,
       email,
-      senha: senha,
-      novaSenha:novaSenha
+      senha
     }, {
       cancelToken: ifRequestCancelled.cancel()
     })
@@ -117,8 +95,8 @@ export default function PainelUsuario() {
       })
     } else {
       ReactSwal.fire({
-        title: data.message.title,
-        text: data.message.content,
+        title: data.mensagem.titulo,
+        text: data.mensagem.conteudo,
         icon: 'error'
       })
     }
@@ -131,7 +109,8 @@ export default function PainelUsuario() {
         {(nome || nome === "") && (
           <>
             <form onSubmit={(event) => handleSubmitForm(event)}>
-            <a href="#alterarSenha" onClick={() => setApareceBotoes(prevState => true )}>editar</a>
+              {!apareceBotoes && (<a href="#alterarSenha" onClick={() => setApareceBotoes(prevState => true )}>editar</a>)}
+            
               <InputText
                 noIcon
                 onChange={(e) => {return setNome(e.target.value)}}
@@ -159,33 +138,20 @@ export default function PainelUsuario() {
               <InputText
                 onChange={(e) => setSenha(e.target.value)}
                 type="password"
-                labelText="Senha atual"
+                labelText="Nova senha"
+                placeholder="Deixe branco para não trocar"
                 readOnly={!apareceBotoes}
                 className={`${!apareceBotoes && 'disabled' }`}
                 
                 />
 
-
-              <InputText
-                onChange={(e) => setNovaSenha(e.target.value)}
-                type="password"
-                labelText="Nova senha"
-              />
-
-
-              <InputText
-                onChange={(e) => setConfirmeSenha(e.target.value)}
-                type="password"
-                labelText="Confirme a senha"
-              />
-
               { apareceBotoes && (
               <div className="buttons-container" id="alterarSenha">
-                <Button className="cancelar" type="button" onClick={() => setApareceBotoes(prevState => !prevState)}> 
+                <Button className="cancelar" style={{margin:0}} type="button" onClick={() => setApareceBotoes(prevState => !prevState)}> 
                   Cancelar
                 </Button>
                 
-                <Button className="confirmar" type="submit">
+                <Button className="confirmar" style={{margin:0}} type="submit">
                   Confirmar
                 </Button>
               </div>)}

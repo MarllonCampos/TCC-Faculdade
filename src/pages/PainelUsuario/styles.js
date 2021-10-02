@@ -4,7 +4,6 @@ export const Container = styled.div`
   min-height:calc(100vh - 55px);
   width:100%;
   background:var(--quartiary);
-  padding:20px 0;
   min-width:100vw;
   
   
@@ -30,10 +29,9 @@ export const Container = styled.div`
     & > div {
       margin-left:0;
       margin-right:0;
+      margin-bottom:0;
       align-self:flex-start;  
-      input {
-        margin:0;
-
+      input {      
         &.disabled {
           color:#ccc;
         }
@@ -46,7 +44,8 @@ export const Container = styled.div`
       justify-content:space-between;
       gap: 15px;
       width:100%;
-
+      margin-top:32px;
+      
       button {
         border-radius:var(--radius);
       }
