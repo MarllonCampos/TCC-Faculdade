@@ -27,6 +27,7 @@ export function ListaElemento(){
       try{
         let {id} = JSON.parse(localStorage.getItem('userInfo'))
         userId = id
+
       }
       catch(error){
         ReactSwal.fire({
@@ -48,17 +49,16 @@ export function ListaElemento(){
           }
         })
         if (data.status.toLowerCase() === 'erro'){
-          ReactSwal.fire({
-            icon:3500,
-            title:data.mensagem.titulo,
-            text:data.mensagem.conteudo,
-            timer:3500,
-            timerProgressBar:true,
-            showCancelButton:false,
-            showConfirmButton:false,
-            willClose:() => history.goBack()
 
-          })
+          ReactSwal.fire({
+              icon:'error',
+              title:data.mensagem.titulo,
+              text:data.mensagem.conteudo,
+              showCancelButton:false,
+              showConfirmButton:false,
+              willClose:() => history.goBack()
+
+            })
           return null
         }
         
