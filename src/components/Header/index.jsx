@@ -51,7 +51,7 @@ function Header({ onChange,icon, goTo="", noPerson, ...props }) {
         ) : (
           <ArrowIosBack cursor="pointer" onClick={goToBack} size={38} fill="#fff" />
         )}
-        {!noPerson && (<PersonFill cursor="pointer" onClick={() => history.push('/page')} size={38} fill="#fff"/>)}
+        {!noPerson && (<PersonFill cursor="pointer" onClick={() => history.push('/painel-usuario')} size={38} fill="#fff"/>)}
         
       </ContentWrapper>
     </Container>
