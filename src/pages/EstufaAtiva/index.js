@@ -5,8 +5,6 @@ import {
   faWater,
   faCog,
   faEdit,
-  faTimes,
-  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,35 +17,16 @@ import Header from "../../components/Header";
 import Title from "../../components/Title";
 import CardStatus from "../../components/CardDetalhe";
 
-
 import {
   Conteiner,
   ImageHorta,
   ConteinerGrid,
 } from "./styles";
-import axios from "axios";
 
 function EstufaAtiva() {
   const [estufa, setEstufa] = useState();
-  const [isEditing, setIsEditing] = useState(false);
-  const [estufaNome, setEstufaNome] = useState("");
+
   const history = useHistory();
-
-
-  const Toast = ReactSwal.mixin({
-    toast: true,
-    position: 'bottom',
-    showConfirmButton: false,
-    timer: 2000,
-    timerProgressBar: true,
-    didOpen: toast => {
-      toast.addEventListener('mouseenter', ReactSwal.stopTimer)
-      toast.addEventListener('mouseleave', ReactSwal.resumeTimer)
-    }
-  })
-
-
-
   useEffect(() => {
     async function fetchData() {
       let userId;
@@ -79,73 +58,11 @@ function EstufaAtiva() {
         },
       });
       setEstufa(data.mensagem.conteudo[0]);
-      setEstufaNome(data.mensagem.conteudo[0].nomeestufa)
     }
     if (!estufa) {
       fetchData();
     }
   }, []);
-
-
- async function updateNomeEstufa(event) {
-    event.preventDefault()
-    const ifRequestCancelled = axios.CancelToken.source() // Isso aqui informa para o axios quando a req. foi cancelada
-
-    if (estufaNome.length <= 3) {
-      return Toast.fire({
-       title:'O nome deve conter no mínimo 3 letras',
-       icon:'warning'
-      })
-    }
-
-    ReactSwal.fire({
-      // Aparece a modal de loading para fazer o login
-      title: 'Realizando Alterações',
-      text: 'Aguarde alguns instantes e suas alterações serão feitas',
-      didOpen: () => ReactSwal.showLoading(),
-      willClose: () => ifRequestCancelled.cancel(),
-      timer: 5000
-    }).then(result => {
-      if (result.dismiss === ReactSwal.DismissReason.timer) {
-        // Ao demorar mais de 5 segundos mostra modal deerro
-        ReactSwal.fire({
-          icon: 'error',
-          title: 'Erro Inesperado',
-          text: 'O servidou demorou a responder',
-          footer: 'Tente novamente em 30 seg'
-        })
-      }
-    })
-
-   const {data} = await api.put('/greenery/modify/', {
-      'estufa-id': estufa.idestufa,
-      'estufa-nome':estufaNome
-    }, {
-      cancelToken: ifRequestCancelled.cancel()
-    })
-
-    ReactSwal.hideLoading();
-    if (data.status.toLowerCase() === 'ok'){
-      return ReactSwal.fire({
-        icon: 'success',
-        title: 'Informações realizadas com sucesso',
-        text: 'Os dados da estufa foram atlerados com sucesso',
-        footer:'A página será recarregada',
-        timer:2000,
-        timerProgressBar:true,
-        showConfirmButton:false,
-        willClose: () => window.location.reload()
-      })
-      
-    } else {
-      ReactSwal.fire({
-        title: data.mensagem.titulo,
-        text: data.mensagem.conteudo,
-        icon: 'error'
-      })
-    }
-    
-  }
 
   return (
     <>
@@ -154,52 +71,18 @@ function EstufaAtiva() {
         {estufa ? (
           <>
             <div className="wrapper-title">
-              {!isEditing ? (
-                <Title
-                  style={{ marginTop: "50px" }}
-                  title={estufa.nomeestufa}
-                />
-              ) : (
-                <input
-                  type="text"
-                  value={estufaNome}
-                  autofocus
-                  onChange={(ev) =>
-                    setEstufaNome(ev.target.value)
-                  }
-                />
-              )}
+              <Title
+                style={{ marginTop: "50px" }}
+                title={estufa.nomeestufa}
+              />
 
-              {!isEditing ? (
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  style={{ float: "right" }}
-                  color="#FFF"
-                  size="lg"
-                  onClick={() =>
-                    setIsEditing((prevState) => !prevState)
-                  }
-                />
-              ) : (
-                <div style={{ float: "right" }}>
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    color="#FFF"
-                    size="lg"
-                    onClick={updateNomeEstufa}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    color="#C73110"
-                    size="lg"
-                    onClick={() =>
-                      setIsEditing(
-                        (prevState) => !prevState
-                      )
-                    }
-                  />
-                </div>
-              )}
+              <FontAwesomeIcon
+                icon={faEdit}
+                style={{ float: "right" }}
+                color="#FFF"
+                size="lg"
+                onClick={() => console.log('editar')}
+              />
             </div>
             <ImageHorta src={estufa.fotoestufa} />
             <p className="date">{estufa.dataestufa}</p>
