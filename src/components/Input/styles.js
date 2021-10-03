@@ -55,6 +55,12 @@ export const Input = styled.input`
   &::-ms-clear,&::-ms-reveal {
     display:none;
   }
+
+  &::placeholder {
+    color:#ccc;
+  }
+
+
 `
 
 export const PasswordIcon = styled.div`

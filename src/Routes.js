@@ -12,22 +12,24 @@ import Modal from './components/Modal'
 import Cadastro from './pages/CadastroUsuario'
 import { ListaElemento } from './pages/ListaElemento'
 import { LoginUsuario } from './pages/LoginUsuario'
+import PainelUsuario from './pages/PainelUsuario'
 
 function Routes() {
   return (
     <Router>
       <Switch>
+        <Route path="/" exact component={LoginUsuario} />
         <Route path="/lista-estufas" component={ListaEstufa} />
         <Route path="/lista-plantas" component={ListaPlanta} />
         <Route path="/modal" component={Modal} />
 
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
-        <Route path="/" component={LoginUsuario} />
         <Route path="/cadastro-usuario" component={Cadastro} />
         <Route path="/cadastro-estufas" component={CadastroEstufas} />
         <Route path="/cadastro-tipo/:tipo" component={CadastroEstufas} />
         <Route path="/cadastro-elemento" component={CadastroElemento} />
         <Route path="/lista-elemento" component={ListaElemento} />
+        <Route path="/painel-usuario" component={PainelUsuario} />
       </Switch>
     </Router>
   )
