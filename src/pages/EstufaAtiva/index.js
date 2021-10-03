@@ -1,104 +1,124 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable no-throw-literal */
+import React, { useEffect, useState } from "react";
 import {
-  faLightbulb,
-  faFan,
+  faSeedling,
   faWater,
-  faSeedling
-} from '@fortawesome/free-solid-svg-icons'
-import { useHistory, useLocation } from 'react-router'
+  faCog,
+  faEdit,
+} from "@fortawesome/free-solid-svg-icons";
 
-import Header from '../../components/Header'
-import Title from '../../components/Title'
-import CardStatus from '../../components/CardDetalhe'
-import FotoHorta from '../../assets/horta.jpg'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// import { retrieveSessionData } from '../../utils/sessionStorage'
-import { Conteiner, ImageHorta, ConteinerGrid, Back } from './styles'
+import { useHistory } from "react-router-dom";
+import { api } from "../../utils/api";
+import { ReactSwal } from "../../components/ReactSwal";
+import Loading from "../../components/Loading";
+import Header from "../../components/Header";
+import Title from "../../components/Title";
+import CardStatus from "../../components/CardDetalhe";
+
+import {
+  Conteiner,
+  ImageHorta,
+  ConteinerGrid,
+} from "./styles";
 
 function EstufaAtiva() {
-  const { elemento, image, titulo } = useLocation()
-  const [estadoElemento, setEstadoElemento] = useState(elemento)
-  const [estadoImagem, setEstadoImagem] = useState(image)
-  const [estadoTitulo, setEstadoTitulo] = useState(titulo)
-  const [filtroLuz, setFiltroLuz] = useState()
-  const [filtroAgua, setFiltroAgua] = useState()
-  const [filtroVentilador, setFiltroVentilador] = useState()
-  const [filtroPlantas, setFiltroPlantas] = useState()
-  const history = useHistory()
+  const [estufa, setEstufa] = useState();
 
-  const goBack = () => {
-    history.goBack()
-  }
-
+  const history = useHistory();
   useEffect(() => {
-    if (!estadoElemento) {
-      // const elementosCompleto = retrieveSessionData('greeneryData')
-      // console.log(elementosCompleto)
+    async function fetchData() {
+      let userId;
+      try {
+        const { id } = JSON.parse(
+          localStorage.getItem("userInfo")
+        );
+        if (!id) {
+          throw "Usuario não logado";
+        }
+        userId = id;
+      } catch (error) {
+        ReactSwal.fire({
+          icon: "error",
+          title: "Erro",
+          content: "Você não esta logado",
+          footer: "Levando-o de volta para a tela de login",
+          timer: 2500,
+          showCancelButton: false,
+          showConfirmButton: false,
+          timerProgressBar: true,
+          willClose: () => history.push("/"),
+        });
+      }
+
+      const { data } = await api.get("/greenery/get/", {
+        headers: {
+          "user-id": userId,
+        },
+      });
+      setEstufa(data.mensagem.conteudo[0]);
     }
-    setFiltroLuz(estadoElemento.filter(el => el.tipoelem == 'Luz'))
-    setFiltroAgua(estadoElemento.filter(el => el.tipoelem == 'Água'))
-    setFiltroVentilador(estadoElemento.filter(el => el.tipoelem == 'Vento'))
-    // setFiltroPlantas ( estadoElemento.filter(el => el.tipoelem == "Planta"))
-    setFiltroPlantas([])
-  }, [])
+    if (!estufa) {
+      fetchData();
+    }
+  }, []);
 
   return (
     <>
       <Header />
-      {filtroLuz && (
-        <Conteiner>
-          <Title style={{ marginTop: '50px' }} title={titulo} />
-          <ImageHorta src={image} />
-          <ConteinerGrid>
+      <Conteiner>
+        {estufa ? (
+          <>
+            <div className="wrapper-title">
+              <Title
+                style={{ marginTop: "50px" }}
+                title={estufa.nomeestufa}
+              />
+
+              <FontAwesomeIcon
+                icon={faEdit}
+                style={{ float: "right" }}
+                color="#FFF"
+                size="lg"
+                onClick={() => console.log('editar')}
+              />
+            </div>
+            <ImageHorta src={estufa.fotoestufa} />
+            <p className="date">{estufa.dataestufa}</p>
             <CardStatus
-              elementos={filtroLuz}
-              cor="purple"
-              tipo="Luz"
-              corIcon="red"
-              iconess={faLightbulb}
-              planta_ou_ativa="ativos"
-              ativos={filtroLuz.filter(el => el.ativo == 1).length}
-              quant={filtroLuz.length}
+              to="/lista-elemento"
+              cor="#FFBF00"
+              tipo="Elementos"
+              iconess={faCog}
             />
 
             <CardStatus
-              elementos={filtroVentilador}
-              cor="#ff7518 "
-              tipo="Ventilador"
-              corIcon="red"
-              iconess={faFan}
-              planta_ou_ativa="ativos"
-              ativos={filtroVentilador.filter(el => el.ativo == 1).length}
-              quant={filtroVentilador.length}
-            />
-
-            <CardStatus
-              elementos={filtroAgua}
-              cor="blue"
-              tipo="Irrigação"
-              corIcon="red"
-              iconess={faWater}
-              planta_ou_ativa="ativos"
-              ativos={filtroAgua.filter(el => el.ativo == 1).length}
-              quant={filtroAgua.length}
-            />
-
-            <CardStatus
-              lastItem={true}
-              elementos={filtroPlantas}
-              cor="darkgreen"
+              to="/lista-plantas"
+              cor="var(--secondary)"
               tipo="Plantas"
-              corIcon="red"
               iconess={faSeedling}
-              planta_ou_ativa="plantas"
-              ativos={filtroPlantas.filter(el => el.ativo == 1).length}
-              quant={filtroPlantas.length}
             />
-          </ConteinerGrid>
-          ): 'LOADING'}
-        </Conteiner>
-      )}
+
+            <div className="temperature-humidity">
+              <p className="message-holder">
+                <span className="temperature">
+                  Temperatura
+                </span>
+                <span className="temp-number">24ºC</span>
+              </p>
+
+              <p className="message-holder">
+                <span className="humidity">Humidade</span>
+                <span className="hum-number">98%</span>
+              </p>
+            </div>
+          </>
+        ) : (
+          <Loading />
+        )}
+      </Conteiner>
     </>
-  )
+  );
 }
-export default EstufaAtiva
+export default EstufaAtiva;
