@@ -18,14 +18,18 @@ const InputText = ({
   register,
   noIcon,
   required,
+  labelStyle,
+  inputContainerStyle,
+  inputStyle,
+
   ...props
 }) => {
   const [isPasswordType, setIsPasswordType] = useState(true);
 
   return (
     <Container>
-      <Label htmlFor={idFor}> {labelText}</Label>
-      <InputContainer>
+      <Label style={labelStyle}htmlFor={idFor}> {labelText}</Label>
+      <InputContainer style={inputContainerStyle}>
         {!noIcon && (
           <Input
             id={idFor}
@@ -34,6 +38,7 @@ const InputText = ({
             ref={register}
             onChange={onChange}
             required={required}
+            style={inputStyle}
             type={isPasswordType ? "password" : "text"}
             {...props}
           />
@@ -47,6 +52,8 @@ const InputText = ({
             ref={register}
             onChange={onChange}
             type={type}
+            style={inputStyle}
+
             {...props}
           />
         )}

@@ -23,10 +23,8 @@ export const Li = styled.li`
   animation-fill-mode:forwards;
   animation-duration: ${({ index }) =>
   `${((index+1) * 350)}ms`};
-
-  &:nth-child(even) {
-    background: var(--tertiary);
-  }
+  position:relative;
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +35,12 @@ export const Li = styled.li`
   height: 45px;
   transition:border-radius ${({ index }) =>
   `${((index+1) * 350)}ms`} linear;
+  margin-top:5px;
 
+  &.active {
+    border:1px solid var(--dot-blue);
+  }
+  border:1px solid var(--dot-red);
 
   &:last-child{
     border-bottom-left-radius:var(--radius);
