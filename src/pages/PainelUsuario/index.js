@@ -74,7 +74,6 @@ export default function PainelUsuario() {
         })
       }
     })
-    console.log(senha)
     const response = await api.put(`/user/modify/`, {
       nome,
       email,
