@@ -11,7 +11,6 @@ function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem,estufa
     function SubtraiDatas() {
         const data = new Date();
         const dataCriacao = new Date(date)
-        console.log(dataCriacao)
         const diferencaDatas = Math.abs(data.getTime() - dataCriacao.getTime());
         const dataCriacaoFinal = Math.ceil(diferencaDatas / ( 1000 *  60 * 60 * 24));
 

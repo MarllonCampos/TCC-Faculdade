@@ -29,10 +29,9 @@ function ListaEstufa() {
         localStorage.getItem("userInfo")
       );
       try {
-        const { data } = await api.get("/greenery/get", {
+        const {data} = await api.get("/greenery/get/", {
           headers: { "user-id": id },
         });
-        console.log(data);
         if (data.status.toLowerCase() === "erro") {
           ReactSwal.fire({
             title: data.mensagem.titulo,
