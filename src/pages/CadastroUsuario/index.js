@@ -13,6 +13,7 @@ import { ReactSwal } from "../../components/ReactSwal";
 
 import { api } from "../../utils/api";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter";
+import Header from "../../components/Header";
 
 function Cadastro() {
   const history = useHistory();
@@ -111,7 +112,6 @@ function Cadastro() {
       });
       
           if (data.status.toLowerCase() === "ok") {
-            console.log(data)
 
             ReactSwal.fire(
               {
@@ -119,13 +119,14 @@ function Cadastro() {
                 icon: "success",
                 text: data.mensagem.conteudo,
                 timer: 3500,
+                showConfirmButton:false,
+                showCancelButton:false,
                 footer: "Enviando você para tela de login",
               }
             ).then((result) => {
               if (result.dissmiss === ReactSwal.DismissReason.timer) {history.push("/");}
             });
           } else if (data.status.toLowerCase() === 'erro'){
-            console.log(data)
             ReactSwal.fire({
               title: data.mensagem.titulo,
               icon: "error",
@@ -134,7 +135,6 @@ function Cadastro() {
             });
           }
     }catch (error) {
-      console.log(error)
       ReactSwal.fire({
         icon:"error",
         title:error,
@@ -144,6 +144,8 @@ function Cadastro() {
   }
 
   return (
+    <>
+    <Header noIcon />
     <Main>
       <Form
         onSubmit={(event) => handleSubmit(event) }
@@ -194,6 +196,7 @@ function Cadastro() {
         </Button>
       </Form>
     </Main>
+    </>
   );
 }
 export default Cadastro;
