@@ -14,9 +14,28 @@ export const Conteiner = styled.div`
     justify-content:space-between;
     align-items:center;
     padding:0 5px;
+    margin-top:12px;
+
     margin-bottom:16px;
     h3 {
       margin:0;
+    }
+
+    input {
+      border:0;
+      caret-color:#000;
+      background:none;
+      outline:1px solid #000;
+      height:25px;
+      border-radius:6px;
+      padding:0 12px;
+      font-family:Roboto, sans-serif;
+      font-weight:500;
+      font-size:12px;
+    }
+    &> div {
+      display:flex;
+      gap:12px;
     }
   }
   .estufa-nome {
