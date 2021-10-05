@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 
 import { api } from "../../utils/api";
 import { Conteiner } from "./styles";
+import { BotaoMais } from "../../components/BotaoMais";
 
 
   
@@ -160,6 +161,8 @@ export default function ListaPlanta() {
                 onClick={() => alteraElemento(planta.idPlanta)}
               />
           ))}
+
+        <BotaoMais to="/cadastro-planta"style={{marginTop:15}} color="green"/>
       </Conteiner>
     </>
   );
