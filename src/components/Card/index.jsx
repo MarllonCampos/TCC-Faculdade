@@ -18,13 +18,8 @@ function Card({ title, luz, ventilador, irrigacao, date, elementos,imagem,estufa
       }
 
     return (
-        <Conteiner to={{
-            pathname: `estufa-ativa/${estufaID}`,
-            elemento: elementos,
-            image: imagem,
-            titulo: title,
-            }}>
-            <Image src={FotoHorta} />
+        <Conteiner to={rest.to}>
+            <Image src={imagem} />
             <Coluna>
                 <TextoStatus>
                     {title}

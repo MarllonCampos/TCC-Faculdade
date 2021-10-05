@@ -100,6 +100,7 @@ function ListaEstufa() {
                 date={estufa.dataestufa || "00/00/00"}
                 imagem={estufa.fotoestufa}
                 titulo={estufa.nomeestufa}
+                to="/estufa-ativa"
                 elementos={estufa.elementos}
               />
             )): <Loading verde />}
