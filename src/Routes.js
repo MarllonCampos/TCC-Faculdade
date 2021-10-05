@@ -18,7 +18,7 @@ function Routes() {
         <Route path="/lista-estufas" component={ListaEstufa} />
         <Route path="/lista-plantas" component={ListaPlanta} />
 
-        <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
+        <Route path="/estufa-ativa" component={EstufaAtiva} />
         <Route path="/cadastro-usuario" component={Cadastro} />
         <Route path="/lista-elemento" component={ListaElemento} />
         <Route path="/painel-usuario" component={PainelUsuario} />

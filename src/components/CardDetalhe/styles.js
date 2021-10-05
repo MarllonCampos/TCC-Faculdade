@@ -5,27 +5,29 @@ import {Link} from 'react-router-dom';
 
 export const Container = styled(Link)`
     position:relative;
-    flex-grow:1;
     display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    border-radius:15px;
-    height:100%;
-    background:${({cor}) => cor && cor};
-    padding:15px 0px 0;
+    
     align-items:center;
+    border-radius:10px;
+    background:${({cor}) => cor && cor};
+    padding:10px 8px; 
+    padding-left:12px;
+    width: min(80vw,300px);
+    text-decoration:none;
+    color:var(--text);
+    align-items:center;
+    margin-top:15px;
+ 
 
-    ${(props)=>props.lastItem && "grid-column-end:3"}
 `;
 
 
 
-export const RowTop = styled.div`
+export const LeftMessage = styled.div`
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    width: 100%;
-    padding: 0 10px;
+
+    flex:1;
 `;
 
 
@@ -34,22 +36,15 @@ export const Element = styled.p`
     font-size:11px;
     font-weight:600;
     font-family:Comfortaa, sans-serif;
+    line-height:0;
+    margin-left:5px;
 `
-export const ActiveElements = styled.p`
-    font-weight:700;
-    color:var(--text);
-    font-size:1rem;
-    margin:11px 0 3px;
-`
-export const Unit = styled.div`
+
+export const Unit = styled.span`
     color:var(--text);
     font-size:0.7rem;
     font-weight:600;
     font-family:Comfortaa, sans-serif;
-    align-self:flex-end;
-    width: 100%;
-    text-align: right;
-    padding: 11px 12px 5px;
-
+    text-decoration:underline;
 
 `
