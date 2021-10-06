@@ -7,13 +7,12 @@ import Header from "../../components/Header";
 import InputText from "../../components/Input";
 import { ReactSwal } from "../../components/ReactSwal";
 import { useHistory } from "react-router-dom";
+import Loading from '../../components/Loading'
 
 import { api } from "../../utils/api";
 import { Conteiner } from "./styles";
 import { BotaoMais } from "../../components/BotaoMais";
 
-
-  
 function AlteraPlantaForm({ id, ...props }) {
   const [nome, setNome] = useState("");
 
@@ -47,8 +46,9 @@ function AlteraPlantaForm({ id, ...props }) {
         timer: 2500,
         timerProgressBar: true,
         showConfirmButton: true,
-        footer:'Recarregaremos a página para as mudanças terem efeito',
-        willClose:() => window.location.reload(),
+        footer:
+          "Recarregaremos a página para as mudanças terem efeito",
+        willClose: () => window.location.reload(),
       });
       return null;
     } catch (error) {
@@ -93,7 +93,6 @@ function AlteraPlantaForm({ id, ...props }) {
   );
 }
 
-
 export default function ListaPlanta() {
   const [plantas, setPlantas] = useState();
   const history = useHistory();
@@ -128,7 +127,7 @@ export default function ListaPlanta() {
           "user-id": userId,
         },
       });
-      setPlantas(data.mensagem.conteudo[0].plantas);
+      setPlantas(data.mensagem.conteudo[0]);
     }
     if (!plantas) {
       fetchData();
@@ -151,25 +150,28 @@ export default function ListaPlanta() {
     <>
       <Header />
       <Conteiner>
-        {plantas &&
-          plantas.map((planta, index) => (
-              <CardPlanta
-                title={planta.nomePlanta}
-                date={planta.dataPlanta}
-                key={planta.idPlanta}
-                imagem={planta.fotoPlanta}
-                onClick={() => alteraElemento(planta.idPlanta)}
-              />
+        {plantas?.plantas != [] && plantas?.plantas && 
+          plantas.plantas.map((planta, index) => (
+            <CardPlanta
+              title={planta.nomePlanta}
+              date={planta.dataPlanta}
+              key={planta.idPlanta}
+              imagem={planta.fotoPlanta}
+              onClick={() =>
+                alteraElemento(planta.idPlanta)
+              }
+            />
           ))}
 
-        <BotaoMais to="/cadastro-planta"style={{marginTop:15}} color="green"/>
+        {plantas?.plantas && (
+          <BotaoMais
+            to={`/cadastro-planta/${plantas?.idestufa}`}
+            style={{ marginTop: 15 }}
+            color="green"
+          />
+        )}
+        {!plantas && <Loading verde />}
       </Conteiner>
     </>
   );
 }
-
-
-
-
-
-
