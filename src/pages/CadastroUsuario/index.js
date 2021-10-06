@@ -118,10 +118,13 @@ function Cadastro() {
                 title: data.mensagem.titulo,
                 icon: "success",
                 text: data.mensagem.conteudo,
-                timer: 3500,
+                timerProgressBar:true,
+                timer: 3000,
                 showConfirmButton:false,
                 showCancelButton:false,
                 footer: "Enviando você para tela de login",
+                willClose: () => history.push('/'),
+
               }
             ).then((result) => {
               if (result.dissmiss === ReactSwal.DismissReason.timer) {history.push("/");}
