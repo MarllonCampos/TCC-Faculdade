@@ -90,11 +90,7 @@ export default function PainelUsuario() {
         title: 'Informações realizadas com sucesso',
         text: 'Seus dados foram alterados com sucesso',
         timer:2000,
-        showConfirmButton:false,
-        willClose: () => {
-          setSenha('')
-          setApareceBotoes(false)
-        }
+        showConfirmButton:false
       })
     } else {
       ReactSwal.fire({
