@@ -9,7 +9,6 @@ import Ola from "../../components/Ola";
 import InputText from "../../components/Input";
 import Button from "../../components/Button";
 import { useParams } from "react-router-dom";
-import { localData } from "../../utils/localStorage";
 import { api } from "../../utils/api";
 import { ReactSwal } from "../../components/ReactSwal";
 import axios from "axios";
@@ -58,7 +57,6 @@ function CadastroTipo() {
     ev.preventDefault()
     const ifRequestCancelled = axios.CancelToken.source(); // Isso aqui informa para o axios quando a req. foi cancelada
 
-    const userInfo = localData("userInfo");
     if (nomePlanta.length < 3) {
       return Toast.fire({
         icon:'warning',
