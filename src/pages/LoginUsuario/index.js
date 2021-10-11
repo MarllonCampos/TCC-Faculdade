@@ -145,7 +145,7 @@ export function LoginUsuario() {
             Acessar
           </Button>
           <ButtonContainer>
-            <A to="/recuperar">Recuperar</A>
+            <A to="/recuperar-conta">Recuperar</A>
             <A to="/cadastro-usuario"> Cadastrar</A>
           </ButtonContainer>
         </Form>
