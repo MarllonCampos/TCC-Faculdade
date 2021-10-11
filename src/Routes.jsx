@@ -6,6 +6,7 @@ import EstufaAtiva from './pages/EstufaAtiva'
 import ListaEstufa from './pages/ListaEstufa'
 import ListaPlanta from './pages/ListaPlanta'
 import Cadastro from './pages/CadastroUsuario'
+import CadastroPlanta from './pages/CadastroPlanta'
 import { ListaElemento } from './pages/ListaElemento'
 import { LoginUsuario } from './pages/LoginUsuario'
 
@@ -25,6 +26,7 @@ function Routes() {
         <Route path="/lista-estufas" component={ListaEstufa} />
         <Route path="/lista-plantas" component={ListaPlanta} />
 
+        <Route path="/cadastro-planta/:id" component={CadastroPlanta} />
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
         <Route path="/cadastro-usuario" component={Cadastro} />
         <Route path="/lista-elemento" component={ListaElemento} />
