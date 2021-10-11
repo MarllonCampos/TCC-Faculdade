@@ -9,7 +9,7 @@ import Cadastro from './pages/CadastroUsuario'
 import CadastroPlanta from './pages/CadastroPlanta'
 import { ListaElemento } from './pages/ListaElemento'
 import { LoginUsuario } from './pages/LoginUsuario'
-
+import { RecuperarConta } from './pages/RecuperarConta'
 function Routes() {
 
   useEffect(() => {
@@ -29,6 +29,7 @@ function Routes() {
         <Route path="/cadastro-planta/:id" component={CadastroPlanta} />
         <Route path="/estufa-ativa/:id" component={EstufaAtiva} />
         <Route path="/cadastro-usuario" component={Cadastro} />
+        <Route path="/recuperar-conta" component={RecuperarConta} />
         <Route path="/lista-elemento" component={ListaElemento} />
       </Switch>
     </Router>
