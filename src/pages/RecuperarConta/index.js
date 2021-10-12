@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
-import styled from "styled-components";
 import Button from "../../components/Button";
 import Form from "../../components/Form";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import {ReactSwal} from "../../components/ReactSwal";
 import { api } from "../../utils/api";
-import {Link, Route, useRouteMatch} from 'react-router-dom'
+import {Link, Route, useRouteMatch,useHistory} from 'react-router-dom'
+
+import {Container} from './styles'
+import { EnviarCodigo } from "./enviarCodigo";
 
 const Toast = ReactSwal.mixin({
   // Cria o modelo de pop-up
@@ -28,46 +30,41 @@ const Toast = ReactSwal.mixin({
   },
 });
 
-function modalSucesso(title, content) {
+export function modalSucesso(title, content, closeAction=() => {},footer='') {
   ReactSwal.fire({
-    icon: "succes",
+    icon: "success",
     title,
     text: content,
     timer: 2500,
     timerProgressBar: true,
+    footer,
+    willClose: closeAction
   });
 }
 
-function modalFalha(title, content) {
+export function modalFalha(title, content, closeAction=() => {},footer='') {
   ReactSwal.fire({
     icon: "warning",
     title,
     text: content,
     timer: 2500,
     timerProgressBar: true,
+    footer,
+    willClose: closeAction
   });
 }
 
-function modalFalhaCritica(title, content) {
-  ReactSwal.fire({
-    title,
-    text: content,
-    icon: "error",
-    timer: 3000,
-    footer: "Por favor contate-nos para receber suporte",
-  });
-}
+
 
 export function RecuperarConta() {
   const {path} = useRouteMatch()
-  console.log(path)
-  
+
 
   return (
     <>
       <Header noIcon />
       <Route path={`${path}`} exact component={RetrieveAccountForm}/>
-      <Route path={`${path}/sendCode`} component={() => <h1>Teste</h1>} />
+      <Route path={`${path}/enviar-codigo`} component={() => <EnviarCodigo/>} />
     </>
   );
 }
@@ -76,8 +73,10 @@ export function RecuperarConta() {
 
 function RetrieveAccountForm() {
   const [email, setEmail] = useState("");
+  const history = useHistory()
+  const {path} = useRouteMatch()
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const ifRequestCancelled = axios.CancelToken.source(); // Isso aqui informa para o axios quando a req. foi cancelada
 
@@ -107,7 +106,7 @@ function RetrieveAccountForm() {
       })
 
         try{
-          const {data} =  api.post('/user/retrieve/', {},{
+          const {data} =  await api.post('/user/retrieve/', {},{
             cancelToken: ifRequestCancelled.token,
             headers: {
               email
@@ -115,13 +114,15 @@ function RetrieveAccountForm() {
           })
 
           if (data.status.toLowerCase() === 'erro') throw data
-          modalSucesso(data.mensagem.titulo, data.mensagem.conteudo)
+          localStorage.setItem('userInfo',JSON.stringify({user:"",email,id:""}))
+          modalSucesso(data?.mensagem?.titulo, data?.mensagem?.conteudo, () => history.push(`${path}/enviar-codigo`))
         }catch (data) {
           modalFalha(data.mensagem.titulo, data.mensagem.conteudo)
         }
     }
   }
   return (
+
     <Container>
         <div className="title-container">
           <p>
@@ -147,36 +148,10 @@ function RetrieveAccountForm() {
             Recuperar
           </Button>
 
-          <Link to={`recuperar-conta/sendCode`}>SendCode </Link>
         </Form>
 
         
       </Container>
   )
 }
-const Container = styled.div`
-  background-color: var(--quintiary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: calc(100% - 55px);
 
-  form {
-    padding-top: 15%;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    button {
-      margin-top: 24px;
-      align-self: flex-end;
-    }
-  }
-  .title-container {
-    font-size: 18px;
-    color: var(--text);
-    font-family: Roboto, sans-serif;
-    font-weight: 600;
-    padding: 16px 24px;
-    text-align: center;
-  }
-`;
