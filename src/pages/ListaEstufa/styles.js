@@ -6,4 +6,5 @@ export const Conteiner = styled.div`
   align-items: center;
   min-height: calc(100vh - 55px);
   padding-bottom: 20px;
+  background-color:white;
 `
