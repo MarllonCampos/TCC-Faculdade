@@ -60,6 +60,7 @@ table {
 body,html,#root {
     height:100%;
     width:100%;
+    background-color:var(--quintiary);
 }
 
 body {
